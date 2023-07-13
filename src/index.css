@@ -1,9 +1,13 @@
-@font-face {
-  font-family: 'Kumbh Sans';
-  src: url('/public/fonts/Kumbh_Sans/KumbhSans-VariableFont_YOPQ,wght.ttf');
-}
-
 body {
   margin: 0;
-  font-family: 'Kumbh Sans';
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
