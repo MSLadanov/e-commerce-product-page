@@ -1,8 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import App from "./App";
+import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
 import ErrorPage from "./components/Routes/Error/Error";
 import Root from "./components/Routes/Root/Root";
 import Men from "./components/Routes/Men/Men";
@@ -20,6 +19,10 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        path: "/",
+        element: <Navigate to="/men"/>,
+      },
       {
         path: "men/",
         element: <Men />,
