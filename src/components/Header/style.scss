@@ -1,4 +1,25 @@
-.site-navbar a{
-    color:black;
-    text-decoration: none;
+nav {
+  display: flex;
+}
+.site-navbar a {
+  color: black;
+  text-decoration: none;
+}
+.account-navbar {
+    display: flex;
+}
+.account-navbar div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
+.account-navbar img{
+    width: 100%;
+}
+.cart-button img {
+    height: 25px;
+    width: 25px;
 }
