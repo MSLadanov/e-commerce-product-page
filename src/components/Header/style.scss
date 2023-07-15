@@ -1,9 +1,29 @@
 nav {
   display: flex;
+  height: 65px;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid hsl(220, 14%, 75%);
+}
+.site-navbar {
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 .site-navbar a {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin: 0px 20px 0px 20px;
   color: black;
   text-decoration: none;
+  transition: 0.1s ease-in;
+}
+.site-navbar a:hover{
+  border-bottom: 4px solid hsl(26, 100%, 55%);
+}
+.logo{
+  margin-right: 60px;
 }
 .account-navbar {
     display: flex;
@@ -15,6 +35,7 @@ nav {
     height: 60px;
     width: 60px;
     border-radius: 50%;
+    margin: 0px 10px;
 }
 .account-navbar img{
     width: 100%;

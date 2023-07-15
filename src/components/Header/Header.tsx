@@ -5,10 +5,10 @@ import "./style.scss";
 export const Header = () => {
   return (
     <nav>
+      <div className="site-navbar">
       <div className="logo">
         <img src="/images/logo.svg" alt="logo" />
       </div>
-      <div className="site-navbar">
         <NavLink to="men/">Men</NavLink>
         <NavLink to="women/">Women</NavLink>
         <NavLink to="about/">About</NavLink>
