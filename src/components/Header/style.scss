@@ -19,28 +19,36 @@ nav {
   text-decoration: none;
   transition: 0.1s ease-in;
 }
-.site-navbar a:hover{
+.site-navbar a:hover {
   border-bottom: 4px solid hsl(26, 100%, 55%);
+  margin: -4px 16px -4px 16px;
 }
-.logo{
+.logo {
   margin-right: 60px;
 }
 .account-navbar {
-    display: flex;
+  display: flex;
 }
 .account-navbar div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
-    margin: 0px 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: center;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  margin: 0px 10px;
 }
-.account-navbar img{
-    width: 100%;
+.account-navbar img {
+  width: 74px;
+  height: 74px;
 }
 .cart-button img {
-    height: 25px;
-    width: 25px;
+  height: 25px;
+  width: 25px;
+}
+
+.account-button:hover {
+  border: 3px solid hsl(26, 100%, 55%);
+  margin: -3px 7px;
 }
