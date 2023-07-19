@@ -1,15 +1,18 @@
 import React from "react";
+import { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
-import { SignedDropdown, UnSignedDropdown } from "./Dropdown/Dropdown";
+import { Dropdown } from "./Dropdown/Dropdown";
 import "./style.scss";
 
 export const Header = () => {
+  const [logged, setLogged] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(false);
   return (
     <nav>
       <div className="site-navbar">
-      <div className="logo">
-        <img src="/images/logo.svg" alt="logo" />
-      </div>
+        <div className="logo">
+          <img src="/images/logo.svg" alt="logo" />
+        </div>
         <NavLink to="men/">Men</NavLink>
         <NavLink to="women/">Women</NavLink>
         <NavLink to="about/">About</NavLink>
@@ -20,9 +23,18 @@ export const Header = () => {
           <img src="/images/icon-cart.svg" alt="cart" />
         </div>
         <div className="account-button">
-          <img src="/images/image-user.png" alt="user" />
+          <img
+            onClick={() => setOpenDropdown((prev) => !prev)}
+            src="/images/image-user.png"
+            alt="user"
+          />
         </div>
       </div>
+      <Dropdown
+        logged={logged}
+        openDropdown={openDropdown}
+        setOpenDropdown={setOpenDropdown}
+      />
     </nav>
   );
 };

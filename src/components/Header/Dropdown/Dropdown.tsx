@@ -1,9 +1,39 @@
 import React from "react";
+import { useRef, useEffect, useState } from "react";
+import "./style.scss";
 
-export const SignedDropdown = () => {
-  return <div>SignedDropdown</div>;
-};
-
-export const UnSignedDropdown = () => {
-  return <div>UnSignedDropdown</div>;
+export const Dropdown = (logged: any) => {
+  const dropdownRef = useRef<HTMLInputElement>(null);
+  const [isActive, setActive] = useState(false);
+  useEffect(() => {
+    window.onclick = (event: any) => {
+      if (
+        event.target.contains(dropdownRef.current) &&
+        event.target !== dropdownRef.current
+      ) {
+        setActive(false)
+      } else {
+        setActive(true)
+      }
+    };
+  }, []);
+  if (logged) {
+    return (
+      <div
+        ref={dropdownRef}
+        className={isActive ? "dropdown active" : "dropdown"}
+      >
+        SignedDropdown
+      </div>
+    );
+  } else {
+    return (
+      <div
+        ref={dropdownRef}
+        className={isActive ? "dropdown active" : "dropdown"}
+      >
+        UnSignedDropdown
+      </div>
+    );
+  }
 };

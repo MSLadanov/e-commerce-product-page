@@ -1,0 +1,17 @@
+.dropdown {
+  position: absolute;
+  right: 50px;
+  top: 120px;
+  height: 0px;
+  overflow: hidden;
+  width: 350px;
+  border-radius: 10px;
+  transition: 0.1s ease-in;
+  -webkit-box-shadow: 4px 4px 40px 0px rgba(34, 60, 80, 0.41);
+  -moz-box-shadow: 4px 4px 40px 0px rgba(34, 60, 80, 0.41);
+  box-shadow: 4px 4px 40px 0px rgba(34, 60, 80, 0.41);
+}
+
+.active{
+    height: 300px;
+}
