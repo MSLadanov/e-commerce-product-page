@@ -1,8 +1,10 @@
 import React from "react";
 import { useRef, useEffect, useState } from "react";
+import { SignedDropdown } from "./SignedDropdown";
+import { UnsignedDropdown } from "./UnsignedDropdown";
 import "./style.scss";
 
-export const Dropdown = (logged: any) => {
+export const Dropdown = ({ logged }: any) => {
   const dropdownRef = useRef<HTMLInputElement>(null);
   const [isActive, setActive] = useState(false);
   useEffect(() => {
@@ -11,9 +13,9 @@ export const Dropdown = (logged: any) => {
         event.target.contains(dropdownRef.current) &&
         event.target !== dropdownRef.current
       ) {
-        setActive(false)
+        setActive(false);
       } else {
-        setActive(true)
+        setActive(true);
       }
     };
   }, []);
@@ -23,7 +25,7 @@ export const Dropdown = (logged: any) => {
         ref={dropdownRef}
         className={isActive ? "dropdown active" : "dropdown"}
       >
-        SignedDropdown
+        <SignedDropdown />
       </div>
     );
   } else {
@@ -32,7 +34,7 @@ export const Dropdown = (logged: any) => {
         ref={dropdownRef}
         className={isActive ? "dropdown active" : "dropdown"}
       >
-        UnSignedDropdown
+        <UnsignedDropdown />
       </div>
     );
   }
