@@ -1,6 +1,7 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
 
 const SignInSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -19,9 +20,9 @@ export const UnsignedDropdown = () => {
           password: "",
         }}
         validationSchema={SignInSchema}
-        onSubmit={(values) => {
-          // same shape as initial values
-          console.log(values);
+        onSubmit={async (values) => {
+          const user = await axios.post('http://localhost:3001/api/user/login/', values)
+          console.log(user);
         }}
       >
         {({ errors, touched }) => (
