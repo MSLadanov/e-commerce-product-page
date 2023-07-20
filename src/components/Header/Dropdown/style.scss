@@ -13,5 +13,29 @@
 }
 
 .active{
-    height: 300px;
+    height: 320px;
+}
+
+.dropdown form{
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+.dropdown input {
+  margin-top: 15px;
+  height: 35px;
+  font-size: 28px;
+  border-radius: 5px;
+}
+.dropdown h1 {
+  margin-left: 30px;
+}
+.dropdown button {
+  display: block;
+  border: none;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  margin-top: 15px;
+  height: 35px;
 }

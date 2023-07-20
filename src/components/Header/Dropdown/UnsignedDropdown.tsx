@@ -12,6 +12,7 @@ export const UnsignedDropdown = () => {
     <div>
       {" "}
       <h1>Sign In</h1>
+      <hr />
       <Formik
         initialValues={{
           email: "",
@@ -33,7 +34,7 @@ export const UnsignedDropdown = () => {
             {errors.password && touched.password ? (
               <div>{errors.password}</div>
             ) : null}
-            <button type="submit">Submit</button>
+            <button type="submit">Sign In</button>
           </Form>
         )}
       </Formik>
