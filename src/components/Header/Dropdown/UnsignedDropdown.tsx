@@ -2,6 +2,8 @@ import React from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { signIn } from "../../../redux/slices/userSlice";
 
 const SignInSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -9,6 +11,7 @@ const SignInSchema = Yup.object().shape({
 });
 
 export const UnsignedDropdown = () => {
+  const dispatch = useDispatch();
   return (
     <div>
       {" "}
@@ -21,16 +24,19 @@ export const UnsignedDropdown = () => {
         }}
         validationSchema={SignInSchema}
         onSubmit={async (values) => {
-          const user = await axios.post('http://localhost:3001/api/user/login/', values)
-          console.log(user);
+          const user = await axios.post(
+            "http://localhost:3001/api/user/login/",
+            values
+          );
+          if(user.status === 200){
+            dispatch(signIn(user.data.token))
+          }
         }}
       >
         {({ errors, touched }) => (
           <Form>
             <Field name="email" />
-            {errors.email && touched.email ? (
-              <div>{errors.email}</div>
-            ) : null}
+            {errors.email && touched.email ? <div>{errors.email}</div> : null}
             <Field type="password" name="password" />
             {errors.password && touched.password ? (
               <div>{errors.password}</div>
