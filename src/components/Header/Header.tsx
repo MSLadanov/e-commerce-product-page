@@ -1,11 +1,13 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
+import { getToken } from "../../redux/slices/userSlice";
 import { NavLink } from "react-router-dom";
 import { Dropdown } from "./Dropdown/Dropdown";
 import "./style.scss";
 
 export const Header = () => {
-  const [logged, setLogged] = useState(false);
+  const token = useSelector(getToken);
   const [openDropdown, setOpenDropdown] = useState(false);
   return (
     <nav>
@@ -31,7 +33,7 @@ export const Header = () => {
         </div>
       </div>
       <Dropdown
-        logged={logged}
+        token={token}
         openDropdown={openDropdown}
         setOpenDropdown={setOpenDropdown}
       />

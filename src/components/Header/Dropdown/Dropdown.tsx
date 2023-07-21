@@ -4,7 +4,7 @@ import { SignedDropdown } from "./SignedDropdown";
 import { UnsignedDropdown } from "./UnsignedDropdown";
 import "./style.scss";
 
-export const Dropdown = ({ logged }: any) => {
+export const Dropdown = ({ token }: any) => {
   const dropdownRef = useRef<HTMLInputElement>(null);
   const [isActive, setActive] = useState(false);
   useEffect(() => {
@@ -19,7 +19,7 @@ export const Dropdown = ({ logged }: any) => {
       }
     };
   }, []);
-  if (logged) {
+  if (token !== null) {
     return (
       <div
         ref={dropdownRef}
