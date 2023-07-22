@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getToken } from "../../redux/slices/userSlice";
-import { getData } from "../../redux/slices/userDataSlice";
+import { getData } from "../../redux/slices/userSlice";
 import { NavLink } from "react-router-dom";
 import { Dropdown } from "./Dropdown/Dropdown";
 import "./style.scss";
@@ -14,7 +14,7 @@ export const Header = () => {
   const [user, setUser] = useState(null);
   const [openDropdown, setOpenDropdown] = useState(false);
   const getUserInfo = async () => {
-    const userInfo = await axios.get('http://localhost:3001/api/user/info/',{
+    await axios.get('http://localhost:3001/api/user/info/',{
 			headers: {
 				'Authorization': `Bearer ${token}`,
 			}
