@@ -29,11 +29,16 @@ export const Header = () => {
   useEffect(() => {
     if (token !== null) {
       getUserInfo();
-      if (userData !== null) {
-        setUserImage(`http://localhost:3001/${userData.img}`);
-      }
     }
-  }, []);
+    
+  }, [token]);
+  
+  useEffect(() => {
+    if (userData !== null) {
+      setUserImage(`http://localhost:3001/${userData.img}`);
+    }
+  }, [userData])
+  
   return (
     <nav>
       <div className="site-navbar">
