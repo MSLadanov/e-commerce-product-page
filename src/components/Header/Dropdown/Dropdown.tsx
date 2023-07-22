@@ -4,7 +4,7 @@ import { SignedDropdown } from "./SignedDropdown";
 import { UnsignedDropdown } from "./UnsignedDropdown";
 import "./style.scss";
 
-export const Dropdown = ({ token }: any) => {
+export const Dropdown = ({ token, userImage, userData, setUserImage }: any) => {
   const dropdownRef = useRef<HTMLInputElement>(null);
   const [isActive, setActive] = useState(false);
   useEffect(() => {
@@ -19,13 +19,13 @@ export const Dropdown = ({ token }: any) => {
       }
     };
   }, []);
-  if (token !== null) {
+  if (token !== null && userData !== null) {
     return (
       <div
         ref={dropdownRef}
         className={isActive ? "dropdown active" : "dropdown"}
       >
-        <SignedDropdown />
+        <SignedDropdown userImage={userImage} setUserImage={setUserImage} />
       </div>
     );
   } else {

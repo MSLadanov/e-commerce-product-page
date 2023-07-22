@@ -66,6 +66,9 @@ export const Header = () => {
         token={token}
         openDropdown={openDropdown}
         setOpenDropdown={setOpenDropdown}
+        userData={userData}
+        userImage={userImage}
+        setUserImage={setUserImage}
       />
     </nav>
   );

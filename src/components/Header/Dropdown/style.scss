@@ -12,11 +12,11 @@
   box-shadow: 4px 4px 40px 0px rgba(34, 60, 80, 0.41);
 }
 
-.active{
-    height: 280px;
+.active {
+  height: 280px;
 }
 
-.dropdown form{
+.dropdown form {
   display: flex;
   flex-direction: column;
   margin: 20px;
@@ -38,4 +38,26 @@
   color: white;
   margin-top: 15px;
   height: 35px;
+}
+
+.user-image {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: center;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  margin: 0px 10px;
+}
+
+.user-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-panel h1{
+  margin-left: 0px;
 }

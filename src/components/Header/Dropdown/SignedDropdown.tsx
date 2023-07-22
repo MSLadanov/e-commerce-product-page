@@ -1,10 +1,25 @@
-import React from 'react'
+import React from "react";
 import { useSelector } from "react-redux";
 import { getUserData } from "../../../redux/slices/userSlice";
+import { signOut } from "../../../redux/slices/userSlice";
+import { useDispatch } from "react-redux";
+import './style.scss'
 
-export const SignedDropdown = () => {
+export const SignedDropdown = ({ userImage, setUserImage }: any) => {
   const userData = useSelector(getUserData);
+  const dispatch = useDispatch()
   return (
-    <div>{JSON.stringify(userData)}</div>
-  )
-}
+    <div className="user-panel">
+      <img
+        className="user-image"
+        src={userImage}
+        alt="user"
+      />
+      <h1>{userData.name + ' ' + userData.surname}</h1>
+      <button onClick={() => {
+           dispatch(signOut())
+           setUserImage("/images/image-user.png")
+      }}>Sign Out</button>
+    </div>
+  );
+};
