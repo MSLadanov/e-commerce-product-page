@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface IIState {
+interface IITokenState {
   token: null | string;
 }
 
@@ -8,7 +8,7 @@ export const userSlice = createSlice({
   name: "token",
   initialState: {
     token: null,
-  } as IIState,
+  } as IITokenState,
   reducers: {
     signIn: (state, action) => {
       state.token = action.payload;
@@ -20,6 +20,7 @@ export const userSlice = createSlice({
 });
 
 export const getToken = (state: any) => state.user.token;
+
 
 export const { signIn, signOut } = userSlice.actions;
 

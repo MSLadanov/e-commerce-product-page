@@ -1,14 +1,30 @@
 import React from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getToken } from "../../redux/slices/userSlice";
+import { getData } from "../../redux/slices/userDataSlice";
 import { NavLink } from "react-router-dom";
 import { Dropdown } from "./Dropdown/Dropdown";
 import "./style.scss";
+import axios from "axios";
 
 export const Header = () => {
   const token = useSelector(getToken);
+  const dispatch = useDispatch();
+  const [user, setUser] = useState(null);
   const [openDropdown, setOpenDropdown] = useState(false);
+  const getUserInfo = async () => {
+    const userInfo = await axios.get('http://localhost:3001/api/user/info/',{
+			headers: {
+				'Authorization': `Bearer ${token}`,
+			}
+		}).then((res) => {
+      dispatch(getData(res.data))
+    }) 
+  }
+  if(token !== null){
+    getUserInfo()
+  }
   return (
     <nav>
       <div className="site-navbar">
