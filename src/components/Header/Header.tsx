@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getToken } from "../../redux/slices/userSlice";
-import { getData } from "../../redux/slices/userSlice";
+import { fetchData } from "../../redux/slices/userSlice";
+import { getUserData } from "../../redux/slices/userSlice";
 import { NavLink } from "react-router-dom";
 import { Dropdown } from "./Dropdown/Dropdown";
 import "./style.scss";
@@ -10,21 +11,29 @@ import axios from "axios";
 
 export const Header = () => {
   const token = useSelector(getToken);
+  const userData = useSelector(getUserData);
+  const [userImage, setUserImage] = useState("/images/image-user.png");
   const dispatch = useDispatch();
-  const [user, setUser] = useState(null);
   const [openDropdown, setOpenDropdown] = useState(false);
   const getUserInfo = async () => {
-    await axios.get('http://localhost:3001/api/user/info/',{
-			headers: {
-				'Authorization': `Bearer ${token}`,
-			}
-		}).then((res) => {
-      dispatch(getData(res.data))
-    }) 
-  }
-  if(token !== null){
-    getUserInfo()
-  }
+    await axios
+      .get("http://localhost:3001/api/user/info/", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        dispatch(fetchData(res.data));
+      });
+  };
+  useEffect(() => {
+    if (token !== null) {
+      getUserInfo();
+      if (userData !== null) {
+        setUserImage(`http://localhost:3001/${userData.img}`);
+      }
+    }
+  }, []);
   return (
     <nav>
       <div className="site-navbar">
@@ -43,7 +52,7 @@ export const Header = () => {
         <div className="account-button">
           <img
             onClick={() => setOpenDropdown((prev) => !prev)}
-            src="/images/image-user.png"
+            src={userImage}
             alt="user"
           />
         </div>

@@ -18,9 +18,8 @@ export const userSlice = createSlice({
     signOut: (state) => {
       state.token = null;
     },
-    getData: (state, action) => {
+    fetchData: (state, action) => {
       state.data = action.payload;
-      console.log(action.payload)
     },
     wipeData: (state) => {
       state.data = null;
@@ -30,8 +29,9 @@ export const userSlice = createSlice({
 
 export const getToken = (state: any) => state.user.token;
 
+export const getUserData = (state: any) => state.user.data;
 
-export const { signIn, signOut, getData, wipeData } = userSlice.actions;
+export const { signIn, signOut, fetchData, wipeData } = userSlice.actions;
 
 export default userSlice.reducer;
 

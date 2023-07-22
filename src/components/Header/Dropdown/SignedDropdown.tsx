@@ -1,10 +1,10 @@
 import React from 'react'
 import { useSelector } from "react-redux";
-import { getToken } from "../../../redux/slices/userSlice";
+import { getUserData } from "../../../redux/slices/userSlice";
 
 export const SignedDropdown = () => {
-  const token = useSelector(getToken);
+  const userData = useSelector(getUserData);
   return (
-    <div>{token}</div>
+    <div>{JSON.stringify(userData)}</div>
   )
 }
