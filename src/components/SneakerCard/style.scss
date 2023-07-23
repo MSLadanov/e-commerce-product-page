@@ -1,0 +1,25 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.card img {
+  height: 300px;
+}
+.card h2 {
+  color: hsl(220, 13%, 13%);
+}
+.card h3 {
+  color: hsl(219, 9%, 45%);
+  margin: 0px;
+}
+.card button {
+  display: block;
+  border: none;
+  border-radius: 5px;
+  background-color: hsl(220, 13%, 13%);
+  color: white;
+  margin-top: 15px;
+  height: 35px;
+}

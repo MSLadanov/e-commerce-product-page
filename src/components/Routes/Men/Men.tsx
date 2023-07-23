@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useState, useEffect } from "react";
 import { SneakerCard } from "../../SneakerCard/SneakerCard";
+import './style.scss'
 
 function Men() {
   const [data, setData] = useState([]);
@@ -17,7 +18,7 @@ function Men() {
     return <div>No data!</div>;
   }
   return (
-    <div>
+    <div className="cards">
       {data.map((item, index) => 
         <SneakerCard sneaker={item} key={index}/>
       )}
