@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useState, useEffect } from "react";
 import { SneakerCard } from "../../SneakerCard/SneakerCard";
-import './style.scss'
+import "./style.scss";
 
 function Men() {
   const [data, setData] = useState([]);
@@ -19,9 +19,11 @@ function Men() {
   }
   return (
     <div className="cards">
-      {data.map((item, index) => 
-        <SneakerCard sneaker={item} key={index}/>
-      )}
+      {data
+        .filter((item: any) => item.sex === "MEN")
+        .map((item, index) => (
+          <SneakerCard sneaker={item} key={index} />
+        ))}
     </div>
   );
 }
