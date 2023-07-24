@@ -4,18 +4,24 @@ import { SignedDropdown } from "./SignedDropdown";
 import { UnsignedDropdown } from "./UnsignedDropdown";
 import "./style.scss";
 
-export const Dropdown = ({ token, userImage, userData, setUserImage }: any) => {
+export const Dropdown = ({ token, openDropdown, setOpenDropdown, userData, userImage, setUserImage }: any) => {
   const dropdownRef = useRef<HTMLInputElement>(null);
   const [isActive, setActive] = useState(false);
   useEffect(() => {
     window.onclick = (event: any) => {
+      // console.log(document.body)
+      console.log(openDropdown)
+      console.log(dropdownRef.current?.contains(event.target))
+      // console.log(event.target.contains(dropdownRef.current))
+      // console.log(event.target !== dropdownRef.current)
       if (
-        event.target.contains(dropdownRef.current) &&
-        event.target !== dropdownRef.current
+        // event.target.contains(dropdownRef.current) &&
+        // event.target !== dropdownRef.current
+        dropdownRef.current?.contains(event.target)
       ) {
-        setActive(false);
+        console.log('open')
       } else {
-        setActive(true);
+        console.log('close')
       }
     };
   }, []);
@@ -23,7 +29,7 @@ export const Dropdown = ({ token, userImage, userData, setUserImage }: any) => {
     return (
       <div
         ref={dropdownRef}
-        className={isActive ? "dropdown active" : "dropdown"}
+        className={openDropdown ? "dropdown active" : "dropdown"}
       >
         <SignedDropdown userImage={userImage} setUserImage={setUserImage} />
       </div>
@@ -32,7 +38,7 @@ export const Dropdown = ({ token, userImage, userData, setUserImage }: any) => {
     return (
       <div
         ref={dropdownRef}
-        className={isActive ? "dropdown active" : "dropdown"}
+        className={openDropdown ? "dropdown active" : "dropdown"}
       >
         <UnsignedDropdown />
       </div>

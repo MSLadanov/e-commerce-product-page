@@ -56,7 +56,7 @@ export const Header = () => {
         </div>
         <div className="account-button">
           <img
-            onClick={() => setOpenDropdown((prev) => !prev)}
+            onClick={() => setOpenDropdown(true)}
             src={userImage}
             alt="user"
           />
