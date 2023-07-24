@@ -9,11 +9,13 @@
 }
 .card h2 {
   color: hsl(220, 13%, 13%);
+  margin: 0px;
 }
-.card h3 {
+.card h3, h4 {
   color: hsl(219, 9%, 45%);
   margin: 0px;
 }
+
 .card button {
   display: block;
   border: none;

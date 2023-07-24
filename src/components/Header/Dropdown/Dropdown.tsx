@@ -6,7 +6,6 @@ import "./style.scss";
 
 export const Dropdown = ({ token, openDropdown, setOpenDropdown, userData, userImage, setUserImage, dropdownBtnRef }: any) => {
   const dropdownRef = useRef<HTMLInputElement>(null);
-  const [isActive, setActive] = useState(false);
   useEffect(() => {
     window.onclick = (event: any) => {
       if (
