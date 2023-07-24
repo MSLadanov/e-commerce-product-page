@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getToken } from "../../redux/slices/userSlice";
 import { fetchData } from "../../redux/slices/userSlice";
@@ -10,6 +10,7 @@ import "./style.scss";
 import axios from "axios";
 
 export const Header = () => {
+  const dropdownBtnRef = useRef<HTMLInputElement>(null);
   const token = useSelector(getToken);
   const userData = useSelector(getUserData);
   const [userImage, setUserImage] = useState("/images/image-user.png");
@@ -54,7 +55,7 @@ export const Header = () => {
         <div className="cart-button">
           <img src="/images/icon-cart.svg" alt="cart" />
         </div>
-        <div className="account-button">
+        <div ref={dropdownBtnRef} className="account-button">
           <img
             onClick={() => setOpenDropdown(true)}
             src={userImage}
@@ -69,6 +70,7 @@ export const Header = () => {
         userData={userData}
         userImage={userImage}
         setUserImage={setUserImage}
+        dropdownBtnRef={dropdownBtnRef}
       />
     </nav>
   );
