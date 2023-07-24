@@ -1,17 +1,19 @@
 .card {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 .card img {
   height: 300px;
 }
 .card h2 {
+  text-align: center;
   color: hsl(220, 13%, 13%);
   margin: 0px;
 }
 .card h3, h4 {
+  text-align: center;
   color: hsl(219, 9%, 45%);
   margin: 0px;
 }
@@ -24,4 +26,19 @@
   color: white;
   margin-top: 15px;
   height: 35px;
+}
+.discount{
+  position: relative;
+  top: 100px;
+  left: 95px;
+  height: 30px;
+  width: 40px;
+  background-color: hsl(26, 100%, 55%);
+  color: white;
+  font-weight: bolder;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 5px;
 }
