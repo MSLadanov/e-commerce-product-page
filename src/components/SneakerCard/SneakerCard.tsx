@@ -5,7 +5,7 @@ export const SneakerCard = ({ sneaker }: any) => {
   return (
     <div className="card">
       <div className="discount">{`${sneaker.discount}%`}</div>
-      <a href={`http://localhost:3000/sneaker/${sneaker.id}`}>
+      <a href={`http://localhost:3000/${sneaker.sex.toLowerCase()}/sneaker/${sneaker.id}`}>
         <img
           src={`http://localhost:3001/${sneaker.img1}`}
           alt={`${sneaker.brand} ${sneaker.name}`}
