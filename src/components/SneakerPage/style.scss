@@ -1,0 +1,35 @@
+.sneaker-page{
+    display: flex;
+}
+
+.thumbnails{
+    display: flex;
+}
+.main-image img{
+    height: 700px;
+}
+.thumbnails img{
+    height: 150px;
+}
+
+
+.info-box{
+    padding-right: 320px;
+}
+.info-box h4{
+    text-align: left;
+    color: hsl(26, 100%, 55%);
+}
+.price-box{
+    display: flex;
+}
+.price-box h2{
+    margin: 0;
+}
+.price-box .discount{
+    margin-left: 20px;
+    font-weight: bolder;
+    border: none;
+    background-color: rgba(255, 125, 26, 0.1);;
+    position: static;
+}
