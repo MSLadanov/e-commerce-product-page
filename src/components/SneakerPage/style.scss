@@ -33,3 +33,13 @@
     background-color: rgba(255, 125, 26, 0.1);;
     position: static;
 }
+.sizes-box{
+    display: flex;
+}
+.size-box{
+    background-color: hsl(220, 13%, 13%);
+    border-radius: 5px;
+    color: hsl(0, 0%, 100%);
+    margin: 5px;
+    padding: 10px;
+}

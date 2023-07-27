@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import ErrorPage from "../Routes/Error/Error";
-import './style.scss'
+import "./style.scss";
 
 export const SneakerPage = () => {
   let { id, sex } = useParams();
@@ -17,7 +17,7 @@ export const SneakerPage = () => {
     img2: null,
     img3: null,
     img4: null,
-    sizes: null
+    sizes: [],
   });
   const getSneakerInfo = async () => {
     const info = (await axios.get(`http://localhost:3001/api/sneaker/${id}`))
@@ -29,7 +29,7 @@ export const SneakerPage = () => {
   useEffect(() => {
     getSneakerInfo();
   }, []);
-  if(sneakerInfo.name !== null){
+  if (sneakerInfo.name !== null) {
     return (
       <div className="sneaker-page">
         <div className="image-box">
@@ -40,22 +40,30 @@ export const SneakerPage = () => {
             />
           </div>
           <div className="thumbnails">
-            <div className="thumbnail"><img
-              src={`http://localhost:3001/${sneakerInfo.img1}`}
-              alt={`img1`}
-            /></div>
-            <div className="thumbnail"><img
-              src={`http://localhost:3001/${sneakerInfo.img2}`}
-              alt={`img1`}
-            /></div>
-            <div className="thumbnail"><img
-              src={`http://localhost:3001/${sneakerInfo.img3}`}
-              alt={`img1`}
-            /></div>
-            <div className="thumbnail"><img
-              src={`http://localhost:3001/${sneakerInfo.img4}`}
-              alt={`img1`}
-            /></div>
+            <div className="thumbnail">
+              <img
+                src={`http://localhost:3001/${sneakerInfo.img1}`}
+                alt={`img1`}
+              />
+            </div>
+            <div className="thumbnail">
+              <img
+                src={`http://localhost:3001/${sneakerInfo.img2}`}
+                alt={`img1`}
+              />
+            </div>
+            <div className="thumbnail">
+              <img
+                src={`http://localhost:3001/${sneakerInfo.img3}`}
+                alt={`img1`}
+              />
+            </div>
+            <div className="thumbnail">
+              <img
+                src={`http://localhost:3001/${sneakerInfo.img4}`}
+                alt={`img1`}
+              />
+            </div>
           </div>
         </div>
         <div className="info-box">
@@ -70,10 +78,19 @@ export const SneakerPage = () => {
               <h4>{sneakerInfo.discount} %</h4>
             </div>
           </div>
+          <div className="sizes-box">
+            {sneakerInfo.sizes.map<React.ReactNode>((item) => {
+              return <div className="size-box">{item}</div>;
+            })}
+          </div>
         </div>
       </div>
     );
   } else {
-    return (<div><h1>Not Found!</h1></div>)
+    return (
+      <div>
+        <h1>Not Found!</h1>
+      </div>
+    );
   }
 };
