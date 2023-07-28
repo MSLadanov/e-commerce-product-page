@@ -42,7 +42,7 @@ export const SneakerPage = () => {
   const changeMainImage = (e: any) => {
     setSneakerInfo((prev) => ({
       ...prev,
-      mainImage: e.target.src,
+      mainImage: e.target.src.split('/')[3],
     }));
     console.log(sneakerInfo.img1)
     console.log(sneakerInfo.mainImage)
@@ -53,10 +53,9 @@ export const SneakerPage = () => {
         <div className="image-box">
           <div className="main-image">
             <img
-              src={`http://localhost:3001/${sneakerInfo.img1}`}
+              src={sneakerInfo.mainImage ? `http://localhost:3001/${sneakerInfo.mainImage}` : `http://localhost:3001/${sneakerInfo.img1}`}
               alt={`img1`}
             />
-            <p>{`http://localhost:3001/${sneakerInfo.mainImage}`}</p>
           </div>
           <div className="thumbnails">
             <div className="thumbnail">
