@@ -13,6 +13,7 @@ export const SneakerPage = () => {
     description: null,
     price: null,
     discount: null,
+    mainImage: null,
     img1: null,
     img2: null,
     img3: null,
@@ -24,42 +25,53 @@ export const SneakerPage = () => {
       .data as any;
     if (info.sex.toLowerCase() === sex) {
       setSneakerInfo(info);
+      setSneakerInfo((prev) => ({
+        ...prev,
+        mainImage: prev.img1,
+      }));
     }
   };
   useEffect(() => {
     getSneakerInfo();
   }, []);
+  const changeMainImage = (e: any) => {
+    console.log(e.target.src);
+  };
   if (sneakerInfo.name !== null) {
     return (
       <div className="sneaker-page">
         <div className="image-box">
           <div className="main-image">
             <img
-              src={`http://localhost:3001/${sneakerInfo.img1}`}
+              src={`http://localhost:3001/${sneakerInfo.mainImage}`}
               alt={`img1`}
             />
           </div>
           <div className="thumbnails">
             <div className="thumbnail">
               <img
+                onClick={(e) => changeMainImage(e)}
                 src={`http://localhost:3001/${sneakerInfo.img1}`}
                 alt={`img1`}
               />
             </div>
             <div className="thumbnail">
               <img
+                onClick={(e) => changeMainImage(e)}
                 src={`http://localhost:3001/${sneakerInfo.img2}`}
                 alt={`img1`}
               />
             </div>
             <div className="thumbnail">
               <img
+                onClick={(e) => changeMainImage(e)}
                 src={`http://localhost:3001/${sneakerInfo.img3}`}
                 alt={`img1`}
               />
             </div>
             <div className="thumbnail">
               <img
+                onClick={(e) => changeMainImage(e)}
                 src={`http://localhost:3001/${sneakerInfo.img4}`}
                 alt={`img1`}
               />
