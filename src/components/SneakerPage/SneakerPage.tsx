@@ -25,17 +25,27 @@ export const SneakerPage = () => {
       .data as any;
     if (info.sex.toLowerCase() === sex) {
       setSneakerInfo(info);
-      setSneakerInfo((prev) => ({
-        ...prev,
-        mainImage: prev.img1,
-      }));
+      
     }
   };
   useEffect(() => {
     getSneakerInfo();
+    
   }, []);
+  useEffect(() => {
+    setSneakerInfo((prev) => ({
+      ...prev,
+      mainImage: sneakerInfo.img1,
+    }));
+  }, [sneakerInfo.img1])
+  
   const changeMainImage = (e: any) => {
-    console.log(e.target.src);
+    setSneakerInfo((prev) => ({
+      ...prev,
+      mainImage: e.target.src,
+    }));
+    console.log(sneakerInfo.img1)
+    console.log(sneakerInfo.mainImage)
   };
   if (sneakerInfo.name !== null) {
     return (
@@ -43,9 +53,10 @@ export const SneakerPage = () => {
         <div className="image-box">
           <div className="main-image">
             <img
-              src={`http://localhost:3001/${sneakerInfo.mainImage}`}
+              src={`http://localhost:3001/${sneakerInfo.img1}`}
               alt={`img1`}
             />
+            <p>{`http://localhost:3001/${sneakerInfo.mainImage}`}</p>
           </div>
           <div className="thumbnails">
             <div className="thumbnail">
