@@ -1,5 +1,7 @@
 .sneaker-page{
     display: flex;
+    position: absolute;
+    z-index: 0;
 }
 
 .thumbnails{
@@ -8,12 +10,16 @@
 .main-image img{
     height: 700px;
 }
+.thumbnails {
+    padding: 5px;
+}
 .thumbnails img{
     height: 150px;
     cursor: pointer;
 }
 
 .thumbnails img:hover{
+    height: 148px;
     border: 1px solid black;
     border-radius: 10px;
 }
@@ -21,7 +27,8 @@
     margin: 0px 10px;
 }
 .info-box{
-    padding-right: 320px;
+    margin-left: 50px;
+    width: 600px;
 }
 .info-box h4{
     text-align: left;
