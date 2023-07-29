@@ -3,6 +3,8 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  height: 600px;
+  width: 300px;
 }
 .card img {
   height: 300px;
@@ -12,7 +14,8 @@
   color: hsl(220, 13%, 13%);
   margin: 0px;
 }
-.card h3, h4 {
+.card h3,
+h4 {
   text-align: center;
   color: hsl(219, 9%, 45%);
   margin: 0px;
@@ -27,7 +30,7 @@
   margin-top: 15px;
   height: 35px;
 }
-.discount{
+.discount {
   position: relative;
   top: 100px;
   left: 95px;

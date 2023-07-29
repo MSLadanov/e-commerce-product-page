@@ -29,6 +29,9 @@
 .info-box{
     margin-left: 50px;
     width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .info-box h4{
     text-align: left;
