@@ -13,7 +13,13 @@
     cursor: pointer;
 }
 
-
+.thumbnails img:hover{
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.thumbnail{
+    margin: 0px 10px;
+}
 .info-box{
     padding-right: 320px;
 }
