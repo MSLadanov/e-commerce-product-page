@@ -54,9 +54,36 @@
     display: flex;
 }
 .size-box{
+    cursor: pointer;
     background-color: hsl(220, 13%, 13%);
     border-radius: 5px;
     color: hsl(0, 0%, 100%);
     margin: 5px;
     padding: 10px;
 }
+
+.size-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .size-dropdown button{
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    margin-top: 15px;
+    height: 35px;
+  }
+  .size-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+  }
+  
+  .size-dropdown:hover .size-dropdown-content {
+    display: flex;
+  }

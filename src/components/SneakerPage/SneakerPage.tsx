@@ -25,27 +25,25 @@ export const SneakerPage = () => {
       .data as any;
     if (info.sex.toLowerCase() === sex) {
       setSneakerInfo(info);
-      
     }
   };
   useEffect(() => {
     getSneakerInfo();
-    
   }, []);
   useEffect(() => {
     setSneakerInfo((prev) => ({
       ...prev,
       mainImage: sneakerInfo.img1,
     }));
-  }, [sneakerInfo.img1])
-  
+  }, [sneakerInfo.img1]);
+
   const changeMainImage = (e: any) => {
     setSneakerInfo((prev) => ({
       ...prev,
-      mainImage: e.target.src.split('/')[3],
+      mainImage: e.target.src.split("/")[3],
     }));
-    console.log(sneakerInfo.img1)
-    console.log(sneakerInfo.mainImage)
+    console.log(sneakerInfo.img1);
+    console.log(sneakerInfo.mainImage);
   };
   if (sneakerInfo.name !== null) {
     return (
@@ -53,7 +51,11 @@ export const SneakerPage = () => {
         <div className="image-box">
           <div className="main-image">
             <img
-              src={sneakerInfo.mainImage ? `http://localhost:3001/${sneakerInfo.mainImage}` : `http://localhost:3001/${sneakerInfo.img1}`}
+              src={
+                sneakerInfo.mainImage
+                  ? `http://localhost:3001/${sneakerInfo.mainImage}`
+                  : `http://localhost:3001/${sneakerInfo.img1}`
+              }
               alt={`img1`}
             />
           </div>
@@ -100,10 +102,14 @@ export const SneakerPage = () => {
               <h4>{sneakerInfo.discount} %</h4>
             </div>
           </div>
-          <div className="sizes-box">
-            {sneakerInfo.sizes.map<React.ReactNode>((item) => {
-              return <div className="size-box">{item}</div>;
-            })}
+          <div className="sizes-box"></div>
+          <div className="size-dropdown">
+            <button>Add to cart</button>
+            <div className="size-dropdown-content">
+              {sneakerInfo.sizes.map<React.ReactNode>((item) => {
+                return <div className="size-box">{item}</div>;
+              })}
+            </div>
           </div>
         </div>
       </div>
