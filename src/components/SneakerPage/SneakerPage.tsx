@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import ErrorPage from "../Routes/Error/Error";
@@ -7,6 +7,12 @@ import "./style.scss";
 
 export const SneakerPage = () => {
   let { id, sex } = useParams();
+  const btnDropDownRef = useRef<HTMLButtonElement>(null);
+  const dropdownRef = useRef<HTMLInputElement>(null);
+  const [isActive, setIsActive] = useState(false);
+  const onClick = (e:any) => {
+    setIsActive(!isActive)
+  };
   const [sneakerInfo, setSneakerInfo] = useState({
     name: null,
     brand: null,
@@ -36,15 +42,26 @@ export const SneakerPage = () => {
       mainImage: sneakerInfo.img1,
     }));
   }, [sneakerInfo.img1]);
-
+  useEffect(() => {
+    window.onclick = (event: any) => {
+      if(event.target !== btnDropDownRef.current){
+        if (
+          !dropdownRef.current?.contains(event.target) &&
+          !dropdownRef.current?.contains(event.target) 
+        ) {
+          console.log('close')
+          setIsActive(false)
+        } 
+      }
+    };
+  }, []);
   const changeMainImage = (e: any) => {
     setSneakerInfo((prev) => ({
       ...prev,
       mainImage: e.target.src.split("/")[3],
     }));
-    console.log(sneakerInfo.img1);
-    console.log(sneakerInfo.mainImage);
   };
+
   if (sneakerInfo.name !== null) {
     return (
       <div className="sneaker-page">
@@ -102,14 +119,38 @@ export const SneakerPage = () => {
               <h4>{sneakerInfo.discount} %</h4>
             </div>
           </div>
-          <div className="sizes-box"></div>
+
           <div className="size-dropdown">
-            <button>Add to cart</button>
-            <div className="size-dropdown-content">
-              {sneakerInfo.sizes.map<React.ReactNode>((item) => {
-                return <div className="size-box">{item}</div>;
-              })}
+             {/* dropdown */}
+             <div className="dropdown__container">
+              {/* Dropdown Button */}
+              <button className="dropdown__btn" ref={btnDropDownRef} onClick={(e) => onClick(e)}>
+                Add to cart
+              </button>
+
+              {/* Dropdown Content */}
+              <div
+                ref={dropdownRef}
+                className={`dropdown__content ${
+                  isActive ? "open" : "close"
+                }`}
+              >
+                <div className="dropdown__info">
+                  <ul>
+                    <li>
+                      <span>Settings</span>
+                    </li>
+                    <li>
+                      <span>Purchases</span>
+                    </li>
+                    <li>
+                      <span>Upgrade</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
+            {/* dropdown */}
           </div>
         </div>
       </div>
@@ -122,3 +163,7 @@ export const SneakerPage = () => {
     );
   }
 };
+
+// {sneakerInfo.sizes.map<React.ReactNode>((item, index) => {
+//   return <div className="size-box" key={index}>{item}</div>;
+// })}
