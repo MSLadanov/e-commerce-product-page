@@ -10,8 +10,8 @@ export const SneakerPage = () => {
   const btnDropDownRef = useRef<HTMLButtonElement>(null);
   const dropdownRef = useRef<HTMLInputElement>(null);
   const [isActive, setIsActive] = useState(false);
-  const onClick = (e:any) => {
-    setIsActive(!isActive)
+  const onClick = (e: any) => {
+    setIsActive(!isActive);
   };
   const [sneakerInfo, setSneakerInfo] = useState({
     name: null,
@@ -44,14 +44,14 @@ export const SneakerPage = () => {
   }, [sneakerInfo.img1]);
   useEffect(() => {
     window.onclick = (event: any) => {
-      if(event.target !== btnDropDownRef.current){
+      if (event.target !== btnDropDownRef.current) {
         if (
           !dropdownRef.current?.contains(event.target) &&
-          !dropdownRef.current?.contains(event.target) 
+          !dropdownRef.current?.contains(event.target)
         ) {
-          console.log('close')
-          setIsActive(false)
-        } 
+          console.log("close");
+          setIsActive(false);
+        }
       }
     };
   }, []);
@@ -121,22 +121,34 @@ export const SneakerPage = () => {
           </div>
 
           <div className="size-dropdown">
-             {/* dropdown */}
-             <div className="dropdown__container">
+            {/* dropdown */}
+            <div className="dropdown__container">
               {/* Dropdown Button */}
-              <button className="dropdown__btn" ref={btnDropDownRef} onClick={(e) => onClick(e)}>
+              <button
+                className="dropdown__btn"
+                ref={btnDropDownRef}
+                onClick={(e) => onClick(e)}
+              >
                 Add to cart
               </button>
 
               {/* Dropdown Content */}
               <div
                 ref={dropdownRef}
-                className={`dropdown__content ${
-                  isActive ? "open" : "close"
-                }`}
+                className={`dropdown__content ${isActive ? "open" : "close"}`}
               >
                 <div className="dropdown__info">
-                  <ul>
+                  <h3>Available sizes:</h3>
+                  <div className="sizes-box">
+                    {sneakerInfo.sizes.map<React.ReactNode>((item, index) => {
+                      return (
+                        <div className="size-box" key={index}>
+                          {item}
+                        </div>
+                      );
+                    })}
+                  </div>
+                  {/* <ul>
                     <li>
                       <span>Settings</span>
                     </li>
@@ -146,7 +158,7 @@ export const SneakerPage = () => {
                     <li>
                       <span>Upgrade</span>
                     </li>
-                  </ul>
+                  </ul> */}
                 </div>
               </div>
             </div>
@@ -163,7 +175,3 @@ export const SneakerPage = () => {
     );
   }
 };
-
-// {sneakerInfo.sizes.map<React.ReactNode>((item, index) => {
-//   return <div className="size-box" key={index}>{item}</div>;
-// })}
