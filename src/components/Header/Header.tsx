@@ -9,13 +9,13 @@ import { Dropdown } from "./Dropdown/Dropdown";
 import "./style.scss";
 import axios from "axios";
 
-export const Header = () => {
+export const Header = ({openDropdown, setOpenDropdown} : any) => {
   const dropdownBtnRef = useRef<HTMLInputElement>(null);
   const token = useSelector(getToken);
   const userData = useSelector(getUserData);
   const [userImage, setUserImage] = useState("/images/image-user.png");
   const dispatch = useDispatch();
-  const [openDropdown, setOpenDropdown] = useState(false);
+
   const getUserInfo = async () => {
     await axios
       .get("http://localhost:3001/api/user/info/", {

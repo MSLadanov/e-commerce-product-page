@@ -1,11 +1,12 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useOutletContext, useParams } from "react-router-dom";
 import axios from "axios";
 import ErrorPage from "../Routes/Error/Error";
 import "./style.scss";
 
 export const SneakerPage = () => {
+  const [openDropdown, setOpenDropdown]:any = useOutletContext()
   let { id, sex } = useParams();
   const btnDropDownRef = useRef<HTMLButtonElement>(null);
   const dropdownRef = useRef<HTMLInputElement>(null);
@@ -49,8 +50,10 @@ export const SneakerPage = () => {
           !dropdownRef.current?.contains(event.target) &&
           !dropdownRef.current?.contains(event.target)
         ) {
-          console.log("close");
           setIsActive(false);
+          if(!event.composedPath().find((item: any) => item.className === 'dropdown active') && !event.composedPath().find((item: any) => item.className === 'account-button')){
+            setOpenDropdown(false)
+          }
         }
       }
     };
@@ -148,17 +151,6 @@ export const SneakerPage = () => {
                       );
                     })}
                   </div>
-                  {/* <ul>
-                    <li>
-                      <span>Settings</span>
-                    </li>
-                    <li>
-                      <span>Purchases</span>
-                    </li>
-                    <li>
-                      <span>Upgrade</span>
-                    </li>
-                  </ul> */}
                 </div>
               </div>
             </div>
