@@ -8,7 +8,6 @@ export const Dropdown = ({ token, openDropdown, setOpenDropdown, userData, userI
   const dropdownRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
     window.onclick = (event: any) => {
-      console.log('cdfs121')
       if (
         !dropdownRef.current?.contains(event.target) &&
         !dropdownBtnRef.current?.contains(event.target) 
