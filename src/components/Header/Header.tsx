@@ -16,6 +16,30 @@ export const Header = ({openDropdown, setOpenDropdown} : any) => {
   const [userImage, setUserImage] = useState("/images/image-user.png");
   const dispatch = useDispatch();
 
+  const [isActive, setIsActive] = useState(false);
+  const btnDropDownRef = useRef<HTMLButtonElement>(null);
+  const dropdownRef = useRef<HTMLInputElement>(null);
+
+  const onClick = (e: any) => {
+    setIsActive(!isActive);
+  };
+
+  // useEffect(() => {
+  //   window.onclick = (event: any) => {
+  //     if (event.target !== btnDropDownRef.current) {
+  //       if (
+  //         !dropdownRef.current?.contains(event.target) &&
+  //         !dropdownRef.current?.contains(event.target)
+  //       ) {
+  //         setIsActive(false);
+  //         if(!event.composedPath().find((item: any) => item.className === 'dropdown active') && !event.composedPath().find((item: any) => item.className === 'account-button')){
+  //           setOpenDropdown(false)
+  //         }
+  //       }
+  //     }
+  //   };
+  // }, []);
+
   const getUserInfo = async () => {
     await axios
       .get("http://localhost:3001/api/user/info/", {
@@ -52,9 +76,17 @@ export const Header = ({openDropdown, setOpenDropdown} : any) => {
         <NavLink to="contact/">Contact</NavLink>
       </div>
       <div className="account-navbar">
-        <div className="cart-button">
-          <img src="/images/icon-cart.svg" alt="cart" />
+        <div className="cart-button" onClick={(e) => onClick(e)}>
+          <img src="/images/icon-cart.svg" alt="cart"  />
         </div>
+        <div
+                ref={dropdownRef}
+                className={`dropdown__content ${isActive ? "open" : "close"}`}
+              >
+                <div className="dropdown__info">
+                  <h3>Available sizes:</h3>
+                </div>
+              </div>
         <div ref={dropdownBtnRef} className="account-button">
           <img
             onClick={() => setOpenDropdown(true)}
