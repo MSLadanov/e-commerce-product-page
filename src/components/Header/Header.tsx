@@ -8,37 +8,14 @@ import { NavLink } from "react-router-dom";
 import { Dropdown } from "./Dropdown/Dropdown";
 import "./style.scss";
 import axios from "axios";
+import { CartDropdown } from "./Dropdown/CartDropdown";
 
-export const Header = ({ openDropdown, setOpenDropdown }: any) => {
+export const Header = ({ openDropdown, setOpenDropdown, openCartDropdown, setOpenCartDropdown }: any) => {
   const dropdownBtnRef = useRef<HTMLInputElement>(null);
   const token = useSelector(getToken);
   const userData = useSelector(getUserData);
   const [userImage, setUserImage] = useState("/images/image-user.png");
   const dispatch = useDispatch();
-
-  const [isActive, setIsActive] = useState(false);
-  const btnDropDownRef = useRef<HTMLDivElement>(null);
-  const dropdownRef = useRef<HTMLInputElement>(null);
-
-  const onClick = (e: any) => {
-    setIsActive(!isActive);
-  };
-
-  // useEffect(() => {
-  //   window.onclick = (event: any) => {
-  //     if (event.target !== btnDropDownRef.current) {
-  //       if (
-  //         !dropdownRef.current?.contains(event.target) &&
-  //         !dropdownRef.current?.contains(event.target)
-  //       ) {
-  //         setIsActive(false);
-  //         if(!event.composedPath().find((item: any) => item.className === 'dropdown active') && !event.composedPath().find((item: any) => item.className === 'account-button')){
-  //           setOpenDropdown(false)
-  //         }
-  //       }
-  //     }
-  //   };
-  // }, []);
 
   const getUserInfo = async () => {
     await axios
@@ -75,30 +52,13 @@ export const Header = ({ openDropdown, setOpenDropdown }: any) => {
         <NavLink to="contact/">Contact</NavLink>
       </div>
       <div className="account-navbar">
-      <div className="cart-dropdown">
-            {/* dropdown */}
-            <div className="cart-dropdown__container">
-              {/* Dropdown Button */}
-              <div
-                className="cart-dropdown__btn"
-                ref={btnDropDownRef}
-                onClick={(e) => onClick(e)}
-              >
-                <img src="/images/icon-cart.svg" alt="" />
-              </div>
-
-              {/* Dropdown Content */}
-              <div
-                ref={dropdownRef}
-                className={`cart-dropdown__content ${isActive ? "open" : "close"}`}
-              >
-                <div className="cart-dropdown__info">
-                  <h1>Cart</h1>
-                </div>
-              </div>
-            </div>
-            {/* dropdown */}
-          </div>
+      <div ref={dropdownBtnRef} className="account-button">
+          <img
+            onClick={() => setOpenDropdown(true)}
+            src='/images/icon-cart.svg'
+            alt="user"
+          />
+        </div>
         <div ref={dropdownBtnRef} className="account-button">
           <img
             onClick={() => setOpenDropdown(true)}
@@ -107,6 +67,7 @@ export const Header = ({ openDropdown, setOpenDropdown }: any) => {
           />
         </div>
       </div>
+      <CartDropdown/>
       <Dropdown
         token={token}
         openDropdown={openDropdown}
