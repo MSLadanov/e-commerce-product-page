@@ -9,7 +9,7 @@ import { Dropdown } from "./Dropdown/Dropdown";
 import "./style.scss";
 import axios from "axios";
 
-export const Header = ({openDropdown, setOpenDropdown} : any) => {
+export const Header = ({ openDropdown, setOpenDropdown }: any) => {
   const dropdownBtnRef = useRef<HTMLInputElement>(null);
   const token = useSelector(getToken);
   const userData = useSelector(getUserData);
@@ -17,7 +17,7 @@ export const Header = ({openDropdown, setOpenDropdown} : any) => {
   const dispatch = useDispatch();
 
   const [isActive, setIsActive] = useState(false);
-  const btnDropDownRef = useRef<HTMLButtonElement>(null);
+  const btnDropDownRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLInputElement>(null);
 
   const onClick = (e: any) => {
@@ -55,15 +55,14 @@ export const Header = ({openDropdown, setOpenDropdown} : any) => {
     if (token !== null) {
       getUserInfo();
     }
-    
   }, [token]);
-  
+
   useEffect(() => {
     if (userData !== null) {
       setUserImage(`http://localhost:3001/${userData.img}`);
     }
-  }, [userData])
-  
+  }, [userData]);
+
   return (
     <nav>
       <div className="site-navbar">
@@ -76,17 +75,30 @@ export const Header = ({openDropdown, setOpenDropdown} : any) => {
         <NavLink to="contact/">Contact</NavLink>
       </div>
       <div className="account-navbar">
-        <div className="cart-button" onClick={(e) => onClick(e)}>
-          <img src="/images/icon-cart.svg" alt="cart"  />
-        </div>
-        <div
-                ref={dropdownRef}
-                className={`dropdown__content ${isActive ? "open" : "close"}`}
+      <div className="cart-dropdown">
+            {/* dropdown */}
+            <div className="cart-dropdown__container">
+              {/* Dropdown Button */}
+              <div
+                className="cart-dropdown__btn"
+                ref={btnDropDownRef}
+                onClick={(e) => onClick(e)}
               >
-                <div className="dropdown__info">
-                  <h3>Available sizes:</h3>
+                <img src="/images/icon-cart.svg" alt="" />
+              </div>
+
+              {/* Dropdown Content */}
+              <div
+                ref={dropdownRef}
+                className={`cart-dropdown__content ${isActive ? "open" : "close"}`}
+              >
+                <div className="cart-dropdown__info">
+                  <h1>Cart</h1>
                 </div>
               </div>
+            </div>
+            {/* dropdown */}
+          </div>
         <div ref={dropdownBtnRef} className="account-button">
           <img
             onClick={() => setOpenDropdown(true)}
