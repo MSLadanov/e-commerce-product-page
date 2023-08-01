@@ -10,8 +10,14 @@ import "./style.scss";
 import axios from "axios";
 import { CartDropdown } from "./Dropdown/CartDropdown";
 
-export const Header = ({ openDropdown, setOpenDropdown, openCartDropdown, setOpenCartDropdown }: any) => {
+export const Header = ({
+  openDropdown,
+  setOpenDropdown,
+  openCartDropdown,
+  setOpenCartDropdown,
+}: any) => {
   const dropdownBtnRef = useRef<HTMLInputElement>(null);
+  const cartDropdownBtnRef = useRef<HTMLInputElement>(null);
   const token = useSelector(getToken);
   const userData = useSelector(getUserData);
   const [userImage, setUserImage] = useState("/images/image-user.png");
@@ -52,11 +58,11 @@ export const Header = ({ openDropdown, setOpenDropdown, openCartDropdown, setOpe
         <NavLink to="contact/">Contact</NavLink>
       </div>
       <div className="account-navbar">
-      <div ref={dropdownBtnRef} className="account-button">
+        <div ref={cartDropdownBtnRef} className="account-button">
           <img
-            onClick={() => setOpenDropdown(true)}
-            src='/images/icon-cart.svg'
-            alt="user"
+            onClick={() => setOpenCartDropdown(true)}
+            src="/images/icon-cart.svg"
+            alt="cart"
           />
         </div>
         <div ref={dropdownBtnRef} className="account-button">
@@ -67,7 +73,14 @@ export const Header = ({ openDropdown, setOpenDropdown, openCartDropdown, setOpe
           />
         </div>
       </div>
-      <CartDropdown/>
+      <CartDropdown
+        openCartDropdown={openCartDropdown}
+        setOpenCartDropdown={setOpenCartDropdown}
+        cartDropdownBtnRef={cartDropdownBtnRef}
+        openDropdown={openDropdown}
+        setOpenDropdown={setOpenDropdown}
+        dropdownBtnRef={dropdownBtnRef}
+      />
       <Dropdown
         token={token}
         openDropdown={openDropdown}
@@ -76,6 +89,9 @@ export const Header = ({ openDropdown, setOpenDropdown, openCartDropdown, setOpe
         userImage={userImage}
         setUserImage={setUserImage}
         dropdownBtnRef={dropdownBtnRef}
+        openCartDropdown={openCartDropdown}
+        setOpenCartDropdown={setOpenCartDropdown}
+        cartDropdownBtnRef={cartDropdownBtnRef}
       />
     </nav>
   );

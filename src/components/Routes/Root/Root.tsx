@@ -9,7 +9,7 @@ function Root() {
   return (
     <div >
       <Header openDropdown={openDropdown} setOpenDropdown={setOpenDropdown} openCartDropdown={openCartDropdown} setOpenCartDropdown={setOpenCartDropdown} />
-      <Outlet context={[openDropdown, setOpenDropdown]}/>
+      <Outlet context={[openDropdown, setOpenDropdown, openCartDropdown, setOpenCartDropdown]}/>
     </div>
   );
 }

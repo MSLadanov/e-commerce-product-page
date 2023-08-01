@@ -4,15 +4,22 @@ import { SignedDropdown } from "./SignedDropdown";
 import { UnsignedDropdown } from "./UnsignedDropdown";
 import "./style.scss";
 
-export const Dropdown = ({ token, openDropdown, setOpenDropdown, userData, userImage, setUserImage, dropdownBtnRef }: any) => {
+export const Dropdown = ({ token, openDropdown, setOpenDropdown, userData, userImage, setUserImage, dropdownBtnRef , openCartDropdown, setOpenCartDropdown, cartDropdownBtnRef }: any) => {
   const dropdownRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
     window.onclick = (event: any) => {
+      console.log('cdfs121')
       if (
         !dropdownRef.current?.contains(event.target) &&
         !dropdownBtnRef.current?.contains(event.target) 
       ) {
         setOpenDropdown(false)
+      } 
+      if (
+        !cartDropdownBtnRef.current?.contains(event.target) &&
+        !cartDropdownBtnRef.current?.contains(event.target) 
+      ) {
+        setOpenCartDropdown(false)
       } 
     };
   }, []);

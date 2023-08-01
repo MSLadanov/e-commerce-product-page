@@ -7,6 +7,7 @@ import "./style.scss";
 
 export const SneakerPage = () => {
   const [openDropdown, setOpenDropdown]:any = useOutletContext()
+  const [openCartDropdown, setOpenCartDropdown]:any = useOutletContext()
   let { id, sex } = useParams();
   const btnDropDownRef = useRef<HTMLButtonElement>(null);
   const dropdownRef = useRef<HTMLInputElement>(null);
@@ -52,6 +53,7 @@ export const SneakerPage = () => {
         ) {
           setIsActive(false);
           if(!event.composedPath().find((item: any) => item.className === 'dropdown active') && !event.composedPath().find((item: any) => item.className === 'account-button')){
+            setOpenCartDropdown(false)
             setOpenDropdown(false)
           }
         }
