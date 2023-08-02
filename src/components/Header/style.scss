@@ -30,7 +30,17 @@ nav {
 .account-navbar {
   display: flex;
 }
-.account-navbar div {
+.account-navbar-cart div {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: center;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  margin: 0px 10px;
+}
+.account-navbar-user div {
   display: flex;
   align-items: center;
   cursor: pointer;

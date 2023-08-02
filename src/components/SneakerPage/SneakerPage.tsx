@@ -62,10 +62,19 @@ export const SneakerPage = () => {
               .find((item: any) => item.className === "dropdown active") &&
             !event
               .composedPath()
-              .find((item: any) => item.className === "account-button")
+              .find((item: any) => item.className === "account-button-user")
           ) {
-            setOpenCartDropdown(false);
             setOpenDropdown(false);
+          }
+          if (
+            !event
+              .composedPath()
+              .find((item: any) => item.className === "cart-dropdown active") &&
+            !event
+              .composedPath()
+              .find((item: any) => item.className === "account-button-cart")
+          ) {
+            setOpenCartDropdown(false)
           }
         }
       }
