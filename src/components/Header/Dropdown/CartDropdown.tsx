@@ -7,7 +7,7 @@ export const CartDropdown = ({ openCartDropdown, setOpenCartDropdown, cartDropdo
   return (
     <div
       ref={dropdownCartRef}
-      className={openCartDropdown ? "dropdown active" : "dropdown"}
+      className={openCartDropdown ? "cart-dropdown active" : "cart-dropdown"}
     >
       <h1>Cart</h1>
     </div>
