@@ -20,6 +20,7 @@ export const SneakerPage = () => {
     setIsActive(!isActive);
   };
   const [sneakerInfo, setSneakerInfo] = useState({
+    id:null,
     name: null,
     brand: null,
     description: null,
@@ -86,6 +87,12 @@ export const SneakerPage = () => {
       mainImage: e.target.src.split("/")[3],
     }));
   };
+
+  const addToCart = (size : any) => {
+    const sneaker = {
+
+    }
+  }
 
   if (sneakerInfo.name !== null) {
     return (
@@ -165,9 +172,9 @@ export const SneakerPage = () => {
                 <div className="dropdown__info">
                   <h3>Available sizes:</h3>
                   <div className="sizes-box">
-                    {sneakerInfo.sizes.map<React.ReactNode>((item, index) => {
+                    {sneakerInfo.sizes.map<React.ReactNode>((item) => {
                       return (
-                        <div className="size-box" key={index}>
+                        <div className="size-box" key={sneakerInfo.id} onClick={() => addToCart(item)}>
                           {item}
                         </div>
                       );
