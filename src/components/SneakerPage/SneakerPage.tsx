@@ -97,6 +97,7 @@ export const SneakerPage = () => {
       name: sneakerInfo.name,
       brand: sneakerInfo.brand,
       price: sneakerInfo.price,
+      img: sneakerInfo.img1,
       size
     }
     dispatch(addSneaker(sneaker));
