@@ -90,8 +90,13 @@ export const SneakerPage = () => {
 
   const addToCart = (size : any) => {
     const sneaker = {
-
+      id: sneakerInfo.id,
+      name: sneakerInfo.name,
+      brand: sneakerInfo.brand,
+      price: sneakerInfo.price,
+      size
     }
+    console.log(sneaker)
   }
 
   if (sneakerInfo.name !== null) {
@@ -172,9 +177,9 @@ export const SneakerPage = () => {
                 <div className="dropdown__info">
                   <h3>Available sizes:</h3>
                   <div className="sizes-box">
-                    {sneakerInfo.sizes.map<React.ReactNode>((item) => {
+                    {sneakerInfo.sizes.map<React.ReactNode>((item, index) => {
                       return (
-                        <div className="size-box" key={sneakerInfo.id} onClick={() => addToCart(item)}>
+                        <div className="size-box" key={index} onClick={() => addToCart(item)}>
                           {item}
                         </div>
                       );
