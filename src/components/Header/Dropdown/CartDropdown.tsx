@@ -8,14 +8,25 @@ import "./style.scss";
 export const CartDropdown = ({ openCartDropdown, setOpenCartDropdown, cartDropdownBtnRef, openDropdown, setOpenDropdown, dropdownBtnRef }: any) => {
   const dropdownCartRef = useRef<HTMLInputElement>(null);
   const cartData = useSelector(getCartData);
-  console.log(cartData)
   const dispatch = useDispatch()
   return (
     <div
       ref={dropdownCartRef}
       className={openCartDropdown ? "cart-dropdown active" : "cart-dropdown"}
     >
-      <p>sdfsd</p>
+      <h1>Cart</h1>
+      <hr />
+      {cartData.map((item : any) => 
+        <div>
+          <img src={`http://localhost:3001/${item.img}`} alt="" />
+          <p>{item.brand + ' ' + item.name}</p>
+          <img
+            onClick={() => console.log('remove')}
+            src="/images/icon-delete.svg"
+            alt="cart"
+          />
+        </div>
+      )}
     </div>
   );
 };

@@ -29,9 +29,31 @@
   -moz-box-shadow: 4px 4px 40px 0px rgba(34, 60, 80, 0.41);
   box-shadow: 4px 4px 40px 0px rgba(34, 60, 80, 0.41);
 }
+.delete-icon {
+  height: 30px;
+}
+.cart-dropdown img:first-child {
+  height: 120px;
+}
+
+.cart-dropdown img:last-child {
+  cursor: pointer;
+}
+.cart-dropdown div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
 
 .active {
+  overflow-y: scroll;
+  padding: 15px;
   height: 310px;
+}
+
+.active::-webkit-scrollbar{
+  display: none;
 }
 
 .dropdown form {
@@ -79,6 +101,6 @@
   align-items: center;
 }
 
-.user-panel h1{
+.user-panel h1 {
   margin-left: 0px;
 }
