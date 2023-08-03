@@ -21,6 +21,7 @@ export const CartDropdown = ({ openCartDropdown, setOpenCartDropdown, cartDropdo
           <img src={`http://localhost:3001/${item.img}`} alt="" />
           <p>{item.brand + ' ' + item.name}</p>
           <img
+          className="delete-icon"
             onClick={() => console.log('remove')}
             src="/images/icon-delete.svg"
             alt="cart"
