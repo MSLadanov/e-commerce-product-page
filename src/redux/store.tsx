@@ -5,9 +5,11 @@ import { persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
 
 import userReducer from './slices/userSlice';
+import cartReducer from './slices/cartSlice'
 
 const reducers = combineReducers({
   user: userReducer,
+  cart: cartReducer
 });
 
 const persistConfig = {

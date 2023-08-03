@@ -2,10 +2,13 @@ import React from "react";
 import { useState, useEffect, useRef } from "react";
 import { useOutletContext, useParams } from "react-router-dom";
 import axios from "axios";
+import { addSneaker } from "../../redux/slices/cartSlice";
+import { useDispatch } from "react-redux";
 import ErrorPage from "../Routes/Error/Error";
 import "./style.scss";
 
 export const SneakerPage = () => {
+  const dispatch = useDispatch();
   const [
     openDropdown,
     setOpenDropdown,
@@ -96,7 +99,7 @@ export const SneakerPage = () => {
       price: sneakerInfo.price,
       size
     }
-    console.log(sneaker)
+    dispatch(addSneaker(sneaker));
   }
 
   if (sneakerInfo.name !== null) {

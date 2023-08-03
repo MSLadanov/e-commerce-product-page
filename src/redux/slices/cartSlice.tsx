@@ -1,27 +1,34 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface IITokenState {
-  data: null | string;
+interface ISneaker {
+    id: number,
+    name: string,
+    brand: string,
+    price: number,
+    size: string,
+    img: string
+}
+
+interface ICartState {
+  data: ISneaker[] | null;
 }
 
 export const cartSlice = createSlice({
   name: "data",
   initialState: {
-    token: null,
-    data: null,
-  } as IITokenState,
+    data: [],
+  } as ICartState,
   reducers: {
-    fetchData: (state, action) => {
-      state.data = action.payload;
+    addSneaker: (state: any, action) => {
+      state.data = [...state.data, action.payload];
     },
   },
 });
 
-export const getCart = (state: any) => state.user.token;
 
-export const getCartData = (state: any) => state.user.data;
+export const getCartData = (state: any) => state.cart.data;
 
-export const {  fetchData } = cartSlice.actions;
+export const { addSneaker } = cartSlice.actions;
 
 export default cartSlice.reducer;
 
