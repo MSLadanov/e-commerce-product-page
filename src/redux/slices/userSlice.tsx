@@ -2,14 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 
 interface IITokenState {
   token: null | string;
-  data: null | string
+  data: null | string;
 }
 
 export const userSlice = createSlice({
   name: "data",
   initialState: {
     token: null,
-    data: null
+    data: null,
   } as IITokenState,
   reducers: {
     signIn: (state, action) => {
