@@ -4,6 +4,7 @@ import { useOutletContext, useParams } from "react-router-dom";
 import axios from "axios";
 import { addSneaker } from "../../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
+import { v4 as uuidv4 } from 'uuid';
 import ErrorPage from "../Routes/Error/Error";
 import "./style.scss";
 
@@ -94,6 +95,7 @@ export const SneakerPage = () => {
   const addToCart = (size : any) => {
     const sneaker = {
       id: sneakerInfo.id,
+      cart_id: uuidv4(),
       name: sneakerInfo.name,
       brand: sneakerInfo.brand,
       price: sneakerInfo.price,
