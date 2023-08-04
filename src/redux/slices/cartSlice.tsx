@@ -22,13 +22,16 @@ export const cartSlice = createSlice({
     addSneaker: (state: any, action) => {
       state.data = [...state.data, action.payload];
     },
+    removeSneaker: (state: any, action) => {
+      state.data = state.data.filter((item : any) => item.cart_id !== action.payload)
+    },
   },
 });
 
 
 export const getCartData = (state: any) => state.cart.data;
 
-export const { addSneaker } = cartSlice.actions;
+export const { addSneaker, removeSneaker } = cartSlice.actions;
 
 export default cartSlice.reducer;
 

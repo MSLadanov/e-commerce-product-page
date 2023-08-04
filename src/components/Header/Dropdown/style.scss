@@ -39,6 +39,15 @@
 .cart-dropdown img:last-child {
   cursor: pointer;
 }
+.empty-cart{
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+.empty-cart h2{
+  margin-left: 25%;
+}
+
 .cart-dropdown div {
   display: flex;
   justify-content: space-between;
