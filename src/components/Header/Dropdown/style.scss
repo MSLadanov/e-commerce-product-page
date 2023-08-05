@@ -54,10 +54,11 @@
   align-items: center;
   font-size: 12px;
 }
-
-.active {
-  overflow-y: scroll;
+.cart-dropdown.active{
   padding: 15px;
+}
+ .active {
+  overflow-y: scroll;
   height: 310px;
 }
 

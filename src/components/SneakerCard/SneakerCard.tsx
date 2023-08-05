@@ -14,7 +14,6 @@ export const SneakerCard = ({ sneaker }: any) => {
       <h2>{`${sneaker.name}`}</h2>
       <h3>{`${sneaker.brand}`}</h3>
       <h4>{`${sneaker.price} $`}</h4>
-      <button>Add to cart</button>
     </div>
   );
 };
