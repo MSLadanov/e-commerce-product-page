@@ -54,6 +54,7 @@ export const Header = ({
         </div>
         <NavLink to="men/">Men</NavLink>
         <NavLink to="women/">Women</NavLink>
+        {token !== null && <NavLink to="orders/">My Orders</NavLink>}
         <NavLink to="about/">About</NavLink>
         <NavLink to="contact/">Contact</NavLink>
       </div>
