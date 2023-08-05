@@ -59,9 +59,8 @@ export const Header = ({
         <NavLink to="contact/">Contact</NavLink>
       </div>
       <div className="account-navbar">
-        <div ref={cartDropdownBtnRef} className="account-button-cart">
+        <div ref={cartDropdownBtnRef} className="account-button-cart" onClick={() => setOpenCartDropdown(true)}>
           <img
-            onClick={() => setOpenCartDropdown(true)}
             src="/images/icon-cart.svg"
             alt="cart"
           />

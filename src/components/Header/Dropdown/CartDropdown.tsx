@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { getCartData } from "../../../redux/slices/cartSlice";
 import { removeSneaker } from "../../../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
+import { getToken } from "../../../redux/slices/userSlice";
+import { NavLink } from "react-router-dom";
 import "./style.scss";
 
 export const CartDropdown = ({
@@ -17,6 +19,7 @@ export const CartDropdown = ({
   const dropdownCartRef = useRef<HTMLInputElement>(null);
   const cartData = useSelector(getCartData);
   const dispatch = useDispatch();
+  const token = useSelector(getToken);
   if (!cartData.length) {
     return (
       <div
@@ -50,6 +53,9 @@ export const CartDropdown = ({
           />
         </div>
       ))}
+      <div className="cart-btn">
+        {token !== null && <NavLink to="cart/">Cart</NavLink>}
+      </div>
     </div>
   );
 };

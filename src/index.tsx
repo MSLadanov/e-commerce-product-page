@@ -18,6 +18,7 @@ import About from "./components/Routes/About/About";
 import Contact from "./components/Routes/Contact/Contact";
 import { SneakerPage } from "./components/SneakerPage/SneakerPage";
 import { Orders } from "./components/Routes/Orders/Orders";
+import { Cart } from "./components/Routes/Cart/Cart";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "orders/",
         element: <Orders />,
+      },
+      {
+        path: "cart/",
+        element: <Cart />,
       },
       {
         path: "about/",
