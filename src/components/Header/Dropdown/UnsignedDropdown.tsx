@@ -1,5 +1,6 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
+import { NavLink } from "react-router-dom";
 import * as Yup from "yup";
 import axios from "axios";
 import { useDispatch } from "react-redux";
@@ -28,8 +29,8 @@ export const UnsignedDropdown = () => {
             "http://localhost:3001/api/user/login/",
             values
           );
-          if(user.status === 200){
-            dispatch(signIn(user.data.token))
+          if (user.status === 200) {
+            dispatch(signIn(user.data.token));
           }
         }}
       >
@@ -45,6 +46,9 @@ export const UnsignedDropdown = () => {
           </Form>
         )}
       </Formik>
+      <div className="cart-btn">
+        <NavLink to="signup/">Sign Up</NavLink>
+      </div>
     </div>
   );
 };

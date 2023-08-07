@@ -19,6 +19,7 @@ import Contact from "./components/Routes/Contact/Contact";
 import { SneakerPage } from "./components/SneakerPage/SneakerPage";
 import { Orders } from "./components/Routes/Orders/Orders";
 import { Cart } from "./components/Routes/Cart/Cart";
+import { SignUp } from "./components/Routes/SignUp/SignUp";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       {
         path: "contact/",
         element: <Contact />,
+      },
+      {
+        path: "signup/",
+        element: <SignUp />,
       },
       {
         path: ":sex/sneaker/:id",
