@@ -46,7 +46,8 @@ export const UnsignedDropdown = () => {
           </Form>
         )}
       </Formik>
-      <div className="cart-btn">
+      <div className="signup-btn">
+        Don't have an account yet?
         <NavLink to="signup/">Sign Up</NavLink>
       </div>
     </div>

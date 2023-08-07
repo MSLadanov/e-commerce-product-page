@@ -54,7 +54,7 @@ export const CartDropdown = ({
         </div>
       ))}
       <div className="cart-btn">
-        {token !== null && <NavLink to="cart/">Cart</NavLink>}
+        <NavLink to="cart/">Cart</NavLink>
       </div>
     </div>
   );
