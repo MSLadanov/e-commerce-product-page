@@ -26,6 +26,14 @@ const FileUpload = ({ fileRef, ...props }:any) => {
 };
 
 export const SignUp = () => {
+  function getFormData(object:any) {
+    const formData = new FormData();
+    Object.keys(object).forEach(key => {
+      if (typeof object[key] !== 'object') formData.append(key, object[key])
+      else formData.append(key, JSON.stringify(object[key]))
+    })
+    return formData;
+}
   const [userImage, setUserImage] = useState(null)
   const fileRef = useRef<any>(null);
   return (
@@ -44,11 +52,8 @@ export const SignUp = () => {
         validationSchema={SignInSchema}
         onSubmit={(values) => {
           values.img = fileRef.current.files[0]
-          const getFormData = (object:any) => Object.keys(object).reduce((formData, key) => {
-            formData.append(key, object[key]);
-            return formData;
-        }, new FormData());
-        console.log(getFormData(values))
+         const formData = getFormData(values)
+        console.log(formData.getAll('img'))
         }}
       >
         {({ errors, touched }) => (
