@@ -1,5 +1,6 @@
 import React from "react";
-import { Formik, Form, Field } from "formik";
+import { useState, useRef } from "react";
+import { Formik, Form, Field, useField } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
@@ -10,7 +11,23 @@ const SignInSchema = Yup.object().shape({
   surname: Yup.string().required("Required"),
 });
 
+
+const FileUpload = ({ fileRef, ...props }:any) => {
+  const [field, meta] = useField(props);
+  return (
+    <div>
+      <label htmlFor="files">Choose files</label>{" "}
+      <input ref={fileRef} multiple={true} type="file" {...field} />
+      {meta.touched && meta.error ? (
+        <div style={{ color: "red" }}>{meta.error}</div>
+      ) : null}
+    </div>
+  );
+};
+
 export const SignUp = () => {
+  const [userImage, setUserImage] = useState(null)
+  const fileRef = useRef<any>(null);
   return (
     <div>
       {" "}
@@ -26,7 +43,12 @@ export const SignUp = () => {
         }}
         validationSchema={SignInSchema}
         onSubmit={(values) => {
-          console.log(values);
+          values.img = fileRef.current.files[0]
+          const getFormData = (object:any) => Object.keys(object).reduce((formData, key) => {
+            formData.append(key, object[key]);
+            return formData;
+        }, new FormData());
+        console.log(getFormData(values))
         }}
       >
         {({ errors, touched }) => (
@@ -37,8 +59,7 @@ export const SignUp = () => {
             {errors.surname && touched.surname ? <div>{errors.surname}</div> : null}
             <Field name="email" />
             {errors.email && touched.email ? <div>{errors.email}</div> : null}
-            <Field name="img" type="file" />
-            {errors.img && touched.img ? <div>{errors.img}</div> : null}
+            <FileUpload name="files" fileRef={fileRef} />
             <Field type="password" name="password" />
             {errors.password && touched.password ? (
               <div>{errors.password}</div>
