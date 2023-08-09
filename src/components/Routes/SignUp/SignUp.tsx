@@ -54,10 +54,10 @@ export const SignUp = () => {
           values.img = fileRef.current.files[0]
          const formData = getFormData(values)
         console.log(formData.getAll('img'))
-        const user = await axios.post(
-          "http://localhost:3001/api/user/register/",
-          values
-        );
+        // const user = await axios.post(
+        //   "http://localhost:3001/api/user/register/",
+        //   values
+        // );
         }}
       >
         {({ errors, touched }) => (
