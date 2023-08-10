@@ -14,9 +14,9 @@ export const Cart = () => {
   const token = useSelector(getToken);
   return (
     <div>{cartData.map((item: any) => (
-      <div key={item.cart_id}>
+      <div className='cart-item' key={item.cart_id}>
         <img src={`http://localhost:3001/${item.img}`} alt="" />
-        <p>{item.brand + " " + item.name}</p>
+        <p>{item.brand + " " + item.name + ", " + " Size: " + item.size}</p>
         <img
           className="delete-icon"
           onClick={() => dispatch(removeSneaker(item.cart_id))}
