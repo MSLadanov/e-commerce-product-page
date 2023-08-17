@@ -11,20 +11,6 @@ const SignInSchema = Yup.object().shape({
   surname: Yup.string().required("Required"),
 });
 
-
-const FileUpload = ({ fileRef, ...props }:any) => {
-  const [field, meta] = useField(props);
-  return (
-    <div>
-      <label htmlFor="files">Choose files</label>{" "}
-      <input ref={fileRef} multiple={true} type="file" {...field} />
-      {meta.touched && meta.error ? (
-        <div style={{ color: "red" }}>{meta.error}</div>
-      ) : null}
-    </div>
-  );
-};
-
 export const SignUp = () => {
   function getFormData(object:any) {
     const formData = new FormData();
@@ -34,8 +20,7 @@ export const SignUp = () => {
     })
     return formData;
 }
-  const [userImage, setUserImage] = useState(null)
-  const fileRef = useRef<any>(null);
+  const [userImage, setUserImage] = useState<any>(null)
   return (
     <div>
       {" "}
@@ -45,19 +30,21 @@ export const SignUp = () => {
         initialValues={{
           name: "",
           surname: "",
-          img: "",
           email: "",
           password: "",
         }}
         validationSchema={SignInSchema}
         onSubmit={async (values) => {
-          values.img = fileRef.current.files[0]
-         const formData = getFormData(values)
-        console.log(formData.getAll('img'))
-        // const user = await axios.post(
-        //   "http://localhost:3001/api/user/register/",
-        //   values
-        // );
+          const formData = getFormData(values);
+          formData.append('img', userImage)
+          for (var pair of formData.entries()) {
+            console.log(pair[0]+ ' - ' + pair[1]); 
+        }
+           
+          const user = await axios.post(
+            "http://localhost:3001/api/user/register/",
+            formData
+          );
         }}
       >
         {({ errors, touched }) => (
@@ -65,10 +52,19 @@ export const SignUp = () => {
             <Field name="name" />
             {errors.name && touched.name ? <div>{errors.name}</div> : null}
             <Field name="surname" />
-            {errors.surname && touched.surname ? <div>{errors.surname}</div> : null}
+            {errors.surname && touched.surname ? (
+              <div>{errors.surname}</div>
+            ) : null}
             <Field name="email" />
             {errors.email && touched.email ? <div>{errors.email}</div> : null}
-            <FileUpload name="files" fileRef={fileRef} />
+            <input
+              id="file"
+              name="file"
+              type="file"
+              onChange={(event:any) => {
+                setUserImage(event.currentTarget.files[0])
+              }}
+            />
             <Field type="password" name="password" />
             {errors.password && touched.password ? (
               <div>{errors.password}</div>
