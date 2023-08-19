@@ -20,6 +20,7 @@ import { SneakerPage } from "./components/SneakerPage/SneakerPage";
 import { Orders } from "./components/Routes/Orders/Orders";
 import { Cart } from "./components/Routes/Cart/Cart";
 import { SignUp } from "./components/Routes/SignUp/SignUp";
+import { CreateSneaker } from "./components/Routes/CreateSneaker/CreateSneaker";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
       {
         path: ":sex/sneaker/:id",
         element: <SneakerPage />,
+      },
+      {
+        path: "/sneaker/create",
+        element: <CreateSneaker/>,
       },
     ],
   },

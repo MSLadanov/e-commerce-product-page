@@ -1,7 +1,86 @@
-import React from 'react'
+import React from "react";
+import { useState, useRef } from "react";
+import { Formik, Form, Field, useField } from "formik";
+import * as Yup from "yup";
+import axios from "axios";
+
+const SignInSchema = Yup.object().shape({
+  name: Yup.string().required("Required"),
+  brand: Yup.string().required("Required"),
+  sex: Yup.string().required("Required"),
+  description: Yup.string().required("Required"),
+  price: Yup.string().required("Required"),
+  discount: Yup.string().required("Required"),
+  sizes: Yup.string().required("Required"),
+});
 
 export const CreateSneaker = () => {
+    function getFormData(object:any) {
+    const formData = new FormData();
+    Object.keys(object).forEach(key => {
+      if (typeof object[key] !== 'object') formData.append(key, object[key])
+      else formData.append(key, JSON.stringify(object[key]))
+    })
+    return formData;
+}
+  const [sneakerImage, setSneakerImage] = useState<any>(null)
   return (
-    <div>CreateSneaker</div>
-  )
+    <div>
+      {" "}
+      <h1>Create Sneaker</h1>
+      <hr />
+      <Formik
+        initialValues={{
+          name: "",
+          brand: "",
+          sex: "",
+          description: "",
+          price: "",
+          discount: "",
+          sizes: "",
+        }}
+        validationSchema={SignInSchema}
+        onSubmit={async (values) => {
+          const formData = getFormData(values);
+          formData.append("img", sneakerImage);
+          for (var pair of formData.entries()) {
+            console.log(pair[0] + " - " + pair[1]);
+          }
+
+          // const sneaker = await axios.post(
+          //   "http://localhost:3001/api/sneaker/",
+          //   formData
+          // );
+        }}
+      >
+        {({ errors, touched }) => (
+          <Form>
+            <Field name="name" />
+            {errors.name && touched.name ? <div>{errors.name}</div> : null}
+            <Field name="brand" />
+            {errors.brand && touched.brand ? <div>{errors.brand}</div> : null}
+            <Field name="sex" />
+            {errors.sex && touched.sex ? <div>{errors.sex}</div> : null}
+            <Field name="description" />
+            {errors.description && touched.description ? <div>{errors.description}</div> : null}
+            <Field name="price" />
+            {errors.price && touched.price ? <div>{errors.price}</div> : null}
+            <Field name="discount" />
+            {errors.discount && touched.discount ? <div>{errors.discount}</div> : null}
+            <Field name="sizes" />
+            {errors.sizes && touched.sizes ? <div>{errors.sizes}</div> : null}
+            <input
+              id="file"
+              name="file"
+              type="file"
+              onChange={(event: any) => {
+                setSneakerImage(event.currentTarget.files[0]);
+              }}
+            />
+            <button type="submit">Sign Up</button>
+          </Form>
+        )}
+      </Formik>
+    </div>
+  );
 }
