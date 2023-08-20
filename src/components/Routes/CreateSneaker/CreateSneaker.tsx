@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useRef } from "react";
 import { Formik, Form, Field, useField } from "formik";
+import { useSelector } from "react-redux";
+import { getToken } from "../../../redux/slices/userSlice";
 import * as Yup from "yup";
 import axios from "axios";
 
@@ -15,6 +17,7 @@ const SignInSchema = Yup.object().shape({
 });
 
 export const CreateSneaker = () => {
+  const token = useSelector(getToken);
     function getFormData(object:any) {
     const formData = new FormData();
     Object.keys(object).forEach(key => {
@@ -42,15 +45,18 @@ export const CreateSneaker = () => {
         validationSchema={SignInSchema}
         onSubmit={async (values) => {
           const formData = getFormData(values);
-          formData.append("img", sneakerImage);
-          for (var pair of formData.entries()) {
-            console.log(pair[0] + " - " + pair[1]);
-          }
-
-          // const sneaker = await axios.post(
-          //   "http://localhost:3001/api/sneaker/",
+          // formData.append("img", sneakerImage);
+          const imgArray = Array.from(sneakerImage)
+          imgArray.map((item:any, index) => {
+            formData.append("", sneakerImage);
+          })
+          // const sneaker = axios.post("http://localhost:3001/api/sneaker/", {
           //   formData
-          // );
+          // }, {
+          //   headers: {
+          //     'Authorization': `Bearer ${token}` 
+          //   }
+          // })
         }}
       >
         {({ errors, touched }) => (
@@ -73,11 +79,12 @@ export const CreateSneaker = () => {
               id="file"
               name="file"
               type="file"
+              multiple
               onChange={(event: any) => {
-                setSneakerImage(event.currentTarget.files[0]);
+                setSneakerImage(event.currentTarget.files);
               }}
             />
-            <button type="submit">Sign Up</button>
+            <button type="submit">Create</button>
           </Form>
         )}
       </Formik>
