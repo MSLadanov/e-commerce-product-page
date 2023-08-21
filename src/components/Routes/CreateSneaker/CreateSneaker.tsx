@@ -48,15 +48,21 @@ export const CreateSneaker = () => {
           // formData.append("img", sneakerImage);
           const imgArray = Array.from(sneakerImage)
           imgArray.map((item:any, index) => {
-            formData.append("", sneakerImage);
+            formData.append(`img${index+1}`, sneakerImage[index]);
           })
-          // const sneaker = axios.post("http://localhost:3001/api/sneaker/", {
-          //   formData
-          // }, {
-          //   headers: {
-          //     'Authorization': `Bearer ${token}` 
-          //   }
-          // })
+          for (var pair of formData.entries()) {
+            console.log(pair[0] + ", " + pair[1]);
+          }
+          const sneaker = axios.post(
+            "http://localhost:3001/api/sneaker/",
+            formData,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "multipart/form-data",
+              },
+            }
+          );
         }}
       >
         {({ errors, touched }) => (
