@@ -32,7 +32,7 @@ export const Header = ({
       })
       .then((res) => {
         dispatch(fetchData(res.data));
-      });
+      }).catch((err) => console.log(err));
   };
   useEffect(() => {
     if (token !== null) {
