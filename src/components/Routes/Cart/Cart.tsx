@@ -12,6 +12,14 @@ export const Cart = () => {
   const cartData = useSelector(getCartData);
   const dispatch = useDispatch();
   const token = useSelector(getToken);
+  if (!cartData.length) {
+    return (
+      <>
+        <h1>Cart</h1>
+        <h2>Your cart is empty</h2>
+      </>
+    );
+  }
   return (
     <div>{cartData.map((item: any) => (
       <div className='cart-item' key={item.cart_id}>
