@@ -33,6 +33,7 @@ export const Cart = () => {
         />
       </div>
     ))}
+    {token !== null ?<button className='cart-btn'>Make order</button>:<div className='center'><h1>You must be logged in to complete your order!</h1></div>}
   </div>
   )
 }
