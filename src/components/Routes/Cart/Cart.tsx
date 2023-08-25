@@ -25,6 +25,7 @@ export const Cart = () => {
       <div className='cart-item' key={item.cart_id}>
         <img src={`http://localhost:3001/${item.img}`} alt="" />
         <p>{item.brand + " " + item.name + ", " + " Size: " + item.size}</p>
+        <p>{item.price + " " + "$"}</p>
         <img
           className="delete-icon"
           onClick={() => dispatch(removeSneaker(item.cart_id))}
