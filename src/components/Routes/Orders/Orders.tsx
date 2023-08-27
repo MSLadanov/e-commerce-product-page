@@ -1,11 +1,12 @@
 import React from 'react'
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { getToken } from "../../../redux/slices/userSlice";
 import axios from "axios";
 
 export const Orders = () => {
     const token = useSelector(getToken);
+    const [orders, setOrders] = useState<any>([]);
     const getOrdersInfo = async () => {
       const info = (await axios.get(`http://localhost:3001/api/basket/`,{
         headers: {
@@ -14,6 +15,8 @@ export const Orders = () => {
         },
       }))
         .data as any;
+        setOrders([...info.baskets])
+        console.log({orders})
     };
     useEffect(() => {
       getOrdersInfo();
@@ -24,6 +27,16 @@ export const Orders = () => {
           )
     }
   return (
-    <div>Orders</div>
+    <div>
+      {orders.map((item : any) => {
+      <div>
+        <p>{item.id}</p>
+        <p>{item.data}</p>
+        <p>{item.status}</p>
+        <p>{item.createdAt}</p>
+        <p>{item.updatedAt}</p>
+      </div>
+    })}
+    </div>
   )
 }
