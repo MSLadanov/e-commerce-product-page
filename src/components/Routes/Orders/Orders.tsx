@@ -28,14 +28,17 @@ export const Orders = () => {
     }
   return (
     <div>
+      {/* {JSON.stringify(orders[0])} */}
       {orders.map((item : any) => {
-      <div>
-        <p>{item.id}</p>
-        <p>{item.data}</p>
-        <p>{item.status}</p>
-        <p>{item.createdAt}</p>
-        <p>{item.updatedAt}</p>
-      </div>
+        return (
+          <div>
+            <p>{item.id}</p>
+            <p>{item.data}</p>
+            <p>{item.status}</p>
+            <p>{item.createdAt}</p>
+            <p>{item.updatedAt}</p>
+          </div>
+        );
     })}
     </div>
   )
