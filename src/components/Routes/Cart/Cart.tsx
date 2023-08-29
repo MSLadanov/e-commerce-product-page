@@ -12,6 +12,18 @@ export const Cart = () => {
   const cartData = useSelector(getCartData);
   const dispatch = useDispatch();
   const token = useSelector(getToken);
+  const makeOrder = () => {
+    const orderData: any[] = []
+    cartData.map((item : any) => {orderData.push({
+      id: item.id,
+      name: item.name,
+      brand: item.brand,
+      size: item.size
+    });})
+    let sum = cartData.reduce(function (acc : any, obj : any) { return acc + obj.price; }, 0);
+    console.log(orderData)
+    console.log(sum)
+  }
   if (!cartData.length) {
     return (
       <>
@@ -34,7 +46,7 @@ export const Cart = () => {
         />
       </div>
     ))}
-    {token !== null ?<button className='cart-btn'>Make order</button>:<div className='center'><h1>You must be logged in to complete your order!</h1></div>}
+    {token !== null ?<button className='cart-btn' onClick={() => makeOrder()}>Make order</button>:<div className='center'><h1>You must be logged in to complete your order!</h1></div>}
   </div>
   )
 }

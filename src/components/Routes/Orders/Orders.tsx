@@ -16,7 +16,6 @@ export const Orders = () => {
       }))
         .data as any;
         setOrders([...info.baskets])
-        console.log({orders})
     };
     useEffect(() => {
       getOrdersInfo();
@@ -31,7 +30,7 @@ export const Orders = () => {
       {/* {JSON.stringify(orders[0])} */}
       {orders.map((item : any) => {
         return (
-          <div>
+          <div key={item.id}>
             <p>{item.id}</p>
             <p>{item.data}</p>
             <p>{item.status}</p>
