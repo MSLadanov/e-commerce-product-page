@@ -20,26 +20,25 @@ export const Cart = () => {
       id: item.id,
       name: item.name,
       brand: item.brand,
-      size: item.size
+      size: item.size,
+      price: item.price
     });})
     let sum = cartData.reduce(function (acc : any, obj : any) { return acc + obj.price; }, 0);
-    console.log(orderData)
-    console.log(address)
-    console.log(sum)
-    // const order = axios.post(
-    //   "http://localhost:3001/api/basket/send",
-    //   JSON.stringify({
-    //     order:orderData,
-    //     address,
-    //     sum
-    //   }),
-    //   {
-    //     headers: {
-    //       Authorization: `Bearer ${token}`,
-    //       "Content-Type": "multipart/form-data",
-    //     },
-    //   }
-    // );
+    const orderDetails = {
+        order:orderData,
+        address,
+        sum
+      }
+      console.log(orderDetails)
+    const order = axios.post(
+      "http://localhost:3001/api/basket/send",
+      orderDetails,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+      }
+    );
   }
   if (!cartData.length) {
     return (
