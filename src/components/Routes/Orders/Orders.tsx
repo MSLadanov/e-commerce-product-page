@@ -7,6 +7,13 @@ import axios from "axios";
 export const Orders = () => {
     const token = useSelector(getToken);
     const [orders, setOrders] = useState<any>([]);
+    const getFormattedDate = (date : any) => {
+      const formattedDate = date.split('T')
+      const datePart = formattedDate[0].match(/\d+/g),
+      year = datePart[0].substring(2),
+      month = datePart[1], day = datePart[2];
+      return day + "." + month + "." + year;
+    }
     const getOrdersInfo = async () => {
       const info = (await axios.get(`http://localhost:3001/api/basket/`,{
         headers: {
@@ -28,13 +35,13 @@ export const Orders = () => {
   return (
     <div>
       {/* {JSON.stringify(orders[0])} */}
-      {orders.map((item : any) => {
+      {orders.filter((item : any) => item.status !== 'current').map((item : any) => {
         return (
           <div key={item.id}>
             <p>{item.id}</p>
             <p>{item.data}</p>
             <p>{item.status}</p>
-            <p>{item.createdAt}</p>
+            <p>{getFormattedDate(item.updatedAt)}</p>
             <p>{item.updatedAt}</p>
           </div>
         );
