@@ -1,0 +1,14 @@
+.order-card{
+    display: flex;
+    justify-content: space-between;
+}
+.order-card .title {
+    display: flex;
+    flex-direction: column;
+}
+.order-cart-data-details{
+    display: flex;
+}
+.order-cart-data-details p{
+    margin: 5px;
+}

@@ -1,4 +1,5 @@
 import React from 'react'
+import './style.scss'
 
 export const OrderDetails = ({order} : any) => {
     const getFormattedDate = (date : any) => {
@@ -8,15 +9,29 @@ export const OrderDetails = ({order} : any) => {
         month = datePart[1], day = datePart[2];
         return day + "." + month + "." + year;
       }
+      const convertArray = (arr:any) => {
+        const convertedArray = JSON.parse(arr.replace('/'))
+        return convertedArray
+      }
   return (
-    <div>
+    <div className="order-card">
       {" "}
-      <div key={order.id}>
-        <p>{order.id}</p>
-        <p>{order.data}</p>
-        <p>{order.status}</p>
-        <p>{getFormattedDate(order.updatedAt)}</p>
+      <p>{order.id}</p>
+      <p>{order.data.brand}</p>
+      <div className="order-card-data">
+        {convertArray(order.data).map((item: any) => {
+          return (
+            <div className='order-cart-data-details' key={item.id}>
+              <p>{item.brand}</p>
+              <p>{item.name}</p>
+              <p>{item.size}</p>
+            </div>
+          );
+        })}
       </div>
+      <p>{order.sum}</p>
+      <p>{order.status}</p>
+      <p>{getFormattedDate(order.updatedAt)}</p>
     </div>
   );
 }
