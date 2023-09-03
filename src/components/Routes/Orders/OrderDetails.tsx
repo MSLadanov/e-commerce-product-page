@@ -22,6 +22,7 @@ export const OrderDetails = ({order} : any) => {
         {convertArray(order.data).map((item: any) => {
           return (
             <div className='order-cart-data-details' key={item.id}>
+              <img src={`http://localhost:3001/${item.img}`} alt="" />
               <p>{item.brand}</p>
               <p>{item.name}</p>
               <p>{item.size}</p>
@@ -29,6 +30,7 @@ export const OrderDetails = ({order} : any) => {
           );
         })}
       </div>
+      <p>{order.address}</p>
       <p>{order.sum}</p>
       <p>{order.status}</p>
       <p>{getFormattedDate(order.updatedAt)}</p>

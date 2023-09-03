@@ -21,7 +21,8 @@ export const Cart = () => {
       name: item.name,
       brand: item.brand,
       size: item.size,
-      price: item.price
+      price: item.price,
+      img: item.img
     });})
     let sum = cartData.reduce(function (acc : any, obj : any) { return acc + obj.price; }, 0);
     const orderDetails = {
