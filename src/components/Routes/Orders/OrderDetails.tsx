@@ -1,7 +1,11 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
+import { getToken } from "../../../redux/slices/userSlice";
+import axios from 'axios';
 import './style.scss'
 
 export const OrderDetails = ({order} : any) => {
+  const token = useSelector(getToken);
     const getFormattedDate = (date : any) => {
         const formattedDate = date.split('T')
         const datePart = formattedDate[0].match(/\d+/g),
@@ -12,6 +16,14 @@ export const OrderDetails = ({order} : any) => {
       const convertArray = (arr:any) => {
         const convertedArray = JSON.parse(arr.replace('/'))
         return convertedArray
+      }
+      const cancelOrder = async (id : any) => {
+        console.log(token)
+        await axios.post(`http://localhost:3001/api/basket/cancel/${id}`,{
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+      })
       }
   return (
     <div className="order-card">
@@ -39,6 +51,7 @@ export const OrderDetails = ({order} : any) => {
             src="/images/icon-delete.svg"
             alt="delete"
             title='Cancel order'
+            onClick={() => cancelOrder(order.id)}
           />
       </div>
     </div>
