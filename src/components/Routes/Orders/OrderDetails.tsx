@@ -34,6 +34,13 @@ export const OrderDetails = ({order} : any) => {
       <p>{order.sum}</p>
       <p>{order.status}</p>
       <p>{getFormattedDate(order.updatedAt)}</p>
+      <div className='cancel-order-btn'>
+      <img
+            src="/images/icon-delete.svg"
+            alt="delete"
+            title='Cancel order'
+          />
+      </div>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 .order-card{
     display: flex;
     justify-content: space-between;
+    margin: 20px 0px;
 }
 .order-card .title {
     display: flex;
@@ -20,4 +21,15 @@
 }
 .order-cart-data-details img{
     height: 100px;
+}
+.order-card button{
+    height: 50px;
+}
+.cancel-order-btn{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.cancel-order-btn img{
+    height: 50px;
 }
