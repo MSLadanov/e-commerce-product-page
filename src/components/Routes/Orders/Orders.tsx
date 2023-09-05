@@ -12,7 +12,6 @@ export const Orders = () => {
       const info = (await axios.get(`http://localhost:3001/api/basket/`,{
         headers: {
           Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
         },
       }))
         .data as any;

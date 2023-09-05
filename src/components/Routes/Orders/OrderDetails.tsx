@@ -18,12 +18,15 @@ export const OrderDetails = ({order} : any) => {
         return convertedArray
       }
       const cancelOrder = async (id : any) => {
-        console.log(token)
-        await axios.post(`http://localhost:3001/api/basket/cancel/${id}`,{
+        console.log(token);
+      const response = await axios({
+        method: "post",
+        url: `http://localhost:3001/api/basket/cancel/${id}`,
         headers: {
-          Authorization: `Bearer ${token}`
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
         },
-      })
+      });
       }
   return (
     <div className="order-card">
