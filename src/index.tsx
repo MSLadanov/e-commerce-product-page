@@ -21,6 +21,7 @@ import { Orders } from "./components/Routes/Orders/Orders";
 import { Cart } from "./components/Routes/Cart/Cart";
 import { SignUp } from "./components/Routes/SignUp/SignUp";
 import { CreateSneaker } from "./components/Routes/CreateSneaker/CreateSneaker";
+import { UsersOrders } from "./components/Routes/UsersOrders/UsersOrders";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -73,6 +74,10 @@ const router = createBrowserRouter([
       {
         path: "/sneaker/create",
         element: <CreateSneaker/>,
+      },
+      {
+        path: "orders/all",
+        element: <UsersOrders/>,
       },
     ],
   },

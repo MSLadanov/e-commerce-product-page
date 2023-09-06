@@ -27,7 +27,6 @@ export const Orders = () => {
     }
   return (
     <div>
-      {/* {JSON.stringify(orders[0])} */}
       {orders.filter((item : any) => item.status !== 'current').map((item : any) => {
         return (
           <OrderDetails order={item} key={item.id}/>
