@@ -34,9 +34,9 @@ export const OrderDetails = ({order} : any) => {
       <p>{order.id}</p>
       <p>{order.data.brand}</p>
       <div className="order-card-data">
-        {convertArray(order.data).map((item: any) => {
+        {convertArray(order.data).map((item: any, index : any) => {
           return (
-            <div className='order-cart-data-details' key={item.id}>
+            <div className='order-cart-data-details' key={index}>
               <img src={`http://localhost:3001/${item.img}`} alt="" />
               <p>{item.brand}</p>
               <p>{item.name}</p>
