@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { signOut } from "../../redux/slices/userSlice";
 import { getToken } from "../../redux/slices/userSlice";
 import { fetchData } from "../../redux/slices/userSlice";
 import { getUserData } from "../../redux/slices/userSlice";
@@ -32,7 +33,11 @@ export const Header = ({
       })
       .then((res) => {
         dispatch(fetchData(res.data));
-      }).catch((err) => console.log(err));
+      }).catch((err) => {
+        if(err.response.status === 401){
+          dispatch(signOut())
+        }
+      });
   };
   useEffect(() => {
     if (token !== null) {
