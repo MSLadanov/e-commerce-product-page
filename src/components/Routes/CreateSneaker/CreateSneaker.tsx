@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Formik, Form, Field, useField } from "formik";
 import { useSelector } from "react-redux";
 import { getToken } from "../../../redux/slices/userSlice";
@@ -18,6 +18,7 @@ const SignInSchema = Yup.object().shape({
 
 export const CreateSneaker = () => {
   const token = useSelector(getToken);
+  const [accessError, setAccessError] = useState<any>(null)
     function getFormData(object:any) {
     const formData = new FormData();
     Object.keys(object).forEach(key => {
@@ -27,6 +28,29 @@ export const CreateSneaker = () => {
     return formData;
 }
   const [sneakerImage, setSneakerImage] = useState<any>(null)
+  const checkAccessRights = async () => {
+    const info = await axios
+      .get(`http://localhost:3001/api/basket/all`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        setAccessError(null);
+      })
+      .catch((err) => {
+        setAccessError(`${err.response.status} ${err.response.data.message}`);
+      });
+  }
+  useEffect(() => {
+    checkAccessRights()
+  }, [])
+  
+    if(accessError){
+      return (
+        <div><h1>{accessError}</h1></div>
+      )
+    }
   return (
     <div>
       {" "}
