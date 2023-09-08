@@ -9,14 +9,17 @@ import { AllOrdersDetails } from './AllOrdersDetails';
 export const UsersOrders = () => {
     const token = useSelector(getToken);
     const [orders, setOrders] = useState<any>([]);
+    const [accessError, setAccessError] = useState<any>(null)
     const getOrdersInfo = async () => {
       const info = (await axios.get(`http://localhost:3001/api/basket/all`,{
         headers: {
           Authorization: `Bearer ${token}`,
         },
+      }).then((res) => {
+        setOrders([...res.data])
+      }).catch((err) => {
+        setAccessError(`${err.response.status} ${err.response.data.message}`)
       }))
-        .data as any;
-        setOrders([...info])
     };
     useEffect(() => {
       getOrdersInfo();
@@ -25,6 +28,11 @@ export const UsersOrders = () => {
         return (
             <div><h1>You must be signed for see link.</h1></div>
           )
+    }
+    if(accessError){
+      return (
+        <div><h1>{accessError}</h1></div>
+      )
     }
   return (
     <div>
