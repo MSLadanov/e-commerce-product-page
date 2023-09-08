@@ -4,7 +4,7 @@ import "./style.scss";
 export const SneakerCard = ({ sneaker }: any) => {
   return (
     <div className="card">
-      <div className="discount">{`${sneaker.discount}%`}</div>
+      <div className={sneaker.discount > 0 ? 'discount' : 'discount zero-discount'}>{`${sneaker.discount}%`}</div>
       <a href={`http://localhost:3000/${sneaker.sex.toLowerCase()}/sneaker/${sneaker.id}`}>
         <img
           src={`http://localhost:3001/${sneaker.img1}`}

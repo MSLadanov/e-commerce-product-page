@@ -29,7 +29,7 @@ export const SneakerPage = () => {
     brand: null,
     description: null,
     price: null,
-    discount: null,
+    discount: 0,
     mainImage: null,
     img1: null,
     img2: null,
@@ -158,7 +158,7 @@ export const SneakerPage = () => {
             <div className="price">
               <h2>{sneakerInfo.price} $</h2>
             </div>
-            <div className="discount">
+            <div className={sneakerInfo.discount > 0 ? 'discount' : 'discount zero-discount'}>
               <h4>{sneakerInfo.discount} %</h4>
             </div>
           </div>
