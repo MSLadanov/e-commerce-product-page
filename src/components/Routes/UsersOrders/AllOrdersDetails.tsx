@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { getToken } from "../../../redux/slices/userSlice";
 import axios from 'axios';
 
 export const AllOrdersDetails = ({order} :any) => {
+    const [userInfo, setUserInfo] = useState({
+      name: '',
+      surname: '',
+      email: '',
+      img: ''
+    })
     const token = useSelector(getToken);
     const getFormattedDate = (date : any) => {
         const formattedDate = date.split('T')
@@ -26,6 +32,20 @@ export const AllOrdersDetails = ({order} :any) => {
         },
       });
       }
+      const getUserInfo = async (id : any) => {
+        const response = await axios({
+          method: "get",
+          url: `http://localhost:3001/api/user/info/${id}`,
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+        }).then((res) => setUserInfo({...res.data})).catch((err) => console.log(err));
+        }
+        useEffect(() => {
+          getUserInfo(order.userId)
+        }, [])
+        
   return (
     <div className="order-card">
       {" "}
@@ -39,6 +59,8 @@ export const AllOrdersDetails = ({order} :any) => {
               <p>{item.brand}</p>
               <p>{item.name}</p>
               <p>{item.size}</p>
+              <p>{userInfo.name + ' ' + userInfo.surname}</p>
+              <p>{userInfo.email}</p>
             </div>
           );
         })}
