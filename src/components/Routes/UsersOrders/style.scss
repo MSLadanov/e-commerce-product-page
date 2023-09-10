@@ -1,0 +1,16 @@
+.all-orders-card-container{
+    margin-top: 30px;
+}
+.all-orders-card{
+    display: flex;
+    margin: 40px 10px;
+    justify-content: space-between;
+}
+.all-orders-card-data{
+    display: flex;
+}
+.all-orders-card-data p{
+    display: flex;
+    align-items: center;
+    margin: 0px 15px;
+}

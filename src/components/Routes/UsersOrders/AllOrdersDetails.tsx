@@ -47,20 +47,20 @@ export const AllOrdersDetails = ({order} :any) => {
         }, [])
         
   return (
-    <div className="order-card">
+    <div className="all-orders-card">
       {" "}
       <p>{order.id}</p>
       <p>{order.data.brand}</p>
-      <div className="order-card-data">
-        {convertArray(order.data).map((item: any, index : any) => {
+      <div className="all-orders-card-data">
+        <p>{userInfo.name + " " + userInfo.surname}</p>
+        <p>{userInfo.email}</p>
+        {convertArray(order.data).map((item: any, index: any) => {
           return (
-            <div className='order-cart-data-details' key={index}>
-              <img src={`http://localhost:3001/${item.img}`} alt="" />
+            <div className="all-orders-cart-data-details" key={index}>
+              {/* <img src={`http://localhost:3001/${item.img}`} alt="" />
               <p>{item.brand}</p>
               <p>{item.name}</p>
-              <p>{item.size}</p>
-              <p>{userInfo.name + ' ' + userInfo.surname}</p>
-              <p>{userInfo.email}</p>
+              <p>{item.size}</p> */}
             </div>
           );
         })}
@@ -69,13 +69,13 @@ export const AllOrdersDetails = ({order} :any) => {
       <p>{order.sum}</p>
       <p>{order.status}</p>
       <p>{getFormattedDate(order.updatedAt)}</p>
-      <div className='cancel-order-btn'>
-      <img
-            src="/images/icon-delete.svg"
-            alt="delete"
-            title='Delete order'
-            onClick={() => deleteOrder(order.id)}
-          />
+      <div className="cancel-order-btn">
+        <img
+          src="/images/icon-delete.svg"
+          alt="delete"
+          title="Delete order"
+          onClick={() => deleteOrder(order.id)}
+        />
       </div>
     </div>
   );

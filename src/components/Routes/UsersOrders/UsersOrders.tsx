@@ -37,7 +37,7 @@ export const UsersOrders = () => {
       )
     }
   return (
-    <div>
+    <div className='all-orders-card-container'>
       {orders.filter((item : any) => item.status !== 'current').map((item : any) => {
         return (
           <AllOrdersDetails order={item} key={item.id}/>
