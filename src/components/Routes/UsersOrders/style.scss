@@ -4,7 +4,13 @@
 .all-orders-card{
     display: flex;
     margin: 40px 10px;
+    padding: 20px 10px;
     justify-content: space-between;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.all-orders-card:hover{
+    background-color: #00000008
 }
 .all-orders-card-data{
     display: flex;
