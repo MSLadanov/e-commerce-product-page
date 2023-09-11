@@ -3,7 +3,7 @@
 }
 .all-orders-card{
     display: flex;
-    margin: 40px 10px;
+    margin: 20px 10px;
     padding: 20px 10px;
     justify-content: space-between;
     border-radius: 10px;
@@ -32,4 +32,11 @@
 }
 .all-orders-cart-data-details img{
     height: 100px;
+}
+
+
+.all-orders-details-container{
+    height: 0;
+    overflow: hidden;
+    transition: ease-in 0.25s ;
 }
