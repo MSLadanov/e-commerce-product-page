@@ -5,6 +5,8 @@ import axios from 'axios';
 
 export const AllOrdersDetails = ({order} :any) => {
   const ref = useRef(document.createElement("div"));
+  const statusHandlerRef = useRef(document.createElement('div'))
+  const [showStatusHandler, setShowStatusHandler] = useState(false)
   const [userInfo, setUserInfo] = useState({
     name: "",
     surname: "",
@@ -60,8 +62,9 @@ export const AllOrdersDetails = ({order} :any) => {
 
   return (
     <>
-      <div className="all-orders-card" onClick={() => openDetailsDropdown()}>
+      <div className="all-orders-card" >
         {" "}
+        <img className='arrow' src="/images/icon-next.svg" alt="" onClick={() => openDetailsDropdown()} />
         <p>{order.id}</p>
         <p>{order.data.brand}</p>
         <div className="all-orders-card-data">
@@ -70,7 +73,7 @@ export const AllOrdersDetails = ({order} :any) => {
         </div>
         <p>{order.address}</p>
         <p>{order.sum}</p>
-        <p>{order.status}</p>
+        <p ref={statusHandlerRef}>{order.status}</p>
         <p>{getFormattedDate(order.updatedAt)}</p>
         <div className="cancel-order-btn">
           <img

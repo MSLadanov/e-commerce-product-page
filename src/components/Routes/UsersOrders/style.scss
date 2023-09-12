@@ -7,10 +7,15 @@
     padding: 20px 10px;
     justify-content: space-between;
     border-radius: 10px;
-    cursor: pointer;
 }
-.all-orders-card:hover{
-    background-color: #00000008
+.arrow{
+    margin: 10px;
+    cursor: pointer;
+    width: 50px;
+    transition: ease-in 0.1s;
+}
+.arrow:hover{
+    transform: translateX(20px) ;
 }
 .all-orders-card-data{
     display: flex;
