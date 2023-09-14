@@ -6,10 +6,12 @@ import thunk from 'redux-thunk';
 
 import userReducer from './slices/userSlice';
 import cartReducer from './slices/cartSlice'
+import notifyReducer from './slices/notifySlice'
 
 const reducers = combineReducers({
   user: userReducer,
-  cart: cartReducer
+  cart: cartReducer,
+  notify: notifyReducer
 });
 
 const persistConfig = {
