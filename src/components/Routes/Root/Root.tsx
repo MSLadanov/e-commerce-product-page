@@ -12,13 +12,13 @@ function Root() {
   const [openCartDropdown, setOpenCartDropdown] = useState(false)
   const isShown = useSelector(getIsShown)
   const dispatch = useDispatch();
-  const showNotify = useNotify()
+  const [toggleNotify]= useNotify()
   return (
     <div >
       <Header openDropdown={openDropdown} setOpenDropdown={setOpenDropdown} openCartDropdown={openCartDropdown} setOpenCartDropdown={setOpenCartDropdown} />
       <Outlet context={[openDropdown, setOpenDropdown, openCartDropdown, setOpenCartDropdown]}/>
       <button onClick={() => {
-        // showNotify()
+        toggleNotify()
       }}>Show</button>
       {isShown && <Notification/>}
     </div>
