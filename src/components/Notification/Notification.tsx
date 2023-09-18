@@ -3,6 +3,6 @@ import './style.scss'
 
 export const Notification = () => {
   return (
-    <div>Notification</div>
+    <div className='notify'>Notify</div>
   )
 }
