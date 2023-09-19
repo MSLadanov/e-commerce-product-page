@@ -1,7 +1,20 @@
 .notify{
     display: inline;
+    position: absolute;
     padding: 20px 70px;
     background-color: black;
     color: white;
     border-radius: 8px;
+    animation-duration: 5s;
+    animation-name: notify;
 }
+
+  @keyframes notify {
+    from {
+      margin-top: 100%;
+    }
+  
+    to {
+      margin-top: 0%;
+    }
+  }

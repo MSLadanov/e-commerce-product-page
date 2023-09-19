@@ -7,7 +7,7 @@ export default function useNotify () {
     dispatch(showNotify());
     setTimeout(() => {
       dispatch(hideNotify());
-    }, 2000);
+    }, 5000);
   }
   return [toggleNotify]
   }
