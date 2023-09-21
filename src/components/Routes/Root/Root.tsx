@@ -18,7 +18,7 @@ function Root() {
       <Header openDropdown={openDropdown} setOpenDropdown={setOpenDropdown} openCartDropdown={openCartDropdown} setOpenCartDropdown={setOpenCartDropdown} />
       <Outlet context={[openDropdown, setOpenDropdown, openCartDropdown, setOpenCartDropdown]}/>
       <button onClick={() => {
-        toggleNotify()
+        toggleNotify('Text')
       }}>Show</button>
       {isShown && <Notification/>}
     </div>
