@@ -6,10 +6,12 @@ import { getCartData } from "../../../redux/slices/cartSlice";
 import { removeSneaker } from "../../../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
 import { getToken } from "../../../redux/slices/userSlice";
+import useNotify from '../../hooks/useNotify';
 import "./style.scss";
 
 export const Cart = () => {
   const dropdownCartRef = useRef<HTMLInputElement>(null);
+  const [toggleNotify] = useNotify()
   const [address, setAddress] = useState('')
   const cartData = useSelector(getCartData);
   const dispatch = useDispatch();
@@ -39,7 +41,7 @@ export const Cart = () => {
           Authorization: `Bearer ${token}`
         },
       }
-    );
+    ).then((res) => console.log(res)).catch((err) => {toggleNotify(err.response.data.message)});
   }
   if (!cartData.length) {
     return (
