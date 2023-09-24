@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { getToken } from "../../../redux/slices/userSlice";
 import * as Yup from "yup";
 import axios from "axios";
+import useNotify from "../../hooks/useNotify";
 
 const SignInSchema = Yup.object().shape({
   name: Yup.string().required("Required"),
@@ -17,6 +18,7 @@ const SignInSchema = Yup.object().shape({
 });
 
 export const CreateSneaker = () => {
+  const [toggleNotify] = useNotify()
   const token = useSelector(getToken);
   const [accessError, setAccessError] = useState<any>(null)
     function getFormData(object:any) {
@@ -87,7 +89,7 @@ export const CreateSneaker = () => {
                   "Content-Type": "multipart/form-data",
                 },
               }
-            );
+            ).then((res) => console.log(res)).catch((err) => toggleNotify(err.response.data.message));
           } else {
             alert('You need add 4 images!')
           }
