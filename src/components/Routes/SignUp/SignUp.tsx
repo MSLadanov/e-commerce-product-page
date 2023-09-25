@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 import { Formik, Form, Field, useField } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import useNotify from "../../hooks/useNotify";
 
 const SignInSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -12,6 +13,7 @@ const SignInSchema = Yup.object().shape({
 });
 
 export const SignUp = () => {
+  const [toggleNotify] = useNotify()
   function getFormData(object:any) {
     const formData = new FormData();
     Object.keys(object).forEach(key => {
@@ -44,7 +46,7 @@ export const SignUp = () => {
           const user = await axios.post(
             "http://localhost:3001/api/user/register/",
             formData
-          );
+          ).then((res) => toggleNotify(res.data.message)).catch((err) => {toggleNotify(err.response.data.message)});;
         }}
       >
         {({ errors, touched }) => (

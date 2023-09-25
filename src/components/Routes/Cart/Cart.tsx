@@ -41,7 +41,7 @@ export const Cart = () => {
           Authorization: `Bearer ${token}`
         },
       }
-    ).then((res) => console.log(res)).catch((err) => {toggleNotify(err.response.data.message)});
+    ).then((res) => toggleNotify(res.data.message)).catch((err) => {toggleNotify(err.response.data.message)});
   }
   if (!cartData.length) {
     return (

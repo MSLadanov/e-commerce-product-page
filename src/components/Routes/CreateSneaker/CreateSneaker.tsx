@@ -89,7 +89,7 @@ export const CreateSneaker = () => {
                   "Content-Type": "multipart/form-data",
                 },
               }
-            ).then((res) => console.log(res)).catch((err) => toggleNotify(err.response.data.message));
+            ).then((res) => toggleNotify(res.data.message)).catch((err) => {toggleNotify(err.response.data.message)});
           } else {
             alert('You need add 4 images!')
           }
