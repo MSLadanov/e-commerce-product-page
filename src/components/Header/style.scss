@@ -77,3 +77,15 @@ nav {
 .account-button-user img{
   border-radius: 50%;
 }
+
+@media (max-width:961px)  { 
+  nav{
+    flex-direction: column;
+  }
+  .site-navbar{
+    flex-direction: column;
+  }
+  .account-navbar{
+    flex-direction: column;
+  }
+}
