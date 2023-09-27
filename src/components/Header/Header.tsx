@@ -52,52 +52,58 @@ export const Header = ({
   }, [userData]);
 
   return (
-    <nav>
-      <div className="site-navbar">
-        <div className="logo">
-          <img src="/images/logo.svg" alt="logo" />
-        </div>
-        <NavLink to="men/">Men</NavLink>
-        <NavLink to="women/">Women</NavLink>
-        {token !== null && <NavLink to="orders/">My Orders</NavLink>}
-        <NavLink to="about/">About</NavLink>
-        <NavLink to="contact/">Contact</NavLink>
+    <>
+      <div className="logo-mobile">
+        <img src="/images/icon-menu.svg" alt="logo-mobile" />
       </div>
-      <div className="account-navbar">
-        <div ref={cartDropdownBtnRef} className="account-button-cart" onClick={() => setOpenCartDropdown(true)}>
-          <img
-            src="/images/icon-cart.svg"
-            alt="cart"
-          />
+      <nav>
+        <div className="site-navbar">
+          <div className="logo">
+            <img src="/images/logo.svg" alt="logo" />
+          </div>
+          <NavLink to="men/">Men</NavLink>
+          <NavLink to="women/">Women</NavLink>
+          {token !== null && <NavLink to="orders/">My Orders</NavLink>}
+          <NavLink to="about/">About</NavLink>
+          <NavLink to="contact/">Contact</NavLink>
         </div>
-        <div ref={dropdownBtnRef} className="account-button-user">
-          <img
-            onClick={() => setOpenDropdown(true)}
-            src={userImage}
-            alt="user"
-          />
+        <div className="account-navbar">
+          <div
+            ref={cartDropdownBtnRef}
+            className="account-button-cart"
+            onClick={() => setOpenCartDropdown(true)}
+          >
+            <img src="/images/icon-cart.svg" alt="cart" />
+          </div>
+          <div ref={dropdownBtnRef} className="account-button-user">
+            <img
+              onClick={() => setOpenDropdown(true)}
+              src={userImage}
+              alt="user"
+            />
+          </div>
         </div>
-      </div>
-      <CartDropdown
-        openCartDropdown={openCartDropdown}
-        setOpenCartDropdown={setOpenCartDropdown}
-        cartDropdownBtnRef={cartDropdownBtnRef}
-        openDropdown={openDropdown}
-        setOpenDropdown={setOpenDropdown}
-        dropdownBtnRef={dropdownBtnRef}
-      />
-      <Dropdown
-        token={token}
-        openDropdown={openDropdown}
-        setOpenDropdown={setOpenDropdown}
-        userData={userData}
-        userImage={userImage}
-        setUserImage={setUserImage}
-        dropdownBtnRef={dropdownBtnRef}
-        openCartDropdown={openCartDropdown}
-        setOpenCartDropdown={setOpenCartDropdown}
-        cartDropdownBtnRef={cartDropdownBtnRef}
-      />
-    </nav>
+        <CartDropdown
+          openCartDropdown={openCartDropdown}
+          setOpenCartDropdown={setOpenCartDropdown}
+          cartDropdownBtnRef={cartDropdownBtnRef}
+          openDropdown={openDropdown}
+          setOpenDropdown={setOpenDropdown}
+          dropdownBtnRef={dropdownBtnRef}
+        />
+        <Dropdown
+          token={token}
+          openDropdown={openDropdown}
+          setOpenDropdown={setOpenDropdown}
+          userData={userData}
+          userImage={userImage}
+          setUserImage={setUserImage}
+          dropdownBtnRef={dropdownBtnRef}
+          openCartDropdown={openCartDropdown}
+          setOpenCartDropdown={setOpenCartDropdown}
+          cartDropdownBtnRef={cartDropdownBtnRef}
+        />
+      </nav>
+    </>
   );
 };
