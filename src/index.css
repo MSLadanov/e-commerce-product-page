@@ -9,3 +9,8 @@ body {
   font-family: 'KumbhSans' ;
 }
 
+@media (max-width:961px)  { 
+  body{
+    padding: 20px 20px;
+  }
+}
