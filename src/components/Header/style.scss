@@ -87,13 +87,17 @@ nav {
     display: none;
   }
   .logo-mobile{
-    display: block;
+    display: flex;
+    padding: 15px 0px;
+    width: 50px;
+    justify-content: center;
+    align-items: center;
   }
   nav{
     background-color: white;
     position: relative;
     z-index: 999;
-    width: 100%;
+    width: 0%;
     height: 20%;
     flex-direction: column;
     align-items: flex-start;
@@ -112,7 +116,11 @@ nav {
   }
   .cards{
     position: absolute;
-    top: 0;
+    top: 60px;
     z-index: 1;
+  }
+  .showed{
+    width: 50%;
+    transition: 0.1s;
   }
 }

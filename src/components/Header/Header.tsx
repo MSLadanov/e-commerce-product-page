@@ -19,10 +19,22 @@ export const Header = ({
 }: any) => {
   const dropdownBtnRef = useRef<HTMLInputElement>(null);
   const cartDropdownBtnRef = useRef<HTMLInputElement>(null);
+
+  const mobileMenuBtnRef = useRef<HTMLInputElement>(null);
+  const mobileMenuRef = useRef<HTMLInputElement>(null);
+
   const token = useSelector(getToken);
   const userData = useSelector(getUserData);
   const [userImage, setUserImage] = useState("/images/image-user.png");
   const dispatch = useDispatch();
+
+  const toggleMobileMenu = (e:any) => {
+    if(!mobileMenuRef.current?.scrollWidth){
+      mobileMenuRef.current?.classList.add('showed')
+    } else{
+      mobileMenuRef.current?.classList.remove('showed')
+    }
+  }
 
   const getUserInfo = async () => {
     await axios
@@ -53,10 +65,10 @@ export const Header = ({
 
   return (
     <>
-      <div className="logo-mobile">
+      <div className="logo-mobile" ref={mobileMenuBtnRef} onClick={(e) => toggleMobileMenu(e)}>
         <img src="/images/icon-menu.svg" alt="logo-mobile" />
       </div>
-      <nav>
+      <nav ref={mobileMenuRef}>
         <div className="site-navbar">
           <div className="logo">
             <img src="/images/logo.svg" alt="logo" />
