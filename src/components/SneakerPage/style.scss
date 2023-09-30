@@ -1,6 +1,5 @@
 .sneaker-page{
     display: flex;
-    position: absolute;
     z-index: 0;
 }
 
@@ -155,4 +154,29 @@
 
 .dropdown__info ul li:last-child {
   border: none;
+}
+
+@media (max-width:961px){
+  .sneaker-page{
+    flex-direction: column;
+  }
+  .image-box{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .main-image{
+    display: flex;
+    justify-content: center;
+  }
+  .thumbnails{
+    display: flex;
+    justify-content: center;
+  }
+  .info-box{
+    margin-left: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 }
