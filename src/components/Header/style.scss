@@ -81,13 +81,20 @@ nav {
   border-radius: 50%;
 }
 
+.burger{
+  height: 5px;
+  background-color: gray;
+  width: 50px;
+  margin: 6px 0px;
+}
+
 @media (max-width:961px)  { 
-  
   .logo{
     display: none;
   }
   .logo-mobile{
     display: flex;
+    flex-direction: column;
     padding: 15px 0px;
     width: 50px;
     justify-content: center;
@@ -101,6 +108,8 @@ nav {
     height: 20%;
     flex-direction: column;
     align-items: flex-start;
+    transition: 0.5s;
+    height: 100%;
   }
   .site-navbar{
     width: 100%;
@@ -116,11 +125,28 @@ nav {
   }
   .cards{
     position: absolute;
-    top: 60px;
+    top: 90px;
     z-index: 1;
   }
   .showed{
     width: 50%;
-    transition: 0.1s;
+    transition: 0.5s;
+  }
+  .burger{
+    transform: translateY(0px) rotate(0deg);
+    opacity: 1;
+    transition: 0.5s;
+  }
+  .hiding{
+    opacity: 0;
+    transition: 0.5s;
+  }
+  .rotate-up{
+    transform: translateY(17px) rotate(45deg);
+    transition: 0.5s;
+  }
+  .rotate-down{
+    transform: translateY(-17px) rotate(-45deg);
+    transition: 0.5s;
   }
 }

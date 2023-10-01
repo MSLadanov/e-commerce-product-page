@@ -29,9 +29,16 @@ export const Header = ({
   const dispatch = useDispatch();
 
   const toggleMobileMenu = (e:any) => {
+    
     if(!mobileMenuRef.current?.scrollWidth){
+      mobileMenuBtnRef.current?.children[0].classList.add('rotate-up')
+      mobileMenuBtnRef.current?.children[1].classList.add('hiding')
+      mobileMenuBtnRef.current?.children[2].classList.add('rotate-down')
       mobileMenuRef.current?.classList.add('showed')
     } else{
+      mobileMenuBtnRef.current?.children[0].classList.remove('rotate-up')
+      mobileMenuBtnRef.current?.children[1].classList.remove('hiding')
+      mobileMenuBtnRef.current?.children[2].classList.remove('rotate-down')
       mobileMenuRef.current?.classList.remove('showed')
     }
   }
@@ -66,7 +73,9 @@ export const Header = ({
   return (
     <>
       <div className="logo-mobile" ref={mobileMenuBtnRef} onClick={(e) => toggleMobileMenu(e)}>
-        <img src="/images/icon-menu.svg" alt="logo-mobile" />
+        <div className="burger"></div>
+        <div className="burger"></div>
+        <div className="burger"></div>
       </div>
       <nav ref={mobileMenuRef}>
         <div className="site-navbar">
