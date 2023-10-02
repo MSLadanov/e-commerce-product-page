@@ -16,6 +16,7 @@ export const Header = ({
   setOpenDropdown,
   openCartDropdown,
   setOpenCartDropdown,
+  setBlur
 }: any) => {
   const dropdownBtnRef = useRef<HTMLInputElement>(null);
   const cartDropdownBtnRef = useRef<HTMLInputElement>(null);
@@ -35,11 +36,13 @@ export const Header = ({
       mobileMenuBtnRef.current?.children[1].classList.add('hiding')
       mobileMenuBtnRef.current?.children[2].classList.add('rotate-down')
       mobileMenuRef.current?.classList.add('showed')
+      setBlur(true)
     } else{
       mobileMenuBtnRef.current?.children[0].classList.remove('rotate-up')
       mobileMenuBtnRef.current?.children[1].classList.remove('hiding')
       mobileMenuBtnRef.current?.children[2].classList.remove('rotate-down')
       mobileMenuRef.current?.classList.remove('showed')
+      setBlur(false)
     }
   }
 

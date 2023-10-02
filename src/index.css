@@ -11,6 +11,18 @@ body {
 
 @media (max-width:961px)  { 
   body{
-    padding: 20px 20px;
+    padding: 0px;
   }
+}
+
+.layout{
+  filter: none;
+  height: 100pc;
+  transition: 0.5s;
+}
+.layout-blur{
+  filter: blur(1px) brightness(0.5);
+  transition: 0.5s;
+  height: 100pc;
+  background-color: rgba(0,0,0,0.5);
 }

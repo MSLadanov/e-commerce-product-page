@@ -179,4 +179,8 @@
     display: flex;
     justify-content: center;
   }
+  .site-navbar a:hover {
+    border-bottom: 4px solid hsl(26, 100%, 55%);
+    margin: 0px;
+}
 }
