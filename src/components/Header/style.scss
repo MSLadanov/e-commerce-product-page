@@ -89,6 +89,9 @@ nav {
 }
 
 @media (max-width:961px)  { 
+  .layout{
+    padding: 0px 30px;
+  }
   .logo{
     display: none;
   }
@@ -125,7 +128,6 @@ nav {
   }
   .cards{
     position: absolute;
-    // top: 90px;
     z-index: 1;
   }
   .showed{
@@ -147,6 +149,13 @@ nav {
   }
   .rotate-down{
     transform: translateY(-17px) rotate(-45deg);
+    transition: 0.5s;
+  }
+}
+
+@media (max-width:641px){
+  .showed{
+    width: 80%;
     transition: 0.5s;
   }
 }

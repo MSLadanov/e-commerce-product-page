@@ -21,7 +21,7 @@ body {
   transition: 0.5s;
 }
 .layout-blur{
-  filter: blur(1px) brightness(0.5);
+  filter: blur(10px) brightness(0.5);
   transition: 0.5s;
   height: 100pc;
   background-color: rgba(0,0,0,0.5);
