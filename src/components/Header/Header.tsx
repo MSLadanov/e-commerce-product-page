@@ -30,7 +30,6 @@ export const Header = ({
   const dispatch = useDispatch();
 
   const toggleMobileMenu = (e:any) => {
-    
     if(!mobileMenuRef.current?.scrollWidth){
       mobileMenuBtnRef.current?.children[0].classList.add('rotate-up')
       mobileMenuBtnRef.current?.children[1].classList.add('hiding')
@@ -72,7 +71,6 @@ export const Header = ({
       setUserImage(`http://localhost:3001/${userData.img}`);
     }
   }, [userData]);
-
   return (
     <>
       <div className="logo-mobile" ref={mobileMenuBtnRef} onClick={(e) => toggleMobileMenu(e)}>
@@ -90,7 +88,8 @@ export const Header = ({
           {token !== null && <NavLink to="orders/">My Orders</NavLink>}
           <NavLink to="about/">About</NavLink>
           <NavLink to="contact/">Contact</NavLink>
-          
+          <NavLink to="/" onClick={() => setOpenDropdown(true)}>User</NavLink>
+          <NavLink to="/" onClick={() => setOpenCartDropdown(true)}>Cart</NavLink>
         </div>
         <div className="account-navbar">
           <div
