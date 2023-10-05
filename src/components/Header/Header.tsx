@@ -88,8 +88,8 @@ export const Header = ({
           {token !== null && <NavLink to="orders/">My Orders</NavLink>}
           <NavLink to="about/">About</NavLink>
           <NavLink to="contact/">Contact</NavLink>
-          <NavLink to="/" onClick={() => setOpenDropdown(true)}>User</NavLink>
-          <NavLink to="/" onClick={() => setOpenCartDropdown(true)}>Cart</NavLink>
+          <NavLink className='mobile-btn' to="/" onClick={() => setOpenDropdown(true)}>User</NavLink>
+          <NavLink className='mobile-btn' to="/" onClick={() => setOpenCartDropdown(true)}>Cart</NavLink>
         </div>
         <div className="account-navbar">
           <div

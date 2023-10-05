@@ -155,6 +155,9 @@
 .dropdown__info ul li:last-child {
   border: none;
 }
+.mobile-btn{
+  display: none !important;
+}
 
 @media (max-width:961px){
   .sneaker-page{
@@ -178,6 +181,9 @@
     width: 100%;
     display: flex;
     justify-content: center;
+  }
+  .mobile-btn{
+    display: flex !important;
   }
   .site-navbar a:hover {
     border-bottom: 4px solid hsl(26, 100%, 55%);
