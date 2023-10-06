@@ -27,6 +27,9 @@ nav {
 .logo {
   margin-right: 60px;
 }
+.mobile-navbar-wrapper{
+  display: none;
+}
 .logo-mobile{
   display: none;
 }
@@ -96,6 +99,10 @@ nav {
   .logo{
     display: none;
   }
+  .mobile-navbar-wrapper{
+    display: flex;
+    justify-content: space-between;
+  }
   .logo-mobile{
     display: flex;
     flex-direction: column;
@@ -151,6 +158,22 @@ nav {
   .rotate-down{
     transform: translateY(-17px) rotate(-45deg);
     transition: 0.5s;
+  }
+  .mobile-account-navbar{
+    display: flex;
+  }
+  .mobile-account-navbar div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+  }
+ 
+  .mobile-account-navbar img{
+    height: 50px;
+    width: 50px;
   }
 }
 

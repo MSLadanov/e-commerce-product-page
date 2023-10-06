@@ -73,11 +73,29 @@ export const Header = ({
   }, [userData]);
   return (
     <>
+    <div className="mobile-navbar-wrapper">
       <div className="logo-mobile" ref={mobileMenuBtnRef} onClick={(e) => toggleMobileMenu(e)}>
         <div className="burger"></div>
         <div className="burger"></div>
         <div className="burger"></div>
       </div>
+      <div className="mobile-account-navbar">
+          <div
+            ref={cartDropdownBtnRef}
+            className="mobile-account-button-cart"
+            // onClick={() => setOpenCartDropdown(true)}
+          >
+            <img src="/images/icon-cart.svg" alt="cart" />
+          </div>
+          <div ref={dropdownBtnRef} className="mobile-account-button-user">
+            <img
+              // onClick={() => setOpenDropdown(true)}
+              src={userImage}
+              alt="user"
+            />
+          </div>
+        </div>
+    </div>
       <nav ref={mobileMenuRef}>
         <div className="site-navbar">
           <div className="logo">
@@ -88,8 +106,8 @@ export const Header = ({
           {token !== null && <NavLink to="orders/">My Orders</NavLink>}
           <NavLink to="about/">About</NavLink>
           <NavLink to="contact/">Contact</NavLink>
-          <NavLink className='mobile-btn' to="/" onClick={() => setOpenDropdown(true)}>User</NavLink>
-          <NavLink className='mobile-btn' to="/" onClick={() => setOpenCartDropdown(true)}>Cart</NavLink>
+          {/* <NavLink className='mobile-btn' to="/" onClick={() => setOpenDropdown(true)}>User</NavLink>
+          <NavLink className='mobile-btn' to="/" onClick={() => setOpenCartDropdown(true)}>Cart</NavLink> */}
         </div>
         <div className="account-navbar">
           <div
