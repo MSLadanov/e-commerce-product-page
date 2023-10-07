@@ -1,11 +1,12 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Header } from "../../Header/Header";
 import { Outlet } from "react-router-dom";
 import { Notification } from "../../Notification/Notification";
 import { useSelector, useDispatch } from "react-redux";
 import { getIsShown } from "../../../redux/slices/notifySlice";
 import useNotify from "../../hooks/useNotify";
+import { MobileDropdown } from "../../MobileDropdown/MobileDropdown";
 
 function Root() {
   const style = {
@@ -15,6 +16,8 @@ function Root() {
   const [openCartDropdown, setOpenCartDropdown] = useState(false)
   const [blur, setBlur] = useState(false)
   const isShown = useSelector(getIsShown)
+  const [openMobileDropdpwn, setOpenMobileDropdown] = useState(false)
+  const mobileMenuRef = useRef<HTMLElement>(null);
   const dispatch = useDispatch();
   const [toggleNotify]= useNotify()
   return (
@@ -25,6 +28,7 @@ function Root() {
         openCartDropdown={openCartDropdown}
         setOpenCartDropdown={setOpenCartDropdown}
         setBlur={setBlur}
+        setOpenMobileDropdown={setOpenMobileDropdown}
       />
       <div className={blur ? 'layout-blur':'layout'}>
         <Outlet
@@ -41,6 +45,7 @@ function Root() {
         toggleNotify('Text')
       }}>Show</button> */}
       {isShown && <Notification />}
+      {openMobileDropdpwn && <MobileDropdown />}
     </div>
   );
 }

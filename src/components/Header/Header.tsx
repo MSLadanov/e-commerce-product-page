@@ -16,7 +16,8 @@ export const Header = ({
   setOpenDropdown,
   openCartDropdown,
   setOpenCartDropdown,
-  setBlur
+  setBlur,
+  setOpenMobileDropdown
 }: any) => {
   const dropdownBtnRef = useRef<HTMLInputElement>(null);
   const cartDropdownBtnRef = useRef<HTMLInputElement>(null);
@@ -43,6 +44,11 @@ export const Header = ({
       mobileMenuRef.current?.classList.remove('showed')
       setBlur(false)
     }
+  }
+
+  const toggleMobileDropdown = (dropdownType:any) => {
+    setOpenMobileDropdown(true)
+    setBlur(true)
   }
 
   const getUserInfo = async () => {
@@ -83,13 +89,12 @@ export const Header = ({
           <div
             ref={cartDropdownBtnRef}
             className="mobile-account-button-cart"
-            // onClick={() => setOpenCartDropdown(true)}
+            onClick={(e) => toggleMobileDropdown('account')}
           >
             <img src="/images/icon-cart.svg" alt="cart" />
           </div>
-          <div ref={dropdownBtnRef} className="mobile-account-button-user">
+          <div ref={dropdownBtnRef} className="mobile-account-button-user"  onClick={() => toggleMobileDropdown('cart')}>
             <img
-              // onClick={() => setOpenDropdown(true)}
               src={userImage}
               alt="user"
             />

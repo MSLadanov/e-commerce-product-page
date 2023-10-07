@@ -3,6 +3,6 @@ import './style.scss'
 
 export const MobileDropdown = () => {
   return (
-    <div>MobileDropdown</div>
+    <div className='dropdown-modal'>MobileDropdown</div>
   )
 }
