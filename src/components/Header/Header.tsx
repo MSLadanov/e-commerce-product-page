@@ -17,7 +17,11 @@ export const Header = ({
   openCartDropdown,
   setOpenCartDropdown,
   setBlur,
-  setOpenMobileDropdown
+  setOpenMobileDropdown,
+  openMobileDropdown,
+  toggleMobileMenu,
+  openSideMenu,
+  setOpenSideMenu
 }: any) => {
   const dropdownBtnRef = useRef<HTMLInputElement>(null);
   const cartDropdownBtnRef = useRef<HTMLInputElement>(null);
@@ -29,22 +33,6 @@ export const Header = ({
   const userData = useSelector(getUserData);
   const [userImage, setUserImage] = useState("/images/image-user.png");
   const dispatch = useDispatch();
-
-  const toggleMobileMenu = (e:any) => {
-    if(!mobileMenuRef.current?.scrollWidth){
-      mobileMenuBtnRef.current?.children[0].classList.add('rotate-up')
-      mobileMenuBtnRef.current?.children[1].classList.add('hiding')
-      mobileMenuBtnRef.current?.children[2].classList.add('rotate-down')
-      mobileMenuRef.current?.classList.add('showed')
-      setBlur(true)
-    } else{
-      mobileMenuBtnRef.current?.children[0].classList.remove('rotate-up')
-      mobileMenuBtnRef.current?.children[1].classList.remove('hiding')
-      mobileMenuBtnRef.current?.children[2].classList.remove('rotate-down')
-      mobileMenuRef.current?.classList.remove('showed')
-      setBlur(false)
-    }
-  }
 
   const toggleMobileDropdown = (dropdownType:any) => {
     setOpenMobileDropdown(true)
@@ -80,7 +68,10 @@ export const Header = ({
   return (
     <>
     <div className="mobile-navbar-wrapper">
-      <div className="logo-mobile" ref={mobileMenuBtnRef} onClick={(e) => toggleMobileMenu(e)}>
+      <div className="logo-mobile" ref={mobileMenuBtnRef} onClick={(e) => {
+        toggleMobileMenu(mobileMenuBtnRef, mobileMenuRef)
+        // setOpenMobileDropdown(false)
+        }}>
         <div className="burger"></div>
         <div className="burger"></div>
         <div className="burger"></div>
@@ -89,7 +80,9 @@ export const Header = ({
           <div
             ref={cartDropdownBtnRef}
             className="mobile-account-button-cart"
-            onClick={(e) => toggleMobileDropdown('account')}
+            onClick={(e) => {
+              toggleMobileDropdown('account')
+            }}
           >
             <img src="/images/icon-cart.svg" alt="cart" />
           </div>
@@ -101,7 +94,7 @@ export const Header = ({
           </div>
         </div>
     </div>
-      <nav ref={mobileMenuRef}>
+      <nav ref={mobileMenuRef} className={openSideMenu && 'showed'}>
         <div className="site-navbar">
           <div className="logo">
             <img src="/images/logo.svg" alt="logo" />
@@ -111,8 +104,6 @@ export const Header = ({
           {token !== null && <NavLink to="orders/">My Orders</NavLink>}
           <NavLink to="about/">About</NavLink>
           <NavLink to="contact/">Contact</NavLink>
-          {/* <NavLink className='mobile-btn' to="/" onClick={() => setOpenDropdown(true)}>User</NavLink>
-          <NavLink className='mobile-btn' to="/" onClick={() => setOpenCartDropdown(true)}>Cart</NavLink> */}
         </div>
         <div className="account-navbar">
           <div

@@ -16,10 +16,40 @@ function Root() {
   const [openCartDropdown, setOpenCartDropdown] = useState(false)
   const [blur, setBlur] = useState(false)
   const isShown = useSelector(getIsShown)
-  const [openMobileDropdpwn, setOpenMobileDropdown] = useState(false)
+  const [openMobileDropdown, setOpenMobileDropdown] = useState(false)
   const mobileMenuRef = useRef<HTMLElement>(null);
   const dispatch = useDispatch();
-  const [toggleNotify]= useNotify()
+  const [toggleNotify]= useNotify();
+
+  const [openSideMenu, setOpenSideMenu] = useState(false)
+
+  const toggleMobileMenu = (mobileMenuBtnRef : any, mobileMenuRef : any) => {
+    if(!mobileMenuRef.current?.scrollWidth){
+      mobileMenuBtnRef.current?.children[0].classList.add('rotate-up')
+      mobileMenuBtnRef.current?.children[1].classList.add('hiding')
+      mobileMenuBtnRef.current?.children[2].classList.add('rotate-down')
+      setOpenSideMenu(true)
+      setBlur(true)
+    } else{
+      mobileMenuBtnRef.current?.children[0].classList.remove('rotate-up')
+      mobileMenuBtnRef.current?.children[1].classList.remove('hiding')
+      mobileMenuBtnRef.current?.children[2].classList.remove('rotate-down')
+      setOpenSideMenu(false)
+      setBlur(false)
+    }
+  }
+  const closeModal = () => {
+    if(openMobileDropdown){
+      setOpenMobileDropdown(false)
+      setBlur(false);
+    }
+    setOpenSideMenu(false)
+    const mobileMenuBtn = document.querySelector('.logo-mobile')
+    mobileMenuBtn?.children[0].classList.remove('rotate-up')
+    mobileMenuBtn?.children[1].classList.remove('hiding')
+    mobileMenuBtn?.children[2].classList.remove('rotate-down')
+    setBlur(false)
+  }
   return (
     <div>
       <Header
@@ -29,8 +59,12 @@ function Root() {
         setOpenCartDropdown={setOpenCartDropdown}
         setBlur={setBlur}
         setOpenMobileDropdown={setOpenMobileDropdown}
+        openMobileDropdown={openMobileDropdown}
+        toggleMobileMenu={toggleMobileMenu}
+        openSideMenu={openSideMenu}
+        setOpenSideMenu={setOpenSideMenu}
       />
-      <div className={blur ? 'layout-blur':'layout'}>
+      <div className={blur ? 'layout-blur':'layout'} onClick={() => {closeModal()}}>
         <Outlet
           context={[
             openDropdown,
@@ -41,11 +75,8 @@ function Root() {
           ]}
         />
       </div>
-      {/* <button onClick={() => {
-        toggleNotify('Text')
-      }}>Show</button> */}
       {isShown && <Notification />}
-      {openMobileDropdpwn && <MobileDropdown />}
+      {openMobileDropdown && <MobileDropdown />}
     </div>
   );
 }
