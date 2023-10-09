@@ -35,7 +35,7 @@ export const Header = ({
   const dispatch = useDispatch();
 
   const toggleMobileDropdown = (dropdownType:any) => {
-    setOpenMobileDropdown(true)
+    setOpenMobileDropdown(dropdownType)
     setBlur(true)
   }
 
@@ -70,7 +70,6 @@ export const Header = ({
     <div className="mobile-navbar-wrapper">
       <div className="logo-mobile" ref={mobileMenuBtnRef} onClick={(e) => {
         toggleMobileMenu(mobileMenuBtnRef, mobileMenuRef)
-        // setOpenMobileDropdown(false)
         }}>
         <div className="burger"></div>
         <div className="burger"></div>
@@ -81,12 +80,12 @@ export const Header = ({
             ref={cartDropdownBtnRef}
             className="mobile-account-button-cart"
             onClick={(e) => {
-              toggleMobileDropdown('account')
+              toggleMobileDropdown('cart')
             }}
           >
             <img src="/images/icon-cart.svg" alt="cart" />
           </div>
-          <div ref={dropdownBtnRef} className="mobile-account-button-user"  onClick={() => toggleMobileDropdown('cart')}>
+          <div ref={dropdownBtnRef} className="mobile-account-button-user"  onClick={() => toggleMobileDropdown('account')}>
             <img
               src={userImage}
               alt="user"
@@ -94,7 +93,7 @@ export const Header = ({
           </div>
         </div>
     </div>
-      <nav ref={mobileMenuRef} className={openSideMenu && 'showed'}>
+      <nav ref={mobileMenuRef} className={openSideMenu ? 'showed' : undefined}>
         <div className="site-navbar">
           <div className="logo">
             <img src="/images/logo.svg" alt="logo" />

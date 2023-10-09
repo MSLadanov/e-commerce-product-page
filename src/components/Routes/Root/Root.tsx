@@ -16,7 +16,7 @@ function Root() {
   const [openCartDropdown, setOpenCartDropdown] = useState(false)
   const [blur, setBlur] = useState(false)
   const isShown = useSelector(getIsShown)
-  const [openMobileDropdown, setOpenMobileDropdown] = useState(false)
+  const [openMobileDropdown, setOpenMobileDropdown] = useState(null)
   const mobileMenuRef = useRef<HTMLElement>(null);
   const dispatch = useDispatch();
   const [toggleNotify]= useNotify();
@@ -36,11 +36,14 @@ function Root() {
       mobileMenuBtnRef.current?.children[2].classList.remove('rotate-down')
       setOpenSideMenu(false)
       setBlur(false)
+      if(openMobileDropdown){
+        setBlur(true)
+      }
     }
   }
   const closeModal = () => {
     if(openMobileDropdown){
-      setOpenMobileDropdown(false)
+      setOpenMobileDropdown(null)
       setBlur(false);
     }
     setOpenSideMenu(false)
@@ -76,7 +79,7 @@ function Root() {
         />
       </div>
       {isShown && <Notification />}
-      {openMobileDropdown && <MobileDropdown />}
+      {openMobileDropdown && <MobileDropdown openMobileDropdown={openMobileDropdown} />}
     </div>
   );
 }
