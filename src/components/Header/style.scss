@@ -178,11 +178,18 @@ nav {
   .cart-dropdown{
     position: static;
   }
+  .dropdown{
+    position: static;
+    box-shadow: none;
+  }
 }
 
 @media (max-width:641px){
   .showed{
     width: 80%;
     transition: 0.5s;
+  }
+  .cards{
+    flex-direction: column;
   }
 }
