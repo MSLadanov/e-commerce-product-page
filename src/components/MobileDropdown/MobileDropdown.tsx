@@ -1,6 +1,7 @@
 import React from 'react'
 import './style.scss'
 import { AccountDropdown } from './AccountDropdown';
+import { MobileCartDropdown } from './MobileCartDropdown';
 
 export const MobileDropdown = ({openMobileDropdown}:any) => {
   console.log(openMobileDropdown)
@@ -12,7 +13,7 @@ export const MobileDropdown = ({openMobileDropdown}:any) => {
   else if (openMobileDropdown === 'cart'){
     return (
       <div className='dropdown-modal'>
-        <h1>Cart</h1>
+        <MobileCartDropdown />
       </div>
     )
   }
