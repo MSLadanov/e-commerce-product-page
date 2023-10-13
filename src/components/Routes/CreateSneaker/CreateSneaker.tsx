@@ -6,6 +6,7 @@ import { getToken } from "../../../redux/slices/userSlice";
 import * as Yup from "yup";
 import axios from "axios";
 import useNotify from "../../hooks/useNotify";
+import './style.scss'
 
 const SignInSchema = Yup.object().shape({
   name: Yup.string().required("Required"),
@@ -54,7 +55,7 @@ export const CreateSneaker = () => {
       )
     }
   return (
-    <div>
+    <div className="create-sneaker">
       {" "}
       <h1>Create Sneaker</h1>
       <hr />
@@ -96,7 +97,7 @@ export const CreateSneaker = () => {
         }}
       >
         {({ errors, touched }) => (
-          <Form>
+          <Form className="create-sneaker-form">
             <Field name="name" />
             {errors.name && touched.name ? <div>{errors.name}</div> : null}
             <Field name="brand" />
