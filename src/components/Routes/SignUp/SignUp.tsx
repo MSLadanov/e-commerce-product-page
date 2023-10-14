@@ -39,10 +39,6 @@ export const SignUp = () => {
         onSubmit={async (values) => {
           const formData = getFormData(values);
           formData.append('img', userImage)
-          for (var pair of formData.entries()) {
-            console.log(pair[0]+ ' - ' + pair[1]); 
-        }
-           
           const user = await axios.post(
             "http://localhost:3001/api/user/register/",
             formData

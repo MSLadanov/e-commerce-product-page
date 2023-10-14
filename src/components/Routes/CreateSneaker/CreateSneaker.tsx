@@ -72,15 +72,11 @@ export const CreateSneaker = () => {
         validationSchema={SignInSchema}
         onSubmit={async (values) => {
           const formData = getFormData(values);
-          // formData.append("img", sneakerImage);
           const imgArray = Array.from(sneakerImage)
           if(imgArray.length === 4){
             imgArray.map((item:any, index) => {
               formData.append(`img${index+1}`, sneakerImage[index]);
             })
-            for (var pair of formData.entries()) {
-              console.log(pair[0] + ", " + pair[1]);
-            }
             const sneaker = axios.post(
               "http://localhost:3001/api/sneaker/",
               formData,
