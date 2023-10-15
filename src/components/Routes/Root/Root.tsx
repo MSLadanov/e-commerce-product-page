@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getIsShown } from "../../../redux/slices/notifySlice";
 import useNotify from "../../hooks/useNotify";
 import { MobileDropdown } from "../../MobileDropdown/MobileDropdown";
+import { Footer } from "../../Footer/Footer";
 
 function Root() {
   const style = {
@@ -78,6 +79,7 @@ function Root() {
           ]}
         />
       </div>
+      <Footer></Footer>
       {isShown && <Notification />}
       {openMobileDropdown && <MobileDropdown openMobileDropdown={openMobileDropdown} />}
     </div>
