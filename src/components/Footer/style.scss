@@ -1,6 +1,3 @@
-.content{
-    height:2000px;
-} 
 .footer{			
     display:flex;
     justify-content:space-between;	
@@ -38,16 +35,16 @@
     margin-right: 10px;
 }       
 .tg:before {
-    background-image: url('/public/tg.svg');
+    background-image: url('../../../public/images/tg.svg');
 }
 .vk:before {
-    background-image: url('/public/vk.svg');
+    background-image: url('../../../public/images/vk.svg');
 }
 .email:before {
-    background-image: url('/public/email.svg');
+    background-image: url('../../../public/images/email.svg');
 }
 .phone:before {
-    background-image: url('/public/phone.svg');
+    background-image: url('../../../public/images/phone.svg');
 }
 @media (min-width: 1200px) {
 .footer-group{

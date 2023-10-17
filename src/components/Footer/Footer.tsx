@@ -4,7 +4,6 @@ import './style.scss'
 export const Footer = () => {
   return (
     <>
-      <div className="content"></div>
       <div className="footer">
         <div className="footer-group">
           <a className="footer-group-link" href="#">
