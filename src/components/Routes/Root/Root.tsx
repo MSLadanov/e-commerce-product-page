@@ -8,6 +8,7 @@ import { getIsShown } from "../../../redux/slices/notifySlice";
 import useNotify from "../../hooks/useNotify";
 import { MobileDropdown } from "../../MobileDropdown/MobileDropdown";
 import { Footer } from "../../Footer/Footer";
+import { SearchAndSort } from "../../SearchAndSort/SearchAndSort";
 
 function Root() {
   const style = {
@@ -69,6 +70,7 @@ function Root() {
         setOpenSideMenu={setOpenSideMenu}
       />
       <div className={blur ? 'layout-blur':'layout'} onClick={() => {closeModal()}}>
+        <SearchAndSort />
         <Outlet
           context={[
             openDropdown,
