@@ -7,11 +7,15 @@ import thunk from 'redux-thunk';
 import userReducer from './slices/userSlice';
 import cartReducer from './slices/cartSlice'
 import notifyReducer from './slices/notifySlice'
+import searchReducer from './slices/searchSlice'
+import sortReducer from './slices/sortSlice'
 
 const reducers = combineReducers({
   user: userReducer,
   cart: cartReducer,
-  notify: notifyReducer
+  notify: notifyReducer,
+  search: searchReducer,
+  sort: sortReducer,
 });
 
 const persistConfig = {
