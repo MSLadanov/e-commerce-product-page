@@ -7,10 +7,10 @@ export const searchSlice = createSlice({
   },
   reducers: {
     changeSearch: (state: any, action) => {
-      state.search = action.payload;
+      state.text = action.payload;
     },
     clearSearch: (state: any) => {
-        state.search = '';
+        state.text = '';
       },
   },
 });
