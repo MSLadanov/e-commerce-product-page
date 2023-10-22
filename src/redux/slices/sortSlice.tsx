@@ -3,20 +3,20 @@ import { createSlice } from "@reduxjs/toolkit";
 export const sortSlice = createSlice({
   name: "sort",
   initialState: {
-    text: '',
+    type: '',
   },
   reducers: {
     changeSort: (state: any, action) => {
-      state.search = action.payload;
+      state.sort = action.payload;
     },
     clearSort: (state: any) => {
-        state.search = '';
+        state.sort = '';
       },
   },
 });
 
 
-export const getSearchData = (state: any) => state.sort.text;
+export const getSearchData = (state: any) => state.sort.type;
 
 export const { changeSort, clearSort } = sortSlice.actions;
 
