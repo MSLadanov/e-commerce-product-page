@@ -7,16 +7,16 @@ export const sortSlice = createSlice({
   },
   reducers: {
     changeSort: (state: any, action) => {
-      state.sort = action.payload;
+      state.type = action.payload;
     },
     clearSort: (state: any) => {
-        state.sort = '';
+        state.type = '';
       },
   },
 });
 
 
-export const getSearchData = (state: any) => state.sort.type;
+export const getSortData = (state: any) => state.sort.type;
 
 export const { changeSort, clearSort } = sortSlice.actions;
 
