@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getSearchData } from '../../../redux/slices/searchSlice'
 import { changeSearch } from '../../../redux/slices/searchSlice'
+import '../style.scss'
 
 export const SearchBar = () => {
   const dispatch = useDispatch()

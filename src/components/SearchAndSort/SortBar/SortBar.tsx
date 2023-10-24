@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getSortData } from '../../../redux/slices/sortSlice';
 import { changeSort } from '../../../redux/slices/sortSlice';
+import '../style.scss'
 
 export const SortBar = () => {
   const dispatch = useDispatch()
@@ -9,20 +10,21 @@ export const SortBar = () => {
   const getDefaultSort = (type:any) =>{
     switch (type) {
       case 'price_up':
-        return `Price &uarr;`
+        return `Price ↑`
       case 'discount_up':
-        return `Discount &uarr`
+        return `Discount ↑`
       case 'discount_down':
-        return `Discount &darr;`
+        return `Discount ↓`
       case 'price_down':
-        return `Price &darr`
+        return `Price ↓`
+      default:
+        return `Sort by...`
     }
   }
   return (
     <div>
       <select onChange={(e) => dispatch(changeSort(e.target.value))}>
-      <option value="" disabled hidden>Sort by...</option>
-        <option value={sort} selected>{getDefaultSort(sort)}</option>
+        <option value={sort} selected disabled>{getDefaultSort(sort)}</option>
         <option value="price_up">Price &uarr;</option>
         <option value="discount_up">Discount &uarr;</option>
         <option value="discount_down">Discount &darr;</option>

@@ -5,7 +5,7 @@ import './style.scss'
 
 export const SearchAndSort = () => {
   return (
-    <div>
+    <div className='search-sort-bar'>
       <SearchBar></SearchBar>
       <SortBar></SortBar>
     </div>
