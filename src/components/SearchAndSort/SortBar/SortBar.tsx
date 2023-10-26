@@ -22,7 +22,7 @@ export const SortBar = () => {
     }
   }
   return (
-    <div>
+    <div className='select-dropdown'>
       <select onChange={(e) => dispatch(changeSort(e.target.value))}>
         <option value={sort} selected disabled>{getDefaultSort(sort)}</option>
         <option value="price_up">Price &uarr;</option>
