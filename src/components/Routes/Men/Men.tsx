@@ -13,87 +13,56 @@ export default function Men() {
   const search = useSelector(getSearchData);
   const getSneakers = async () => {
     const sneakers = (await axios.get("http://localhost:3001/api/sneaker/"))
-      .data as never;
-    setData(sneakers);
+      .data as any;
+    setData(sneakers.filter((item: any) => item.sex === "MEN"));
   };
   useEffect(() => {
     getSneakers();
   }, []);
-  if (!data.length) {
-    return <div>No data!</div>;
-  }
-  if (sort.length !== 0 && search.length === 0) {
+  const gigaFilterFunction = () => {
+    console.log('filter')
+    if (search.length === 0 && sort.length === 0) {
+      console.log("Do nothing...");
+    }
+    if (sort.length !== 0 && search.length === 0) {
     console.log("Sorting...");
     switch (sort) {
       case "price_up":
-        console.log("price_up");
-        return (
-          <div className="cards">
-            {data
-              .filter((item: any) => item.sex === "MEN")
-              .sort((a:any,b:any) => b.price - a.price)
-              .map((item, index) => (
-                <SneakerCard sneaker={item} key={index} />
-              ))}
-          </div>
-        );
+        data.sort((a:any,b:any) => b.price - a.price)
+        break;
       case "discount_up":
-        return (
-          <div className="cards">
-            {data
-              .filter((item: any) => item.sex === "MEN")
-              .sort((a:any,b:any) => b.discount - a.discount)
-              .map((item, index) => (
-                <SneakerCard sneaker={item} key={index} />
-              ))}
-          </div>
-        );
+        data.sort((a:any,b:any) => b.discount - a.discount)
+        break;
       case "discount_down":
-        return (
-          <div className="cards">
-            {data
-              .filter((item: any) => item.sex === "MEN")
-              .sort((a:any,b:any) => a.discount - b.discount)
-              .map((item, index) => (
-                <SneakerCard sneaker={item} key={index} />
-              ))}
-          </div>
-        );
+        data.sort((a:any,b:any) => a.discount - b.discount)
+        break;
       case "price_down":
-        return (
-          <div className="cards">
-            {data
-              .filter((item: any) => item.sex === "MEN")
-              .sort((a:any,b:any) => a.price - b.price)
-              .map((item, index) => (
-                <SneakerCard sneaker={item} key={index} />
-              ))}
-          </div>
-        );
-    }
-    if (search.length !== 0 && sort.length === 0) {
-      console.log("Searching...");
-    }
-    if (search.length !== 0 && sort.length !== 0) {
-      console.log("Sorting and searching...");
-    }
-    if (search.length === 0 && sort.length === 0) {
-      return (
-        <div className="cards">
-          {data
-            .filter((item: any) => item.sex === "MEN")
-            .map((item, index) => (
-              <SneakerCard sneaker={item} key={index} />
-            ))}
-        </div>
-      );
+        data.sort((a:any,b:any) => a.price - b.price)
+        break;
     }
   }
+  if (search.length !== 0 && sort.length === 0) {
+    console.log("Searching...");
+    data.filter((item : any) => {
+      if (search === '') {
+          return item;
+      }
+      else {
+          return item.name.toLowerCase().includes(search)
+      }
+  })
+  }
+  if (search.length !== 0 && sort.length !== 0) {
+    console.log("Sorting and searching...");
+  }
+  }
+  if (!data.length) {
+    return <div>No data!</div>;
+  }
+  gigaFilterFunction()
   return (
     <div className="cards">
-      {data
-        .filter((item: any) => item.sex === "MEN")
-        .map((item, index) => (
+      {data.map((item, index) => (
           <SneakerCard sneaker={item} key={index} />
         ))}
     </div>
