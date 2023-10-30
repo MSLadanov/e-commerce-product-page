@@ -19,12 +19,22 @@ export default function Men() {
   useEffect(() => {
     getSneakers();
   }, []);
-  const gigaFilterFunction = () => {
-    console.log('filter')
-    if (search.length === 0 && sort.length === 0) {
-      console.log("Do nothing...");
+  useEffect(() => {
+    let filtered = data.filter((item : any) => {
+      return (item.name.toLowerCase().match(search.toLowerCase()))
+      // console.log(item.brand.toLowerCase().includes(search.toLowerCase()))
+          // return item.name.toLowerCase().includes(search.toLowerCase()) || item.brand.toLowerCase().includes(search.toLowerCase())
+  })
+    setData(filtered)
+    if(search.length === 0){
+      getSneakers()
     }
-    if (sort.length !== 0 && search.length === 0) {
+  }, [search])
+  useEffect(() => {
+   gigaFilterFunction()
+  }, [sort])
+  
+  const gigaFilterFunction = () => {
     console.log("Sorting...");
     switch (sort) {
       case "price_up":
@@ -41,25 +51,24 @@ export default function Men() {
         break;
     }
   }
+  if (search.length === 0 && sort.length === 0) {
+    console.log("Do nothing...");
+  }
   if (search.length !== 0 && sort.length === 0) {
     console.log("Searching...");
-    data.filter((item : any) => {
-      if (search === '') {
-          return item;
-      }
-      else {
-          return item.name.toLowerCase().includes(search)
-      }
+    let filtered = data.filter((item : any) => {
+      return (item.name.toLowerCase().match(search.toLowerCase()))
+      // console.log(item.brand.toLowerCase().includes(search.toLowerCase()))
+          // return item.name.toLowerCase().includes(search.toLowerCase()) || item.brand.toLowerCase().includes(search.toLowerCase())
   })
+  console.log(filtered)
   }
   if (search.length !== 0 && sort.length !== 0) {
     console.log("Sorting and searching...");
   }
-  }
   if (!data.length) {
     return <div>No data!</div>;
   }
-  gigaFilterFunction()
   return (
     <div className="cards">
       {data.map((item, index) => (
