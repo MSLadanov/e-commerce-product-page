@@ -58,15 +58,6 @@ export default function Men() {
   if (search.length === 0 && sort.length === 0) {
     console.log("Do nothing...");
   }
-  // if (search.length !== 0 && sort.length === 0) {
-  //   console.log("Searching...");
-  //   let filtered = data.filter((item : any) => {
-  //     return (item.name.toLowerCase().match(search.toLowerCase()))
-  //     console.log(item.brand.toLowerCase().includes(search.toLowerCase()))
-  //         return item.name.toLowerCase().includes(search.toLowerCase()) || item.brand.toLowerCase().includes(search.toLowerCase())
-  // })
-  // console.log(filtered)
-  // }
   if (search.length !== 0 && sort.length !== 0) {
     console.log("Sorting and searching...");
   }
