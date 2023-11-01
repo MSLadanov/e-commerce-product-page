@@ -22,23 +22,25 @@ export default function Men() {
     getSneakers();
   }, []);
   useEffect(() => {
-    setData(initialData)
-    let filtered = data.filter((item : any) => {
-      return item.name.toLowerCase().match(search.toLowerCase()) || item.brand.toLowerCase().match(search.toLowerCase())
-  })
-    setData(filtered)
+    if(search.length !== 0){
+      setData(initialData)
+      let filtered = data.filter((item : any) => {
+        return item.name.toLowerCase().match(search.toLowerCase()) || item.brand.toLowerCase().match(search.toLowerCase())
+    })
+      setData(filtered)
+    }
     if(search.length === 0){
       setData(initialData)
       if(sort.length !== 0){
-        gigaFilterFunction()
+        gigaSortFunction()
       }
     }
   }, [search])
   useEffect(() => {
-   gigaFilterFunction()
+   gigaSortFunction()
   }, [sort])
   
-  const gigaFilterFunction = () => {
+  const gigaSortFunction = () => {
     console.log("Sorting...");
     switch (sort) {
       case "price_up":
