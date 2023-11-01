@@ -23,7 +23,6 @@ export default function Men() {
   }, []);
   useEffect(() => {
     if(search.length !== 0){
-      setData(initialData)
       let filtered = data.filter((item : any) => {
         return item.name.toLowerCase().match(search.toLowerCase()) || item.brand.toLowerCase().match(search.toLowerCase())
     })
