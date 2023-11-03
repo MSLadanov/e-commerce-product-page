@@ -18,15 +18,19 @@ export default function Men() {
     setData(sneakers.filter((item: any) => item.sex === "MEN"));
     setInitialData(sneakers.filter((item: any) => item.sex === "MEN"))
   };
+  const searchFunction = (a : any,b : any)  => {
+    if (a.name.toLowerCase().match(search.toLowerCase()) || a.brand.toLowerCase().match(search.toLowerCase())){
+      return -1
+    } else {
+      return 0
+    }
+  }
   useEffect(() => {
     getSneakers();
   }, []);
   useEffect(() => {
     if(search.length !== 0){
-      let filtered = data.filter((item : any) => {
-        return item.name.toLowerCase().match(search.toLowerCase()) || item.brand.toLowerCase().match(search.toLowerCase())
-    })
-      setData(filtered)
+      data.sort((a:any,b:any) => searchFunction(a,b))
     }
     if(search.length === 0){
       setData(initialData)
