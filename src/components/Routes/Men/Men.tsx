@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useState, useEffect } from "react";
 import { SneakerCard } from "../../SneakerCard/SneakerCard";
+import { SearchAndSort } from "../../SearchAndSort/SearchAndSort";
 import { useDispatch, useSelector } from "react-redux";
 import { getSortData } from "../../../redux/slices/sortSlice";
 import { getSearchData } from "../../../redux/slices/searchSlice";
@@ -44,7 +45,6 @@ export default function Men() {
   }, [sort])
   
   const gigaSortFunction = () => {
-    console.log("Sorting...");
     switch (sort) {
       case "price_up":
         data.sort((a:any,b:any) => b.price - a.price)
@@ -60,20 +60,17 @@ export default function Men() {
         break;
     }
   }
-  if (search.length === 0 && sort.length === 0) {
-    console.log("Do nothing...");
-  }
-  if (search.length !== 0 && sort.length !== 0) {
-    console.log("Sorting and searching...");
-  }
   if (!data.length) {
     return <div>No data!</div>;
   }
   return (
-    <div className="cards">
-      {data.map((item, index) => (
+    <>
+      <SearchAndSort />
+      <div className="cards">
+        {data.map((item, index) => (
           <SneakerCard sneaker={item} key={index} />
         ))}
-    </div>
+      </div>
+    </>
   );
 }

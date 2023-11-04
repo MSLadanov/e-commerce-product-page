@@ -162,6 +162,7 @@
 @media (max-width:961px){
   .sneaker-page{
     flex-direction: column;
+    width: 100%;
   }
   .image-box{
     display: flex;
@@ -190,4 +191,14 @@
     margin: 0px;
 }
 }
-
+@media (max-width: 576px) {
+  .main-image img{
+      height: 600px;
+  }
+  .thumbnail img{
+    height: 80px;
+  }
+  .info-box{
+    padding: 0px 5px;
+  }
+  }
