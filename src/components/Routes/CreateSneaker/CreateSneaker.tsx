@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Formik, Form, Field, useField } from "formik";
+import { Formik, Form, Field } from "formik";
 import { useSelector } from "react-redux";
 import { getToken } from "../../../redux/slices/userSlice";
 import * as Yup from "yup";
@@ -32,7 +32,7 @@ export const CreateSneaker = () => {
 }
   const [sneakerImage, setSneakerImage] = useState<any>(null)
   const checkAccessRights = async () => {
-    const info = await axios
+    await axios
       .get(`http://localhost:3001/api/basket/all`, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -77,7 +77,7 @@ export const CreateSneaker = () => {
             imgArray.map((item:any, index) => {
               formData.append(`img${index+1}`, sneakerImage[index]);
             })
-            const sneaker = axios.post(
+            axios.post(
               "http://localhost:3001/api/sneaker/",
               formData,
               {

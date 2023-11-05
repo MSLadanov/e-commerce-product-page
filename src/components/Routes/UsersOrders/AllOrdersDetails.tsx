@@ -6,7 +6,6 @@ import axios from 'axios';
 export const AllOrdersDetails = ({order} :any) => {
   const ref = useRef(document.createElement("div"));
   const statusHandlerRef = useRef(document.createElement('div'))
-  const [showStatusHandler, setShowStatusHandler] = useState(false)
   const [userInfo, setUserInfo] = useState({
     name: "",
     surname: "",
@@ -27,7 +26,7 @@ export const AllOrdersDetails = ({order} :any) => {
     return convertedArray;
   };
   const deleteOrder = async (id: any) => {
-    const response = await axios({
+    await axios({
       method: "delete",
       url: `http://localhost:3001/api/basket/delete/${id}`,
       headers: {
@@ -37,7 +36,7 @@ export const AllOrdersDetails = ({order} :any) => {
     });
   };
   const getUserInfo = async (id: any) => {
-    const response = await axios({
+    await axios({
       method: "get",
       url: `http://localhost:3001/api/user/info/${id}`,
       headers: {

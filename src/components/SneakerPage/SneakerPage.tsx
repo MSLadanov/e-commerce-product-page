@@ -5,15 +5,12 @@ import axios from "axios";
 import { addSneaker } from "../../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from 'uuid';
-import ErrorPage from "../Routes/Error/Error";
 import "./style.scss";
 
 export const SneakerPage = () => {
   const dispatch = useDispatch();
   const [
-    openDropdown,
     setOpenDropdown,
-    openCartDropdown,
     setOpenCartDropdown,
   ]: any = useOutletContext();
   let { id, sex } = useParams();
@@ -69,7 +66,9 @@ export const SneakerPage = () => {
               .composedPath()
               .find((item: any) => item.className === "account-button-user")
           ) {
-            setOpenDropdown(false);
+            // setOpenDropdown(false);
+            console.log(setOpenDropdown)
+            setOpenCartDropdown(false)
           }
           if (
             !event

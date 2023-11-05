@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import axios from "axios";
-import { useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { getCartData } from "../../../redux/slices/cartSlice";
 import { removeSneaker } from "../../../redux/slices/cartSlice";
@@ -10,7 +9,6 @@ import useNotify from '../../hooks/useNotify';
 import "./style.scss";
 
 export const Cart = () => {
-  const dropdownCartRef = useRef<HTMLInputElement>(null);
   const [toggleNotify] = useNotify()
   const [address, setAddress] = useState('')
   const cartData = useSelector(getCartData);
@@ -32,7 +30,6 @@ export const Cart = () => {
         address,
         sum
       }
-      console.log(orderDetails)
     const order = axios.post(
       "http://localhost:3001/api/basket/send",
       orderDetails,

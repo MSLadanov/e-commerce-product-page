@@ -18,8 +18,7 @@ export const OrderDetails = ({order} : any) => {
         return convertedArray
       }
       const cancelOrder = async (id : any) => {
-        console.log(token);
-      const response = await axios({
+      await axios({
         method: "post",
         url: `http://localhost:3001/api/basket/cancel/${id}`,
         headers: {

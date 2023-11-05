@@ -49,6 +49,9 @@
 @media (min-width: 1200px) {
 .footer-group{
     flex-direction: row;
+    & a{
+        margin: 0px 10px;
+    }
 }
 .footer-group a{
     margin: 0px 10px;
