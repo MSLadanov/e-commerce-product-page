@@ -108,7 +108,9 @@ export const Header = ({
           <div
             ref={cartDropdownBtnRef}
             className="account-button-cart"
-            onClick={() => setOpenCartDropdown(true)}
+            onClick={() => {
+              setOpenCartDropdown(true)
+            }}
           >
             <img src="/images/icon-cart.svg" alt="cart" />
           </div>

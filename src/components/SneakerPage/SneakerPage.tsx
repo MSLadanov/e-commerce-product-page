@@ -10,8 +10,11 @@ import "./style.scss";
 export const SneakerPage = () => {
   const dispatch = useDispatch();
   const [
+    openDropdown,
     setOpenDropdown,
+    openCartDropdown,
     setOpenCartDropdown,
+    blur,
   ]: any = useOutletContext();
   let { id, sex } = useParams();
   const btnDropDownRef = useRef<HTMLButtonElement>(null);
@@ -66,8 +69,7 @@ export const SneakerPage = () => {
               .composedPath()
               .find((item: any) => item.className === "account-button-user")
           ) {
-            // setOpenDropdown(false);
-            console.log(setOpenDropdown)
+            setOpenDropdown(false);
             setOpenCartDropdown(false)
           }
           if (
@@ -78,7 +80,10 @@ export const SneakerPage = () => {
               .composedPath()
               .find((item: any) => item.className === "account-button-cart")
           ) {
+            console.log('close dropdown')
             setOpenCartDropdown(false)
+          } else {
+            setOpenCartDropdown(true)
           }
         }
       }
