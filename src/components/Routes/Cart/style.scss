@@ -2,12 +2,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-.cart-item img:first-child {
-    height: 500px;
-}
-.cart-item img:last-child {
-    cursor: pointer;
+    & img:first-child{
+        height: 500px;
+    }
+    & img:last-child {
+        cursor: pointer;
+    }
 }
 .center{
     display: flex;
