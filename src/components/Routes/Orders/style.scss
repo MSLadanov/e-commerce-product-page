@@ -2,34 +2,36 @@
     display: flex;
     justify-content: space-between;
     margin: 20px 0px;
+    & .title {
+        display: flex;
+        flex-direction: column;
+    }
+    & p {
+        display: flex;
+        align-items: center;
+    }
+    & button{
+        height: 50px;
+    }
 }
-.order-card .title {
-    display: flex;
-    flex-direction: column;
-}
-.order-card p {
-    display: flex;
-    align-items: center;
-}
+
 .order-cart-data-details{
     display: flex;
+    & p{
+        display: flex;
+        align-items: center;
+        margin: 5px;
+    }
+    & img{
+        height: 100px;
+    }
 }
-.order-cart-data-details p{
-    display: flex;
-    align-items: center;
-    margin: 5px;
-}
-.order-cart-data-details img{
-    height: 100px;
-}
-.order-card button{
-    height: 50px;
-}
+
 .cancel-order-btn{
     display: flex;
     align-items: center;
     cursor: pointer;
-}
-.cancel-order-btn img{
-    height: 50px;
+    & img{
+        height: 50px;
+    }
 }
