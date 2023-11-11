@@ -7,42 +7,44 @@
     padding: 20px 10px;
     justify-content: space-between;
     border-radius: 10px;
+    & p{
+        display: flex;
+        align-items: center;
+    }
 }
-.all-orders-card p{
-    display: flex;
-    align-items: center;
-}
+
 .arrow{
     margin: 10px;
     cursor: pointer;
     width: 50px;
     transition: ease-in 0.1s;
+    & :hover{
+        transform: translateX(20px);
+    }
 }
-.arrow:hover{
-    transform: translateX(20px) ;
-}
+
 .all-orders-card-data{
     display: flex;
+    & p{
+        display: flex;
+        align-items: center;
+        margin: 0px 15px;
+    }
 }
-.all-orders-card-data p{
-    display: flex;
-    align-items: center;
-    margin: 0px 15px;
-}
+
 .all-orders-cart-data-details{
     display: flex;
     justify-content: space-between;
     padding: 0px 25px;
+    & p{
+        display: flex;
+        justify-content: center;
+        width: 250px;
+    }
+    & img{
+        height: 100px;
+    }
 }
-.all-orders-cart-data-details p{
-    display: flex;
-    justify-content: center;
-    width: 250px;
-}
-.all-orders-cart-data-details img{
-    height: 100px;
-}
-
 
 .all-orders-details-container{
     height: 0;
