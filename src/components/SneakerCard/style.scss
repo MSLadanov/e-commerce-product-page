@@ -5,30 +5,28 @@
   align-items: center;
   height: 600px;
   width: 300px;
-}
-.card img {
-  height: 300px;
-}
-.card h2 {
-  text-align: center;
-  color: hsl(220, 13%, 13%);
-  margin: 0px;
-}
-.card h3,
-h4 {
-  text-align: center;
-  color: hsl(219, 9%, 45%);
-  margin: 0px;
-}
-
-.card button {
-  display: block;
-  border: none;
-  border-radius: 5px;
-  background-color: hsl(220, 13%, 13%);
-  color: white;
-  margin-top: 15px;
-  height: 35px;
+  & img {
+    height: 300px;
+  }
+  & h2 {
+    text-align: center;
+    color: hsl(220, 13%, 13%);
+    margin: 0px;
+  }
+  & h3, h4 {
+    text-align: center;
+    color: hsl(219, 9%, 45%);
+    margin: 0px;
+  }
+  & button {
+    display: block;
+    border: none;
+    border-radius: 5px;
+    background-color: hsl(220, 13%, 13%);
+    color: white;
+    margin-top: 15px;
+    height: 35px;
+  }
 }
 .discount {
   position: relative;
