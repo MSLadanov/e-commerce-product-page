@@ -11,17 +11,17 @@
 }
 .thumbnails {
     padding: 5px;
-}
-.thumbnails img{
-    height: 150px;
-    cursor: pointer;
+    & img{
+      height: 150px;
+      cursor: pointer;
+      & :hover{
+        height: 148px;
+        border: 1px solid black;
+        border-radius: 10px;
+    }
+  }
 }
 
-.thumbnails img:hover{
-    height: 148px;
-    border: 1px solid black;
-    border-radius: 10px;
-}
 .thumbnail{
     margin: 0px 10px;
 }
@@ -31,30 +31,33 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    & h4{
+      text-align: left;
+      color: hsl(26, 100%, 55%);
+  }
 }
-.info-box h4{
-    text-align: left;
-    color: hsl(26, 100%, 55%);
-}
+
 .price-box{
     display: flex;
-}
-.price-box h2{
-    margin: 0;
-}
-.price-box .discount{
+    & h2{
+      margin: 0;
+  }
+   & .discount{
     margin-left: 20px;
     font-weight: bolder;
     border: none;
     background-color: rgba(255, 125, 26, 0.1);;
     position: static;
 }
+}
+
 .zero-discount{
   background-color: white !important;
+  & h4 {
+    color: white !important;
+  }
 }
-.zero-discount h4 {
-  color: white !important;
-}
+
 .sizes-box{
     display: flex;
     margin-bottom: 15px;
@@ -85,14 +88,13 @@
 .dropdown__btn {
   all: unset;
   cursor: pointer;
-}
-
-.dropdown__btn img {
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
+  & img {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
 }
 
 .dropdown__content {
@@ -113,18 +115,17 @@
   padding: 0;
   transform: translateY(-5px);
   z-index: 999;
-}
-
-.dropdown__content:after {
-  content: "";
-  position: absolute;
-  top: -5px;
-  left: 17px;
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-bottom: 5px solid #fff;
+  & :after {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: 17px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #fff;
+  }
 }
 
 .dropdown__content.open {
