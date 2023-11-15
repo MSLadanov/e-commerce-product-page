@@ -5,6 +5,7 @@ import axios from "axios";
 import { addSneaker } from "../../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from 'uuid';
+import useNotify from '../hooks/useNotify';
 import "./style.scss";
 
 export const SneakerPage = () => {
@@ -23,6 +24,7 @@ export const SneakerPage = () => {
   const onClick = (e: any) => {
     setIsActive(!isActive);
   };
+  const [toggleNotify]= useNotify();
   const [sneakerInfo, setSneakerInfo] = useState({
     id:null,
     name: null,
@@ -107,6 +109,7 @@ export const SneakerPage = () => {
       size
     }
     dispatch(addSneaker(sneaker));
+    toggleNotify('Товар добавлен в корзину!')
   }
 
   if (sneakerInfo.name !== null) {
