@@ -34,7 +34,7 @@ export const Header = ({
   const [userImage, setUserImage] = useState("/images/image-user.png");
   const dispatch = useDispatch();
 
-  const toggleMobileDropdown = (dropdownType:any) => {
+  const toggleMobileDropdown = (dropdownType:string) => {
     setOpenMobileDropdown(dropdownType)
     setBlur(true)
   }
