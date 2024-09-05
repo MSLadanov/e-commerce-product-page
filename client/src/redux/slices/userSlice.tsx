@@ -2,7 +2,15 @@ import { createSlice } from "@reduxjs/toolkit";
 
 interface IITokenState {
   token: null | string;
-  data: null | string;
+  data: null | UserData;
+}
+
+interface UserData {
+  id: string,
+  name: string,
+  surname: string,
+  email: string,
+  img: string,
 }
 
 export const userSlice = createSlice({
@@ -25,9 +33,9 @@ export const userSlice = createSlice({
   },
 });
 
-export const getToken = (state: any) => state.user.token;
+export const getToken = (state: {user: IITokenState}) => state.user.token;
 
-export const getUserData = (state: any) => state.user.data;
+export const getUserData = (state: {user: IITokenState}) => state.user.data;
 
 export const { signIn, fetchData, signOut } = userSlice.actions;
 

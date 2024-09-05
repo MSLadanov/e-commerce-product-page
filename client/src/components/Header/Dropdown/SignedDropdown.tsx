@@ -15,7 +15,7 @@ export const SignedDropdown = ({ userImage, setUserImage }: any) => {
         src={userImage}
         alt="user"
       />
-      <h1>{userData.name + ' ' + userData.surname}</h1>
+      {userData && <h1>{userData.name + ' ' + userData.surname}</h1>}
       <button onClick={() => {
            dispatch(signOut())
            setUserImage("/images/image-user.png")
