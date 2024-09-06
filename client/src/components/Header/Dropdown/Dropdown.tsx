@@ -4,7 +4,20 @@ import { SignedDropdown } from "./SignedDropdown";
 import { UnsignedDropdown } from "./UnsignedDropdown";
 import "./style.scss";
 
-export const Dropdown = ({ token, openDropdown, setOpenDropdown, userData, userImage, setUserImage, dropdownBtnRef , openCartDropdown, setOpenCartDropdown, cartDropdownBtnRef }: any) => {
+interface DropdownProps {
+  token: string | null, 
+  openDropdown: boolean, 
+  setOpenDropdown: (state : boolean) => void, 
+  userData: any, 
+  userImage: string, 
+  setUserImage: (state : string) => void, 
+  dropdownBtnRef: React.RefObject<HTMLInputElement>, 
+  openCartDropdown: boolean, 
+  setOpenCartDropdown: (state : boolean) => void, 
+  cartDropdownBtnRef: React.RefObject<HTMLInputElement>
+}
+
+export const Dropdown = ({ token, openDropdown, setOpenDropdown, userData, userImage, setUserImage, dropdownBtnRef , openCartDropdown, setOpenCartDropdown, cartDropdownBtnRef }: DropdownProps) => {
   const dropdownRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
     window.onclick = (event: any) => {
