@@ -5,6 +5,13 @@ import * as Yup from "yup";
 import axios from "axios";
 import useNotify from "../../hooks/useNotify";
 
+interface SignUpData {
+  name: string;
+  surname: string;
+  email: string;
+  password: string;
+}
+
 const SignInSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
   password: Yup.string().required("Required"),

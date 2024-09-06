@@ -7,7 +7,7 @@ import '../style.scss'
 export const SortBar = () => {
   const dispatch = useDispatch()
   const sort = useSelector(getSortData);
-  const getDefaultSort = (type:any) =>{
+  const getDefaultSort = (type:string) =>{
     switch (type) {
       case 'price_up':
         return `Price ↑`

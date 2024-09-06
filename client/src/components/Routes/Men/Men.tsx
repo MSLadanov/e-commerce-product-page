@@ -8,6 +8,14 @@ import { getSortData } from "../../../redux/slices/sortSlice";
 import { getSearchData } from "../../../redux/slices/searchSlice";
 import "./style.scss";
 
+interface Sneaker {
+  sex: string
+  name: string,
+  brand: string,
+  price: number,
+  discount: number
+}
+
 export default function Men() {
   const [data, setData] = useState([]);
   const [initialData, setInitialData] = useState([])
@@ -16,11 +24,11 @@ export default function Men() {
   const getSneakers = async () => {
     const sneakers = (await axios.get("http://localhost:3001/api/sneaker/"))
       .data as any;
-    setData(sneakers.filter((item: any) => item.sex === "MEN"));
-    setInitialData(sneakers.filter((item: any) => item.sex === "MEN"))
+    setData(sneakers.filter((item: Sneaker) => item.sex === "MEN"));
+    setInitialData(sneakers.filter((item: Sneaker) => item.sex === "MEN"))
   };
-  const searchFunction = (a : any,b : any)  => {
-    if (a.name.toLowerCase().match(search.toLowerCase()) || a.brand.toLowerCase().match(search.toLowerCase())){
+  const searchFunction = (a : Sneaker,b : Sneaker)  => {
+    if (a.name.toLowerCase().match(search.taoLowerCase()) || a.brand.toLowerCase().match(search.toLowerCase())){
       return -1
     } else {
       return 0
@@ -31,7 +39,7 @@ export default function Men() {
   }, []);
   useEffect(() => {
     if(search.length !== 0){
-      data.sort((a:any,b:any) => searchFunction(a,b))
+      data.sort((a:Sneaker,b:Sneaker) => searchFunction(a,b))
     }
     if(search.length === 0){
       setData(initialData)
@@ -47,16 +55,16 @@ export default function Men() {
   const gigaSortFunction = () => {
     switch (sort) {
       case "price_up":
-        data.sort((a:any,b:any) => b.price - a.price)
+        data.sort((a:Sneaker,b:Sneaker) => b.price - a.price)
         break;
       case "discount_up":
-        data.sort((a:any,b:any) => b.discount - a.discount)
+        data.sort((a:Sneaker,b:Sneaker) => b.discount - a.discount)
         break;
       case "discount_down":
-        data.sort((a:any,b:any) => a.discount - b.discount)
+        data.sort((a:Sneaker,b:Sneaker) => a.discount - b.discount)
         break;
       case "price_down":
-        data.sort((a:any,b:any) => a.price - b.price)
+        data.sort((a:Sneaker,b:Sneaker) => a.price - b.price)
         break;
     }
   }
