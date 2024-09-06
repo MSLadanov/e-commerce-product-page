@@ -1,4 +1,4 @@
-import React from "react";
+import React, { JSXElementConstructor } from "react";
 import { useState, useEffect, useRef } from "react";
 import { useOutletContext, useParams } from "react-router-dom";
 import axios from "axios";
@@ -56,11 +56,11 @@ export const SneakerPage = () => {
     }));
   }, [sneakerInfo.img1]);
   useEffect(() => {
-    window.onclick = (event: any) => {
+    window.onclick = (event: MouseEvent ) => {
       if (event.target !== btnDropDownRef.current) {
         if (
-          !dropdownRef.current?.contains(event.target) &&
-          !dropdownRef.current?.contains(event.target)
+          !dropdownRef.current?.contains(event.target as Node) &&
+          !dropdownRef.current?.contains(event.target as Node)
         ) {
           setIsActive(false);
           if (
@@ -98,7 +98,7 @@ export const SneakerPage = () => {
     }));
   };
 
-  const addToCart = (size : any) => {
+  const addToCart = (size : string) => {
     const sneaker = {
       id: sneakerInfo.id,
       cart_id: uuidv4(),
@@ -190,7 +190,7 @@ export const SneakerPage = () => {
                 <div className="dropdown__info">
                   <h3>Available sizes:</h3>
                   <div className="sizes-box">
-                    {sneakerInfo.sizes.map<React.ReactNode>((item, index) => {
+                    {sneakerInfo.sizes.map((item, index) => {
                       return (
                         <div className="size-box" key={index} onClick={() => addToCart(item)}>
                           {item}
