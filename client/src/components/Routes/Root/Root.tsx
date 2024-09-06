@@ -17,14 +17,14 @@ function Root() {
   const [openCartDropdown, setOpenCartDropdown] = useState(false)
   const [blur, setBlur] = useState(false)
   const isShown = useSelector(getIsShown)
-  const [openMobileDropdown, setOpenMobileDropdown] = useState(null)
+  const [openMobileDropdown, setOpenMobileDropdown] = useState<null | string>(null)
   const mobileMenuRef = useRef<HTMLElement>(null);
   const dispatch = useDispatch();
   const [toggleNotify]= useNotify();
 
   const [openSideMenu, setOpenSideMenu] = useState(false)
 
-  const toggleMobileMenu = (mobileMenuBtnRef : any, mobileMenuRef : any) => {
+  const toggleMobileMenu = (mobileMenuBtnRef : React.RefObject<HTMLInputElement>, mobileMenuRef : React.RefObject<HTMLInputElement>) => {
     if(!mobileMenuRef.current?.scrollWidth){
       mobileMenuBtnRef.current?.children[0].classList.add('rotate-up')
       mobileMenuBtnRef.current?.children[1].classList.add('hiding')

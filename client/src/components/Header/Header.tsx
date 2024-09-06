@@ -11,6 +11,19 @@ import "./style.scss";
 import axios from "axios";
 import { CartDropdown } from "./Dropdown/CartDropdown";
 
+interface HeaderProps {
+  openDropdown: boolean,
+  setOpenDropdown: (state: boolean) => void,
+  openCartDropdown: boolean,
+  setOpenCartDropdown: (state: boolean) => void,
+  setBlur: (state: boolean) => void,
+  setOpenMobileDropdown: (state: null | string) => void,
+  openMobileDropdown: null | string,
+  toggleMobileMenu: (mobileMenuBtnRef : React.RefObject<HTMLInputElement>, mobileMenuRef : React.RefObject<HTMLInputElement>) => void,
+  openSideMenu: boolean,
+  setOpenSideMenu: (state: boolean) => void,
+}
+
 export const Header = ({
   openDropdown,
   setOpenDropdown,
@@ -22,7 +35,7 @@ export const Header = ({
   toggleMobileMenu,
   openSideMenu,
   setOpenSideMenu
-}: any) => {
+}: HeaderProps) => {
   const dropdownBtnRef = useRef<HTMLInputElement>(null);
   const cartDropdownBtnRef = useRef<HTMLInputElement>(null);
 
