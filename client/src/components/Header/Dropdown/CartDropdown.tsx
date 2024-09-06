@@ -8,14 +8,7 @@ import { getToken } from "../../../redux/slices/userSlice";
 import { NavLink } from "react-router-dom";
 import "./style.scss";
 
-export const CartDropdown = ({
-  openCartDropdown,
-  setOpenCartDropdown,
-  cartDropdownBtnRef,
-  openDropdown,
-  setOpenDropdown,
-  dropdownBtnRef,
-}: any) => {
+export const CartDropdown = ({ openCartDropdown,} : {openCartDropdown: boolean}) => {
   const dropdownCartRef = useRef<HTMLInputElement>(null);
   const cartData = useSelector(getCartData);
   const dispatch = useDispatch();

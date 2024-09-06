@@ -137,11 +137,6 @@ export const Header = ({
         </div>
         <CartDropdown
           openCartDropdown={openCartDropdown}
-          setOpenCartDropdown={setOpenCartDropdown}
-          cartDropdownBtnRef={cartDropdownBtnRef}
-          openDropdown={openDropdown}
-          setOpenDropdown={setOpenDropdown}
-          dropdownBtnRef={dropdownBtnRef}
         />
         <Dropdown
           token={token}
