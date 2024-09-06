@@ -6,10 +6,18 @@ import axios from "axios";
 import './style.scss'
 import { AllOrdersDetails } from './AllOrdersDetails';
 
+interface Order {
+  id: any,
+  data: any,
+  status: any,
+  address: any,
+  sum: any 
+}
+
 export const UsersOrders = () => {
     const token = useSelector(getToken);
-    const [orders, setOrders] = useState<any>([]);
-    const [accessError, setAccessError] = useState<any>(null)
+    const [orders, setOrders] = useState<[] | Order[]>([]);
+    const [accessError, setAccessError] = useState<null | string>(null)
     const getOrdersInfo = async () => {
       const info = (await axios.get(`http://localhost:3001/api/basket/all`,{
         headers: {
@@ -38,7 +46,7 @@ export const UsersOrders = () => {
     }
   return (
     <div className='all-orders-card-container'>
-      {orders.filter((item : any) => item.status !== 'current').map((item : any) => {
+      {orders.filter((item : Order) => item.status !== 'current').map((item : Order) => {
         return (
           <AllOrdersDetails order={item} key={item.id}/>
         );

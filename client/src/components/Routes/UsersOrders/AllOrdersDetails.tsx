@@ -3,7 +3,15 @@ import { useSelector } from 'react-redux';
 import { getToken } from "../../../redux/slices/userSlice";
 import axios from 'axios';
 
-export const AllOrdersDetails = ({order} :any) => {
+interface Order {
+  id: any,
+  data: any,
+  status: any,
+  address: any,
+  sum: any 
+}
+
+export const AllOrdersDetails = ({order} : any) => {
   const ref = useRef(document.createElement("div"));
   const statusHandlerRef = useRef(document.createElement('div'))
   const [userInfo, setUserInfo] = useState({
@@ -25,7 +33,7 @@ export const AllOrdersDetails = ({order} :any) => {
     const convertedArray = JSON.parse(arr.replace("/"));
     return convertedArray;
   };
-  const deleteOrder = async (id: any) => {
+  const deleteOrder = async (id: string) => {
     await axios({
       method: "delete",
       url: `http://localhost:3001/api/basket/delete/${id}`,
@@ -35,7 +43,7 @@ export const AllOrdersDetails = ({order} :any) => {
       },
     });
   };
-  const getUserInfo = async (id: any) => {
+  const getUserInfo = async (id: string) => {
     await axios({
       method: "get",
       url: `http://localhost:3001/api/user/info/${id}`,
