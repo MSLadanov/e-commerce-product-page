@@ -4,11 +4,11 @@ import { getToken } from "../../../redux/slices/userSlice";
 import axios from 'axios';
 
 interface Order {
-  id: any,
-  data: any,
-  status: any,
-  address: any,
-  sum: any 
+  id: string,
+  data: string,
+  status: string,
+  address: string,
+  sum: string 
 }
 
 export const AllOrdersDetails = ({order} : any) => {

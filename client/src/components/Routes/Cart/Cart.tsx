@@ -8,6 +8,14 @@ import { getToken } from "../../../redux/slices/userSlice";
 import useNotify from '../../hooks/useNotify';
 import "./style.scss";
 
+interface Order {
+  id: string,
+  data: string,
+  status: string,
+  address: string,
+  sum: string 
+}
+
 export const Cart = () => {
   const [toggleNotify] = useNotify()
   const [address, setAddress] = useState('')
@@ -24,7 +32,7 @@ export const Cart = () => {
       price: item.price,
       img: item.img
     });})
-    let sum = cartData.reduce(function (acc : any, obj : any) { return acc + obj.price; }, 0);
+    let sum = cartData.reduce(function (acc : number, obj : any) { return acc + obj.price; }, 0);
     const orderDetails = {
         order:orderData,
         address,
