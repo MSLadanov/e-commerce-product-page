@@ -27,7 +27,7 @@ export default function Men() {
     setData(sneakers.filter((item: Sneaker) => item.sex === "MEN"));
     setInitialData(sneakers.filter((item: Sneaker) => item.sex === "MEN"))
   };
-  const searchFunction = (a : Sneaker,b : Sneaker)  => {
+  const searchFunction = (a : Sneaker, b : Sneaker)  => {
     if (a.name.toLowerCase().match(search.taoLowerCase()) || a.brand.toLowerCase().match(search.toLowerCase())){
       return -1
     } else {
