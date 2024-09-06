@@ -10,10 +10,11 @@ import "./style.scss";
 
 interface Order {
   id: string,
-  data: string,
-  status: string,
-  address: string,
-  sum: string 
+  name: string,
+  brand: string,
+  size: string,
+  price: number,
+  img: string
 }
 
 export const Cart = () => {
@@ -23,8 +24,8 @@ export const Cart = () => {
   const dispatch = useDispatch();
   const token = useSelector(getToken);
   const makeOrder = () => {
-    const orderData: any[] = []
-    cartData.map((item : any) => {orderData.push({
+    const orderData: Order[] = []
+    cartData.map((item : Order) => {orderData.push({
       id: item.id,
       name: item.name,
       brand: item.brand,
@@ -32,7 +33,7 @@ export const Cart = () => {
       price: item.price,
       img: item.img
     });})
-    let sum = cartData.reduce(function (acc : number, obj : any) { return acc + obj.price; }, 0);
+    let sum = cartData.reduce(function (acc : number, obj : Order) { return acc + obj.price; }, 0);
     const orderDetails = {
         order:orderData,
         address,
