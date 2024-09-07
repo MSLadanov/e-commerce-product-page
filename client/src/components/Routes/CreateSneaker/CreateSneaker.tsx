@@ -21,7 +21,7 @@ const SignInSchema = Yup.object().shape({
 export const CreateSneaker = () => {
   const [toggleNotify] = useNotify()
   const token = useSelector(getToken);
-  const [accessError, setAccessError] = useState<any>(null)
+  const [accessError, setAccessError] = useState<null | string>(null)
     function getFormData(object:any) {
     const formData = new FormData();
     Object.keys(object).forEach(key => {

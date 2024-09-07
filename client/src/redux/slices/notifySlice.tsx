@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 interface INotify {
     text: string,
-    isShown: Boolean
+    isShown: boolean
 }
 
 export const notifySlice = createSlice({
@@ -12,16 +12,16 @@ export const notifySlice = createSlice({
     isShown: false
   } as INotify,
   reducers: {
-    changeText: (state: any, action) => {
+    changeText: (state: {text: string}, action) => {
       state.text = action.payload;
     },
-    removeText: (state: any) => {
+    removeText: (state: {text: string}) => {
       state.text = '' 
     },
-    showNotify: (state: any) => {
+    showNotify: (state: {isShown : boolean}) => {
       state.isShown = true;
     },
-    hideNotify: (state: any) => {
+    hideNotify: (state: {isShown : boolean}) => {
       state.isShown = false
     },
   },
