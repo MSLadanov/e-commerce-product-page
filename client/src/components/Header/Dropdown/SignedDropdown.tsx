@@ -5,7 +5,12 @@ import { signOut } from "../../../redux/slices/userSlice";
 import { useDispatch } from "react-redux";
 import './style.scss'
 
-export const SignedDropdown = ({ userImage, setUserImage }: any) => {
+interface SignedDropdownProps{
+  userImage: string,
+  setUserImage: (state: string) => void,
+}
+
+export const SignedDropdown = ({ userImage, setUserImage }: SignedDropdownProps) => {
   const userData = useSelector(getUserData);
   const dispatch = useDispatch()
   return (
