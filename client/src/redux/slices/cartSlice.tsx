@@ -10,7 +10,7 @@ interface ISneaker {
 }
 
 interface ICartState {
-  data: ISneaker[] | null;
+  data: ISneaker[] | [];
 }
 
 export const cartSlice = createSlice({
@@ -19,10 +19,10 @@ export const cartSlice = createSlice({
     data: [],
   } as ICartState,
   reducers: {
-    addSneaker: (state: any, action) => {
+    addSneaker: (state: ICartState, action) => {
       state.data = [...state.data, action.payload];
     },
-    removeSneaker: (state: any, action) => {
+    removeSneaker: (state: ICartState, action) => {
       state.data = state.data.filter((item : any) => item.cart_id !== action.payload)
     },
   },
