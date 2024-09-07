@@ -28,9 +28,9 @@ export const notifySlice = createSlice({
 });
 
 
-export const getNotifyData = (state: any) => state.notify.text;
+export const getNotifyData = (state: {notify : INotify}) => state.notify.text;
 
-export const getIsShown = (state: any) => state.notify.isShown;
+export const getIsShown = (state: {notify : INotify}) => state.notify.isShown;
 
 export const { changeText, removeText, showNotify, hideNotify } = notifySlice.actions;
 

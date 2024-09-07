@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import React from "react";
 import { useState, useEffect } from "react";
 import { SneakerCard } from "../../SneakerCard/SneakerCard";
@@ -23,7 +23,7 @@ export default function Men() {
   const search = useSelector(getSearchData);
   const getSneakers = async () => {
     const sneakers = (await axios.get("http://localhost:3001/api/sneaker/"))
-      .data as any;
+      .data;
     setData(sneakers.filter((item: Sneaker) => item.sex === "MEN"));
     setInitialData(sneakers.filter((item: Sneaker) => item.sex === "MEN"))
   };

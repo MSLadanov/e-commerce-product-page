@@ -4,7 +4,26 @@ import { getToken } from "../../../redux/slices/userSlice";
 import axios from 'axios';
 import './style.scss'
 
-export const OrderDetails = ({order} : any) => {
+interface OrderDetailsProps {
+ order: any
+}
+
+interface Order {
+  id: string,
+  data: OrderSneaker[],
+  address: string,
+  sum: string,
+  status: string
+}
+
+interface OrderSneaker {
+  img: string,
+  name: string,
+  brand: string,
+  size: string
+}
+
+export const OrderDetails = ({order} : OrderDetailsProps) => {
   const token = useSelector(getToken);
     const getFormattedDate = (date : any) => {
         const formattedDate = date.split('T')
@@ -33,7 +52,7 @@ export const OrderDetails = ({order} : any) => {
       <p>{order.id}</p>
       <p>{order.data.brand}</p>
       <div className="order-card-data">
-        {convertArray(order.data).map((item: any, index : any) => {
+        {convertArray(order.data).map((item: OrderSneaker, index : number) => {
           return (
             <div className='order-cart-data-details' key={index}>
               <img src={`http://localhost:3001/${item.img}`} alt="" />

@@ -29,7 +29,7 @@ export const SignUp = () => {
     })
     return formData;
 }
-  const [userImage, setUserImage] = useState<any>(null)
+  const [userImage, setUserImage] = useState<Blob | string>('')
   return (
     <div>
       {" "}
