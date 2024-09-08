@@ -24,8 +24,8 @@ export default function Men() {
   const getSneakers = async () => {
     const sneakers = (await axios.get("http://localhost:3001/api/sneaker/"))
       .data;
-    setData(sneakers.filter((item: Sneaker) => item.sex === "MEN"));
-    setInitialData(sneakers.filter((item: Sneaker) => item.sex === "MEN"))
+    setData(sneakers.filter((item: Sneaker) => item.sex === "Men"));
+    setInitialData(sneakers.filter((item: Sneaker) => item.sex === "Men"))
   };
   const searchFunction = (a : Sneaker, b : Sneaker)  => {
     if (a.name.toLowerCase().match(search.toLowerCase()) || a.brand.toLowerCase().match(search.toLowerCase())){
