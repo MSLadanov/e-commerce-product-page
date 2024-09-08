@@ -10,6 +10,7 @@ const errorHandler = require('./middleware/ErrorHandlingMiddleware')
 const path = require('path')
 
 const port = process.env.PORT || 3001;
+const secretKey = process.env.SECRET_KEY
 
 app.use(cors())
 app.use(express.json())
