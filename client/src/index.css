@@ -16,7 +16,7 @@ body {
 
 .layout{
   filter: none;
-  height: 100pc;
+  height: 100%;
   transition: 0.5s;
 }
 .layout-blur{

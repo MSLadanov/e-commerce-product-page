@@ -1,13 +1,20 @@
 .sneaker-page{
     display: flex;
+    justify-content: center;
     z-index: 0;
+    margin: 40px 0px;
 }
 
 .thumbnails{
     display: flex;
 }
+.main-image {
+  height: 600px;
+  overflow: hidden;
+}
 .main-image img{
-    height: 700px;
+    max-width: 600px;
+    height: auto;
 }
 .thumbnails {
     padding: 5px;
@@ -194,7 +201,6 @@
 }
 @media (max-width: 576px) {
   .main-image img{
-      height: 600px;
   }
   .thumbnail img{
     height: 80px;
