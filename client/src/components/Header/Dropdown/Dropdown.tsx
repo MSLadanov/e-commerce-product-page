@@ -4,11 +4,19 @@ import { SignedDropdown } from "./SignedDropdown";
 import { UnsignedDropdown } from "./UnsignedDropdown";
 import "./style.scss";
 
+interface UserData {
+  id: number,
+  name: string,
+  surname: string,
+  email: string,
+  role: string,
+}
+
 interface DropdownProps {
   token: string | null, 
   openDropdown: boolean, 
   setOpenDropdown: (state : boolean) => void, 
-  userData: any, 
+  userData: UserData | null, 
   userImage: string, 
   setUserImage: (state : string) => void, 
   dropdownBtnRef: React.RefObject<HTMLInputElement>, 
@@ -19,6 +27,7 @@ interface DropdownProps {
 
 export const Dropdown = ({ token, openDropdown, setOpenDropdown, userData, userImage, setUserImage, dropdownBtnRef , openCartDropdown, setOpenCartDropdown, cartDropdownBtnRef }: DropdownProps) => {
   const dropdownRef = useRef<HTMLInputElement>(null);
+  console.log({userData})
   useEffect(() => {
     window.onclick = (event: any) => {
       if (
