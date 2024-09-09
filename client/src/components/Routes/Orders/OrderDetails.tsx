@@ -4,16 +4,14 @@ import { getToken } from "../../../redux/slices/userSlice";
 import axios from 'axios';
 import './style.scss'
 
-interface OrderDetailsProps {
- order: any
-}
 
 interface Order {
   id: string,
   data: OrderSneaker[],
   address: string,
   sum: string,
-  status: string
+  status: string,
+  updatedAt: string,
 }
 
 interface OrderSneaker {
@@ -23,7 +21,7 @@ interface OrderSneaker {
   size: string
 }
 
-export const OrderDetails = ({order} : OrderDetailsProps) => {
+export const OrderDetails = ({order} : {order: Order}) => {
   const token = useSelector(getToken);
     const getFormattedDate = (date : any) => {
         const formattedDate = date.split('T')
@@ -36,7 +34,7 @@ export const OrderDetails = ({order} : OrderDetailsProps) => {
         const convertedArray = JSON.parse(arr.replace('/'))
         return convertedArray
       }
-      const cancelOrder = async (id : any) => {
+      const cancelOrder = async (id : string) => {
       await axios({
         method: "post",
         url: `http://localhost:3001/api/basket/cancel/${id}`,
@@ -50,7 +48,6 @@ export const OrderDetails = ({order} : OrderDetailsProps) => {
     <div className="order-card">
       {" "}
       <p>{order.id}</p>
-      <p>{order.data.brand}</p>
       <div className="order-card-data">
         {convertArray(order.data).map((item: OrderSneaker, index : number) => {
           return (
