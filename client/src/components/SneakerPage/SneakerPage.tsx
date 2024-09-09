@@ -11,12 +11,9 @@ import "./style.scss";
 export const SneakerPage = () => {
   const dispatch = useDispatch();
   const [
-    openDropdown,
     setOpenDropdown,
-    openCartDropdown,
     setOpenCartDropdown,
-    blur,
-  ]: any = useOutletContext();
+  ]: [(state: boolean) => void, (state: boolean) => void] = useOutletContext();
   let { id, sex } = useParams();
   const btnDropDownRef = useRef<HTMLButtonElement>(null);
   const dropdownRef = useRef<HTMLInputElement>(null);
