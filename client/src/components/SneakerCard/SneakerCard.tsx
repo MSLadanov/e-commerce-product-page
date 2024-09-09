@@ -2,10 +2,13 @@ import React from "react";
 import "./style.scss";
 
 interface Sneaker {
+  id: string,
   discount: number,
   name: string,
   brand: string,
-  price: number
+  price: number,
+  sex: string,
+  img1: string,
 }
 
 export const SneakerCard = ({ sneaker }: { sneaker: Sneaker}) => {
