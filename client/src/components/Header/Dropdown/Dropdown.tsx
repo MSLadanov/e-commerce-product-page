@@ -5,11 +5,10 @@ import { UnsignedDropdown } from "./UnsignedDropdown";
 import "./style.scss";
 
 interface UserData {
-  id: number,
+  id: string,
   name: string,
   surname: string,
   email: string,
-  role: string,
 }
 
 interface DropdownProps {

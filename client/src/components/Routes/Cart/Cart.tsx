@@ -17,6 +17,16 @@ interface Order {
   img: string
 }
 
+interface CartSneaker {
+  brand: string,
+  cart_id: string,
+  id: number,
+  img: string,
+  name: string,
+  size: string,
+  price: number,
+}
+
 export const Cart = () => {
   const [toggleNotify] = useNotify()
   const [address, setAddress] = useState('')
@@ -59,7 +69,7 @@ export const Cart = () => {
   }
   return (
     <div>
-      {cartData.map((item: any) => (
+      {cartData.map((item: CartSneaker) => (
         <div className="cart-item" key={item.cart_id}>
           <img src={`http://localhost:3001/${item.img}`} alt="" />
           <p>{item.brand + " " + item.name + ", " + " Size: " + item.size}</p>
