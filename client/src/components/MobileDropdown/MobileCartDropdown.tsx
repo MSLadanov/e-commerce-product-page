@@ -8,6 +8,16 @@ import { getToken } from "../../redux/slices/userSlice";
 import { NavLink } from "react-router-dom";
 import "./style.scss";
 
+interface CartSneaker {
+  brand: string,
+  cart_id: string,
+  id: number,
+  img: string,
+  name: string,
+  size: string,
+  price: number,
+}
+
 export const MobileCartDropdown = () => {
   const cartData = useSelector(getCartData);
   const dispatch = useDispatch();
@@ -31,7 +41,7 @@ export const MobileCartDropdown = () => {
     >
       <h1>Cart</h1>
       <hr />
-      {cartData.map((item: any) => (
+      {cartData.map((item: CartSneaker) => (
         <div key={item.cart_id}>
           <img src={`http://localhost:3001/${item.img}`} alt="" />
           <p>{item.brand + " " + item.name}</p>
