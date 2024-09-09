@@ -1,7 +1,14 @@
 import React from "react";
 import "./style.scss";
 
-export const SneakerCard = ({ sneaker }: any) => {
+interface Sneaker {
+  discount: number,
+  name: string,
+  brand: string,
+  price: number
+}
+
+export const SneakerCard = ({ sneaker }: { sneaker: Sneaker}) => {
   return (
     <div className="card">
       <div className={sneaker.discount > 0 ? 'discount' : 'discount zero-discount'}>{`${sneaker.discount}%`}</div>
