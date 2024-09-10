@@ -1,16 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface ISneaker {
-    id: number,
-    name: string,
-    brand: string,
-    price: number,
-    size: string,
-    img: string
+interface ICartState {
+  data: CartSneaker[] | [];
 }
 
-interface ICartState {
-  data: ISneaker[] | [];
+interface CartSneaker {
+  brand: string,
+  cart_id: string,
+  id: number,
+  img: string,
+  name: string,
+  size: string,
+  price: number,
 }
 
 export const cartSlice = createSlice({
@@ -23,7 +24,7 @@ export const cartSlice = createSlice({
       state.data = [...state.data, action.payload];
     },
     removeSneaker: (state: ICartState, action) => {
-      state.data = state.data.filter((item : any) => item.cart_id !== action.payload)
+      state.data = state.data.filter((item : CartSneaker) => item.cart_id !== action.payload)
     },
   },
 });

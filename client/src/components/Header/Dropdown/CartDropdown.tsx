@@ -23,6 +23,7 @@ export const CartDropdown = ({ openCartDropdown} : {openCartDropdown: boolean}) 
   const cartData = useSelector(getCartData);
   const dispatch = useDispatch();
   const token = useSelector(getToken);
+  console.log(cartData)
   if (!cartData.length) {
     return (
       <div
