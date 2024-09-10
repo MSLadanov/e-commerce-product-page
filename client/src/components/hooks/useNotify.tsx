@@ -3,7 +3,7 @@ import { showNotify, hideNotify, changeText, removeText } from "../../redux/slic
 
 export default function useNotify () {
   const dispatch = useDispatch();
-  function toggleNotify (message: any){
+  function toggleNotify (message: string){
     dispatch(changeText(message))
     dispatch(showNotify());
     setTimeout(() => {
