@@ -3,7 +3,7 @@ import './style.scss'
 import { AccountDropdown } from './AccountDropdown';
 import { MobileCartDropdown } from './MobileCartDropdown';
 
-export const MobileDropdown = ({openMobileDropdown}:any) => {
+export const MobileDropdown = ({openMobileDropdown} : {openMobileDropdown : string}) => {
   if(openMobileDropdown === 'account'){
     return <div className="dropdown-modal">
       <AccountDropdown/>
