@@ -30,8 +30,8 @@ export const OrderDetails = ({order} : {order: Order}) => {
         month = datePart[1], day = datePart[2];
         return day + "." + month + "." + year;
       }
-      const convertArray = (arr:any) => {
-        const convertedArray = JSON.parse(arr.replace('/'))
+      const convertArray = (arr: string) => {
+        const convertedArray = JSON.parse(arr.replace('/', ''))
         return convertedArray
       }
       const cancelOrder = async (id : number) => {
