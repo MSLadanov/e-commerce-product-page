@@ -23,7 +23,7 @@ export default function Women() {
   const search = useSelector(getSearchData);
   const getSneakers = async () => {
     const sneakers = (await axios.get("http://localhost:3001/api/sneaker/"))
-      .data as any;
+      .data;
     setData(sneakers.filter((item: Sneaker) => item.sex === "Women"));
     setInitialData(sneakers.filter((item: Sneaker) => item.sex === "Women"))
   };
