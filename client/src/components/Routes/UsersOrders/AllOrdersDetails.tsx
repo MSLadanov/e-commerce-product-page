@@ -11,6 +11,15 @@ interface Order {
   sum: string 
 }
 
+interface CartSneaker {
+  brand: string,
+  id: number,
+  img: string,
+  name: string,
+  size: string,
+  price: number,
+}
+
 export const AllOrdersDetails = ({order} : any) => {
   const ref = useRef(document.createElement("div"));
   const statusHandlerRef = useRef(document.createElement('div'))
@@ -29,8 +38,8 @@ export const AllOrdersDetails = ({order} : any) => {
       day = datePart[2];
     return day + "." + month + "." + year;
   };
-  const convertArray = (arr: any) => {
-    const convertedArray = JSON.parse(arr.replace("/"));
+  const convertArray = (arr: string) => {
+    const convertedArray = JSON.parse(arr.replace("/", ''),);
     return convertedArray;
   };
   const deleteOrder = async (id: string) => {
@@ -92,7 +101,7 @@ export const AllOrdersDetails = ({order} : any) => {
         </div>
       </div>
       <div className="all-orders-details-container" ref={ref}>
-        {convertArray(order.data).map((item: any, index: any) => {
+        {convertArray(order.data).map((item: CartSneaker, index: number) => {
           return (
             <div className="all-orders-cart-data-details" key={index}>
               <img src={`http://localhost:3001/${item.img}`} alt="" />
