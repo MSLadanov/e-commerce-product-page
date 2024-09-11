@@ -36,10 +36,9 @@ export const Orders = () => {
             <div><h1>You must be signed for see link.</h1></div>
           )
     }
-  console.log(orders)
   return (
     <div>
-      {orders.filter((item : Order) => item.status !== 'current').map((item : any) => {
+      {orders.filter((item : Order) => item.status !== 'current').map((item : Order) => {
         return (
           <OrderDetails order={item} key={item.id}/>
         );

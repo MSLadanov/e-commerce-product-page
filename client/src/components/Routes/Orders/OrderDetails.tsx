@@ -6,8 +6,8 @@ import './style.scss'
 
 
 interface Order {
-  id: string,
-  data: OrderSneaker[],
+  id: number,
+  data: string,
   address: string,
   sum: string,
   status: string,
@@ -34,7 +34,7 @@ export const OrderDetails = ({order} : {order: Order}) => {
         const convertedArray = JSON.parse(arr.replace('/'))
         return convertedArray
       }
-      const cancelOrder = async (id : string) => {
+      const cancelOrder = async (id : number) => {
       await axios({
         method: "post",
         url: `http://localhost:3001/api/basket/cancel/${id}`,
