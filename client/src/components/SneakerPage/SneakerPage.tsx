@@ -38,7 +38,7 @@ export const SneakerPage = () => {
   });
   const getSneakerInfo = async () => {
     const info = (await axios.get(`http://localhost:3001/api/sneaker/${id}`))
-      .data as any;
+      .data;
     if (info.sex.toLowerCase() === sex) {
       setSneakerInfo(info);
     }
@@ -53,41 +53,42 @@ export const SneakerPage = () => {
     }));
   }, [sneakerInfo.img1]);
   useEffect(() => {
-    window.onclick = (event: MouseEvent ) => {
-      if (event.target !== btnDropDownRef.current) {
-        if (
-          !dropdownRef.current?.contains(event.target as Node) &&
-          !dropdownRef.current?.contains(event.target as Node)
-        ) {
-          setIsActive(false);
-          if (
-            !event
-              .composedPath()
-              .find((item: any) => item.className === "dropdown active") &&
-            !event
-              .composedPath()
-              .find((item: any) => item.className === "account-button-user")
-          ) {
-            setOpenDropdown(false);
-            setOpenCartDropdown(false)
-          }
-          if (
-            !event
-              .composedPath()
-              .find((item: any) => item.className === "cart-dropdown active") &&
-            !event
-              .composedPath()
-              .find((item: any) => item.className === "account-button-cart")
-          ) {
-            console.log('close dropdown')
-            setOpenCartDropdown(false)
-          } else {
-            setOpenCartDropdown(true)
-          }
+    window.onclick = (event: MouseEvent) => {
+        if (event.target !== btnDropDownRef.current) {
+            if (
+                !dropdownRef.current?.contains(event.target as Node) &&
+                !dropdownRef.current?.contains(event.target as Node)
+            ) {
+                setIsActive(false);
+                if (
+                    !event
+                        .composedPath()
+                        .find((item: EventTarget) => (item as HTMLElement).className === "dropdown active") &&
+                    !event
+                        .composedPath()
+                        .find((item: EventTarget) => (item as HTMLElement).className === "account-button-user")
+                ) {
+                    setOpenDropdown(false);
+                    setOpenCartDropdown(false);
+                }
+                if (
+                    !event
+                        .composedPath()
+                        .find((item: EventTarget) => (item as HTMLElement).className === "cart-dropdown active") &&
+                    !event
+                        .composedPath()
+                        .find((item: EventTarget) => (item as HTMLElement).className === "account-button-cart")
+                ) {
+                    console.log('close dropdown');
+                    setOpenCartDropdown(false);
+                } else {
+                    setOpenCartDropdown(true);
+                }
+            }
         }
-      }
     };
-  }, []);
+}, []);
+
   const changeMainImage = (e: any) => {
     setSneakerInfo((prev) => ({
       ...prev,
