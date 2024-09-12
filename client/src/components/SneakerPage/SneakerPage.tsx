@@ -33,7 +33,7 @@ export const SneakerPage = () => {
   const btnDropDownRef = useRef<HTMLButtonElement>(null);
   const dropdownRef = useRef<HTMLInputElement>(null);
   const [isActive, setIsActive] = useState(false);
-  const onClick = (e: any) => {
+  const onClick = (e: React.MouseEvent) => {
     setIsActive(!isActive);
   };
   const [toggleNotify]= useNotify();
