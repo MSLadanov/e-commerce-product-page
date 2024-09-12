@@ -20,13 +20,17 @@ export const Orders = () => {
     const token = useSelector(getToken);
     const [orders, setOrders] = useState<Order[]>([]);
     const getOrdersInfo = async () => {
-      const info = (await axios.get(`http://localhost:3001/api/basket/`,{
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }))
-        .data;
-        setOrders([...info.baskets])
+      try {
+        const info = (await axios.get(`http://localhost:3001/api/basket/`,{
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }))
+          .data;
+          setOrders([...info.baskets])
+      } catch (error) {
+        console.log(error)
+      }
     };
     useEffect(() => {
       getOrdersInfo();
