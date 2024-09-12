@@ -113,7 +113,7 @@ export const CreateSneaker = () => {
               name="file"
               type="file"
               multiple
-              onChange={(event: any) => {
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 setSneakerImage(event.currentTarget.files);
               }}
             />
