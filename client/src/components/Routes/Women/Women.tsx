@@ -22,10 +22,14 @@ export default function Women() {
   const sort = useSelector(getSortData);
   const search = useSelector(getSearchData);
   const getSneakers = async () => {
-    const sneakers = (await axios.get("http://localhost:3001/api/sneaker/"))
+    try {
+      const sneakers = (await axios.get("http://localhost:3001/api/sneaker/"))
       .data;
     setData(sneakers.filter((item: Sneaker) => item.sex === "Women"));
     setInitialData(sneakers.filter((item: Sneaker) => item.sex === "Women"))
+    } catch (error) {
+      console.log(error)
+    }
   };
   const searchFunction = (a : Sneaker,b : Sneaker)  => {
     if (a.name.toLowerCase().match(search.toLowerCase()) || a.brand.toLowerCase().match(search.toLowerCase())){
