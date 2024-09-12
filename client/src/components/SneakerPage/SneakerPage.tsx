@@ -8,6 +8,21 @@ import { v4 as uuidv4 } from 'uuid';
 import useNotify from '../hooks/useNotify';
 import "./style.scss";
 
+interface ISneakerInfo {
+    id: null | string,
+    name: null | string,
+    brand: null | string,
+    description: null | string,
+    price: null | string,
+    discount: number,
+    mainImage: null | string,
+    img1: null | string,
+    img2: null | string,
+    img3: null | string,
+    img4: null | string,
+    sizes: string[],
+}
+
 export const SneakerPage = () => {
   const dispatch = useDispatch();
   const [
@@ -22,8 +37,8 @@ export const SneakerPage = () => {
     setIsActive(!isActive);
   };
   const [toggleNotify]= useNotify();
-  const [sneakerInfo, setSneakerInfo] = useState({
-    id:null,
+  const [sneakerInfo, setSneakerInfo] = useState<ISneakerInfo>({
+    id: null,
     name: null,
     brand: null,
     description: null,
@@ -89,12 +104,14 @@ export const SneakerPage = () => {
     };
 }, []);
 
-  const changeMainImage = (e: any) => {
+const changeMainImage = (e: React.MouseEvent<HTMLImageElement>) => {
+  if (e.currentTarget.src) {
     setSneakerInfo((prev) => ({
       ...prev,
-      mainImage: e.target.src.split("/")[3],
+      mainImage: e.currentTarget.src.split("/")[3],
     }));
-  };
+  }
+};
 
   const addToCart = (size : string) => {
     const sneaker = {
