@@ -67,7 +67,6 @@ export const AllOrdersDetails = ({order} : any) => {
   useEffect(() => {
     getUserInfo(order.userId);
   }, []);
-  console.log('Test')
   const openDetailsDropdown = () => {
     if(ref.current.style.height !== '0px'){
       ref.current.style.height = '0px'
