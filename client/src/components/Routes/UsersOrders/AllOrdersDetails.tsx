@@ -5,12 +5,10 @@ import axios from 'axios';
 
 interface Order {
   id: string,
-  data: CartSneaker,
+  data: string,
   status: string,
   address: string,
   sum: string 
-  userId: string
-  updatedAt: string
 }
 
 interface CartSneaker {
@@ -22,8 +20,7 @@ interface CartSneaker {
   price: number,
 }
 
-export const AllOrdersDetails = (order : Order) => {
-  console.log(order)
+export const AllOrdersDetails = ({order} : any) => {
   const ref = useRef(document.createElement("div"));
   const statusHandlerRef = useRef(document.createElement('div'))
   const [userInfo, setUserInfo] = useState({
