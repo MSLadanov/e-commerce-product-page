@@ -60,9 +60,12 @@ textarea:focus, input:focus{
 
 @media (max-width:641px){
     .search-sort-bar{
-        background-color: white;
+        background-color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     .search-sort-bar div{
-        margin: 0px 10px;
+        margin: 10px;
     }
   }
