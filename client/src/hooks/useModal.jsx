@@ -16,7 +16,8 @@ function useModal(){
         )
     }
     function Modal(){
-        return createPortal(openModal && <ModalContent />, document.getElementById('modal'))}
+        return createPortal(openModal && <ModalContent />, document.getElementById('modal'))
+    }
     return { toggleModal, Modal}
 }
 

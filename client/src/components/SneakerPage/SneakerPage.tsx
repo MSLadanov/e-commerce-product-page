@@ -5,7 +5,7 @@ import axios from "axios";
 import { addSneaker } from "../../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from 'uuid';
-import useNotify from '../hooks/useNotify';
+import useNotify from '../../hooks/useNotify';
 import "./style.scss";
 
 interface ISneakerInfo {

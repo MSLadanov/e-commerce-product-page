@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 import { Notification } from "../../Notification/Notification";
 import { useSelector, useDispatch } from "react-redux";
 import { getIsShown } from "../../../redux/slices/notifySlice";
-import useNotify from "../../hooks/useNotify";
+import useNotify from "../../../hooks/useNotify";
 import { MobileDropdown } from "../../MobileDropdown/MobileDropdown";
 import { Footer } from "../../Footer/Footer";
 import useModal from "../../../hooks/useModal";

@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { getToken } from "../../../redux/slices/userSlice";
 import * as Yup from "yup";
 import axios from "axios";
-import useNotify from "../../hooks/useNotify";
+import useNotify from "../../../hooks/useNotify";
 import './style.scss'
 
 const SignInSchema = Yup.object().shape({

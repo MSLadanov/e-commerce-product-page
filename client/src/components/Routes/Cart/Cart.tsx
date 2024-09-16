@@ -5,7 +5,7 @@ import { getCartData } from "../../../redux/slices/cartSlice";
 import { removeSneaker } from "../../../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
 import { getToken } from "../../../redux/slices/userSlice";
-import useNotify from '../../hooks/useNotify';
+import useNotify from '../../../hooks/useNotify';
 import "./style.scss";
 
 interface Order {

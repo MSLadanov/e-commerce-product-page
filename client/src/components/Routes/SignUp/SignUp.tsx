@@ -3,7 +3,7 @@ import { useState, useRef } from "react";
 import { Formik, Form, Field, useField } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import useNotify from "../../hooks/useNotify";
+import useNotify from "../../../hooks/useNotify";
 
 interface SignUpData {
   name: string;

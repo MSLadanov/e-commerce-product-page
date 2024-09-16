@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { showNotify, hideNotify, changeText, removeText } from "../../redux/slices/notifySlice";
+import { showNotify, hideNotify, changeText, removeText } from "../redux/slices/notifySlice";
 
 export default function useNotify () {
   const dispatch = useDispatch();
