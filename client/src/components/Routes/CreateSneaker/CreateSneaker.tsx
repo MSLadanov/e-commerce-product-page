@@ -73,6 +73,7 @@ export const CreateSneaker = () => {
         onSubmit={async (values) => {
           const formData = getFormData(values);
           const imgArray = Array.from(sneakerImage)
+          console.log(imgArray)
           if(imgArray.length === 4){
             imgArray.map((item:any, index) => {
               formData.append(`img${index+1}`, sneakerImage[index]);
