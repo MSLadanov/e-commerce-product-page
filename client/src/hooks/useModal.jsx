@@ -1,5 +1,8 @@
 import { useState } from "react"
 import { createPortal } from "react-dom"
+import { AccountDropdown } from "../components/MobileDropdown/AccountDropdown"
+import { MobileCartDropdown } from "../components/MobileDropdown/MobileCartDropdown"
+import { CartDropdown } from "../components/Header/Dropdown/CartDropdown"
 
 function useModal(){
     const [ openModal, setOpenModal ] = useState(true)
@@ -9,10 +12,11 @@ function useModal(){
 
     function ModalContent(){
         return (
-        <div>
-            <h1>Modal</h1>
-            <button onClick={() => toggleModal()}>X</button>
-        </div>
+            <AccountDropdown />
+        // <div>
+        //     <h1>Modal</h1>
+        //     <button onClick={() => toggleModal()}>X</button>
+        // </div>
         )
     }
     function Modal(){
