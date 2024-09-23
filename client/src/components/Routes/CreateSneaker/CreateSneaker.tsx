@@ -30,7 +30,7 @@ export const CreateSneaker = () => {
     })
     return formData;
 }
-  const [sneakerImage, setSneakerImage] = useState<any>(null)
+  const [sneakerImage, setSneakerImage] = useState<any>([])
   const checkAccessRights = async () => {
     await axios
       .get(`http://localhost:3001/api/basket/all`, {
@@ -115,7 +115,9 @@ export const CreateSneaker = () => {
               type="file"
               multiple
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                setSneakerImage(event.currentTarget.files);
+                if (event.currentTarget.files){
+                  setSneakerImage(event.currentTarget.files);
+                }
               }}
             />
             <button type="submit">Create</button>
