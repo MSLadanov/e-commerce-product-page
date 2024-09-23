@@ -1,4 +1,3 @@
-import React from 'react'
 import './style.scss'
 import { AccountDropdown } from './AccountDropdown';
 import { MobileCartDropdown } from './MobileCartDropdown';

@@ -1,5 +1,3 @@
-import React from "react";
-import { useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { getCartData } from "../../redux/slices/cartSlice";
 import { removeSneaker } from "../../redux/slices/cartSlice";
