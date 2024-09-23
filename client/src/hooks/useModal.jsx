@@ -6,7 +6,8 @@ import { CartDropdown } from "../components/Header/Dropdown/CartDropdown"
 
 function useModal(){
     const [ openModal, setOpenModal ] = useState(true)
-    function toggleModal(){
+    const [ modalType, setModalType ] = useState(null)
+    function toggleModal(type){
         setOpenModal(prev => !prev)
     }
 
