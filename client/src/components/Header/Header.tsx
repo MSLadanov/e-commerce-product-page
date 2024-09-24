@@ -10,6 +10,7 @@ import { Dropdown } from "./Dropdown/Dropdown";
 import "./style.scss";
 import axios from "axios";
 import { CartDropdown } from "./Dropdown/CartDropdown";
+import useModal from "../../hooks/useModal";
 
 interface HeaderProps {
   openDropdown: boolean,
@@ -38,6 +39,8 @@ export const Header = ({
 }: HeaderProps) => {
   const dropdownBtnRef = useRef<HTMLInputElement>(null);
   const cartDropdownBtnRef = useRef<HTMLInputElement>(null);
+
+  const { toggleModal, Modal } = useModal()
 
   const mobileMenuBtnRef = useRef<HTMLInputElement>(null);
   const mobileMenuRef = useRef<HTMLInputElement>(null);
@@ -93,7 +96,8 @@ export const Header = ({
             ref={cartDropdownBtnRef}
             className="mobile-account-button-cart"
             onClick={(e) => {
-              toggleMobileDropdown('cart')
+              // toggleMobileDropdown('cart')
+              toggleModal('cart')
             }}
           >
             <img src="/images/icon-cart.svg" alt="cart" />
@@ -122,20 +126,25 @@ export const Header = ({
             ref={cartDropdownBtnRef}
             className="account-button-cart"
             onClick={() => {
-              setOpenCartDropdown(true)
+              // setOpenCartDropdown(true)
+              toggleModal('cart')
             }}
           >
             <img src="/images/icon-cart.svg" alt="cart" />
           </div>
           <div ref={dropdownBtnRef} className="account-button-user">
             <img
-              onClick={() => setOpenDropdown(true)}
+              onClick={() => {
+                // setOpenDropdown(true)
+                toggleModal('account')
+              }
+              }
               src={userImage}
               alt="user"
             />
           </div>
         </div>
-        <CartDropdown
+        {/* <CartDropdown
           openCartDropdown={openCartDropdown}
         />
         <Dropdown
@@ -149,7 +158,7 @@ export const Header = ({
           openCartDropdown={openCartDropdown}
           setOpenCartDropdown={setOpenCartDropdown}
           cartDropdownBtnRef={cartDropdownBtnRef}
-        />
+        /> */}
       </nav>
     </>
   );

@@ -5,9 +5,10 @@ import { MobileCartDropdown } from "../components/MobileDropdown/MobileCartDropd
 import { CartDropdown } from "../components/Header/Dropdown/CartDropdown"
 
 function useModal(){
-    const [ openModal, setOpenModal ] = useState(true)
+    const [ openModal, setOpenModal ] = useState(false)
     const [ modalType, setModalType ] = useState(null)
     function toggleModal(type){
+        console.log(type)
         setOpenModal(prev => !prev)
     }
 
@@ -23,7 +24,7 @@ function useModal(){
     function Modal(){
         return createPortal(openModal && <ModalContent />, document.getElementById('modal'))
     }
-    return { toggleModal, Modal}
+    return { toggleModal, Modal }
 }
 
 export default useModal
