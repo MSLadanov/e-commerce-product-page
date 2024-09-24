@@ -8,11 +8,19 @@ function useModal(){
     const [ openModal, setOpenModal ] = useState(false)
     const [ modalType, setModalType ] = useState(null)
     function toggleModal(type){
-        console.log(type)
+        setModalType(type)
         setOpenModal(prev => !prev)
     }
 
     function ModalContent(){
+        switch (modalType) {
+            case 'account':
+                return <AccountDropdown />
+            case 'cart':
+                return <CartDropdown /> 
+            default:
+                break;
+        }
         return (
             <AccountDropdown />
         // <div>

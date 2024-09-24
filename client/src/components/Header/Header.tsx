@@ -159,6 +159,7 @@ export const Header = ({
           setOpenCartDropdown={setOpenCartDropdown}
           cartDropdownBtnRef={cartDropdownBtnRef}
         /> */}
+        <Modal />
       </nav>
     </>
   );
