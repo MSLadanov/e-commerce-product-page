@@ -12,6 +12,10 @@ function useModal(){
         setOpenModal(prev => !prev)
     }
 
+    function handleOutsideClick(){
+        console.log('click')
+    }
+
     function ModalContent(){
         switch (modalType) {
             case 'account':
