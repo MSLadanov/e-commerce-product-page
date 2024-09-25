@@ -12,8 +12,8 @@ function useModal(){
         setOpenModal(prev => !prev)
     }
 
-    function handleOutsideClick(){
-        console.log('click')
+    function handleOutsideClick(ref){
+        console.log(ref.current.children.contains('dropdown active'))
     }
 
     function ModalContent(){
@@ -36,7 +36,7 @@ function useModal(){
     function Modal(){
         return createPortal(openModal && <ModalContent />, document.getElementById('modal'))
     }
-    return { toggleModal, Modal }
+    return { toggleModal, handleOutsideClick, Modal }
 }
 
 export default useModal
