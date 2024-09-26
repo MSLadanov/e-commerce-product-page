@@ -1,12 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+type StateType = null | string
+
 interface UserData {
-  token: null | string;
-  id: string | null,
-  name: string | null,
-  surname: string | null,
-  email: string | null,
-  img: string | null, 
+  token: StateType;
+  id: StateType;
+  name: StateType;
+  surname: StateType;
+  email: StateType;
+  img: StateType;
 }
 
 export const userSlice = createSlice({
@@ -24,11 +26,15 @@ export const userSlice = createSlice({
       state.token = action.payload;
     },
     fetchData: (state, action) => {
-      state = {...action.payload, state };
+      state = { ...action.payload, state };
     },
     signOut: (state) => {
-      state = userSlice.getInitialState();
+      state.id = null;
       state.token = null;
+      state.name = null;
+      state.surname = null;
+      state.img = null;
+      state.email = null;
     },
   },
 });
@@ -40,4 +46,3 @@ export const getUserData = (state: UserData) => state;
 export const { signIn, fetchData, signOut } = userSlice.actions;
 
 export default userSlice.reducer;
-
