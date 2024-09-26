@@ -26,22 +26,6 @@ interface DropdownProps {
 
 export const Dropdown = ({ token, openDropdown, setOpenDropdown, userData, userImage, setUserImage, dropdownBtnRef , openCartDropdown, setOpenCartDropdown, cartDropdownBtnRef }: DropdownProps) => {
   const dropdownRef = useRef<HTMLInputElement>(null);
-  useEffect(() => {
-    window.onclick = (event: any) => {
-      if (
-        !dropdownRef.current?.contains(event.target) &&
-        !dropdownBtnRef.current?.contains(event.target) 
-      ) {
-        setOpenDropdown(false)
-      } 
-      if (
-        !cartDropdownBtnRef.current?.contains(event.target) &&
-        !cartDropdownBtnRef.current?.contains(event.target) 
-      ) {
-        setOpenCartDropdown(false)
-      } 
-    };
-  }, []);
   if (token !== null && userData !== null) {
     return (
       <div
