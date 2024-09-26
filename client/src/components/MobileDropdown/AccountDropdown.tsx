@@ -27,7 +27,7 @@ export const AccountDropdown = () => {
     }
   }
   useEffect(() => {
-    if (token !== null) {
+    if (token === null) {
       getUserInfo();
     }
   }, [token]);
