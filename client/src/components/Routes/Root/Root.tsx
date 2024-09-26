@@ -15,16 +15,14 @@ function Root() {
   const isShown = useSelector(getIsShown);
   const { toggleModal, Modal } = useModal();
   return (
-    <div>
+    <>
       <MobileHeader />
       <Header />
-      <div>
-        <Outlet />
-      </div>
+      <Outlet />
       <Modal />
       <Footer></Footer>
       {isShown && <Notification />}
-    </div>
+    </>
   );
 }
 
