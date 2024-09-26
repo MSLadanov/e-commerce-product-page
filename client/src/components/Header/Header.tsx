@@ -6,17 +6,14 @@ import { getToken } from "../../redux/slices/userSlice";
 import { fetchData } from "../../redux/slices/userSlice";
 import { getUserData } from "../../redux/slices/userSlice";
 import { NavLink } from "react-router-dom";
-import { Dropdown } from '../Dropdown/Dropdown'
+import { Dropdown } from "../Dropdown/Dropdown";
 import "./style.scss";
 import axios from "axios";
 import { CartDropdown } from "../Dropdown/CartDropdown";
 import useModal from "../../hooks/useModal";
 
 export const Header = () => {
-  const dropdownBtnRef = useRef<HTMLInputElement>(null);
-  const cartDropdownBtnRef = useRef<HTMLInputElement>(null);
-  const { toggleModal, handleModalType, Modal } = useModal()
-  const mobileMenuBtnRef = useRef<HTMLInputElement>(null);
+  const { toggleModal, handleModalType, Modal } = useModal();
   const token = useSelector(getToken);
   const userData = useSelector(getUserData);
   const [userImage, setUserImage] = useState("/images/image-user.png");
@@ -59,22 +56,20 @@ export const Header = () => {
         </div>
         <div className="account-navbar">
           <div
-            ref={cartDropdownBtnRef}
             className="account-button-cart"
             onClick={() => {
-              handleModalType('cart')
-              toggleModal()
+              handleModalType("cart");
+              toggleModal();
             }}
           >
             <img src="/images/icon-cart.svg" alt="cart" />
           </div>
-          <div ref={dropdownBtnRef} className="account-button-user">
+          <div className="account-button-user">
             <img
               onClick={() => {
-                handleModalType('account')
-                toggleModal()
-              }
-              }
+                handleModalType("account");
+                toggleModal();
+              }}
               src={userImage}
               alt="user"
             />
