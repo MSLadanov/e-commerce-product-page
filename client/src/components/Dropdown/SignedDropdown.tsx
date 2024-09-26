@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { getUserData } from "../../../redux/slices/userSlice";
-import { signOut } from "../../../redux/slices/userSlice";
+import { getUserData } from "../../redux/slices/userSlice";
+import { signOut } from "../../redux/slices/userSlice";
 import { useDispatch } from "react-redux";
 import './style.scss'
 

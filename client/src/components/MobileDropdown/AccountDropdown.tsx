@@ -5,8 +5,8 @@ import { getToken } from '../../redux/slices/userSlice';
 import { getUserData } from '../../redux/slices/userSlice';
 import { fetchData } from '../../redux/slices/userSlice';
 import { signOut } from '../../redux/slices/userSlice';
-import { SignedDropdown } from '../Header/Dropdown/SignedDropdown';
-import { UnsignedDropdown } from '../Header/Dropdown/UnsignedDropdown';
+import { SignedDropdown } from '../Dropdown/SignedDropdown';
+import { UnsignedDropdown } from '../Dropdown/UnsignedDropdown';
 import axios from 'axios';
 
 

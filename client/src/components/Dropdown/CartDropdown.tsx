@@ -1,9 +1,9 @@
 import { useRef } from "react";
 import { useSelector } from "react-redux";
-import { getCartData } from "../../../redux/slices/cartSlice";
-import { removeSneaker } from "../../../redux/slices/cartSlice";
+import { getCartData } from "../../redux/slices/cartSlice";
+import { removeSneaker } from "../../redux/slices/cartSlice"; 
 import { useDispatch } from "react-redux";
-import { getToken } from "../../../redux/slices/userSlice";
+import { getToken } from "../../redux/slices/userSlice";
 import { NavLink } from "react-router-dom";
 import "./style.scss";
 

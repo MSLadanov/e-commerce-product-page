@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { createPortal } from "react-dom"
 import { AccountDropdown } from "../components/MobileDropdown/AccountDropdown"
-import { CartDropdown } from "../components/Header/Dropdown/CartDropdown"
+import { CartDropdown } from "../components/Dropdown/CartDropdown"
 import { MobileDropdown } from "../components/MobileDropdown/MobileDropdown"
 import { MobileCartDropdown } from "../components/MobileDropdown/MobileCartDropdown"
 

@@ -6,10 +6,10 @@ import { getToken } from "../../redux/slices/userSlice";
 import { fetchData } from "../../redux/slices/userSlice";
 import { getUserData } from "../../redux/slices/userSlice";
 import { NavLink } from "react-router-dom";
-import { Dropdown } from "./Dropdown/Dropdown";
+import { Dropdown } from '../Dropdown/Dropdown'
 import "./style.scss";
 import axios from "axios";
-import { CartDropdown } from "./Dropdown/CartDropdown";
+import { CartDropdown } from "../Dropdown/CartDropdown";
 import useModal from "../../hooks/useModal";
 
 interface HeaderProps {
