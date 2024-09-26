@@ -29,7 +29,7 @@ function Root() {
   const [openSideMenu, setOpenSideMenu] = useState(false)
 
 
-  const {toggleModal, handleOutsideClick, Modal} = useModal()
+  const {toggleModal, Modal} = useModal()
 
   const toggleMobileMenu = (mobileMenuBtnRef : React.RefObject<HTMLInputElement>, mobileMenuRef : React.RefObject<HTMLInputElement>) => {
     if(!mobileMenuRef.current?.scrollWidth){
@@ -62,7 +62,7 @@ function Root() {
     setBlur(false)
   }
   return (
-    <div ref={wrapperRef} onClick={() => handleOutsideClick(wrapperRef)}>
+    <div>
       <Header
         openDropdown={openDropdown}
         setOpenDropdown={setOpenDropdown}

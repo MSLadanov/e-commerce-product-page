@@ -1,19 +1,16 @@
 import { useState } from "react"
 import { createPortal } from "react-dom"
 import { AccountDropdown } from "../components/MobileDropdown/AccountDropdown"
-import { MobileCartDropdown } from "../components/MobileDropdown/MobileCartDropdown"
 import { CartDropdown } from "../components/Header/Dropdown/CartDropdown"
+import { MobileDropdown } from "../components/MobileDropdown/MobileDropdown"
+import { MobileCartDropdown } from "../components/MobileDropdown/MobileCartDropdown"
 
 function useModal(){
     const [ openModal, setOpenModal ] = useState(false)
-    const [ modalType, setModalType ] = useState(null)
-    function toggleModal(type){
+    const [ modalType, setModalType ] = useState('')
+    function toggleModal(type : string){
         setModalType(type)
         setOpenModal(prev => !prev)
-    }
-
-    function handleOutsideClick(ref){
-        console.log(ref.current.children.contains('dropdown active'))
     }
 
     function ModalContent(){
@@ -21,7 +18,7 @@ function useModal(){
             case 'account':
                 return <AccountDropdown />
             case 'cart':
-                return <CartDropdown /> 
+                return <CartDropdown openCartDropdown={true} /> 
             default:
                 break;
         }
@@ -34,9 +31,9 @@ function useModal(){
         )
     }
     function Modal(){
-        return createPortal(openModal && <ModalContent />, document.getElementById('modal'))
+        return createPortal(openModal && <ModalContent />, document.getElementById('modal')!)
     }
-    return { toggleModal, handleOutsideClick, Modal }
+    return { toggleModal, Modal }
 }
 
 export default useModal
