@@ -9,23 +9,17 @@ import useNotify from "../../../hooks/useNotify";
 import { MobileDropdown } from "../../MobileDropdown/MobileDropdown";
 import { Footer } from "../../Footer/Footer";
 import useModal from "../../../hooks/useModal";
+import { MobileHeader } from "../../MobileHeader/MobileHeader";
 
 function Root() {
-  const isShown = useSelector(getIsShown)
-  const {toggleModal, Modal} = useModal()
+  const isShown = useSelector(getIsShown);
+  const { toggleModal, Modal } = useModal();
   return (
     <div>
-      <Header/>
+      <MobileHeader />
+      <Header />
       <div>
-        <Outlet
-          // context={[
-          //   openDropdown,
-          //   setOpenDropdown,
-          //   openCartDropdown,
-          //   setOpenCartDropdown,
-          //   blur,
-          // ]}
-        />
+        <Outlet />
       </div>
       <Modal />
       <Footer></Footer>

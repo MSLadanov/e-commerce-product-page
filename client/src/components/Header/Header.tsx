@@ -46,31 +46,6 @@ export const Header = () => {
   }, [userData]);
   return (
     <>
-    <div className="mobile-navbar-wrapper">
-      <div className="logo-mobile" ref={mobileMenuBtnRef} onClick={(e) => {
-        }}>
-        <div className="burger"></div>
-        <div className="burger"></div>
-        <div className="burger"></div>
-      </div>
-      <div className="mobile-account-navbar">
-          <div
-            ref={cartDropdownBtnRef}
-            className="mobile-account-button-cart"
-            onClick={(e) => {
-              toggleModal()
-            }}
-          >
-            <img src="/images/icon-cart.svg" alt="cart" />
-          </div>
-          <div ref={dropdownBtnRef} className="mobile-account-button-user">
-            <img
-              src={userImage}
-              alt="user"
-            />
-          </div>
-        </div>
-    </div>
       <nav>
         <div className="site-navbar">
           <div className="logo">
