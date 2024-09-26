@@ -1,9 +1,7 @@
-import axios from "axios";
-import React from "react";
 import { useState, useEffect } from "react";
 import { SneakerCard } from "../../SneakerCard/SneakerCard";
 import { SearchAndSort } from "../../SearchAndSort/SearchAndSort";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { getSortData } from "../../../redux/slices/sortSlice";
 import { getSearchData } from "../../../redux/slices/searchSlice";
 import { sneakerService } from "../../../api/api";

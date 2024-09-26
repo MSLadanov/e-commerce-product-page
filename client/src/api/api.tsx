@@ -16,7 +16,7 @@ class ApiService {
     }
   }
 
-  async postData(endpoint : string , data : {}, token : string) {
+  async postData(endpoint : string , data : {}, token? : string) {
     try {
       const response = await axios.post(`${BASE_URL}/${endpoint}`, data);
       return response.data; 
@@ -37,6 +37,10 @@ class SneakerService extends ApiService {
 class UserService extends ApiService {
   async getUser(token : string) {
     return await this.fetchData('user/info/', token);
+  }
+
+  async signIn(data : {}){
+    return await this.postData('user/login/', data)
   }
 
   async createUser(user : {}, token : string) {

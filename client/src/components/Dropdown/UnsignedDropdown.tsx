@@ -1,11 +1,10 @@
-import React from "react";
 import { Formik, Form, Field } from "formik";
 import { NavLink } from "react-router-dom";
 import * as Yup from "yup";
-import axios from "axios";
 import { useDispatch } from "react-redux";
 import { signIn } from "../../redux/slices/userSlice";
 import useNotify from "../../hooks/useNotify";
+import { userService } from "../../api/api";
 
 const SignInSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -27,10 +26,9 @@ export const UnsignedDropdown = () => {
         }}
         validationSchema={SignInSchema}
         onSubmit={async (values) => {
-          await axios
-            .post("http://localhost:3001/api/user/login/", values)
+          await userService.signIn(values)
             .then((res) => {
-              dispatch(signIn(res.data.token));
+              dispatch(signIn(res.token));
               toggleNotify('Вы успешно вошли!')
             })
             .catch((err) => toggleNotify(err.response.data.message)); 

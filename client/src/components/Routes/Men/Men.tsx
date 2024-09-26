@@ -1,5 +1,3 @@
-import axios, { AxiosResponse } from "axios";
-import React from "react";
 import { useState, useEffect } from "react";
 import { SneakerCard } from "../../SneakerCard/SneakerCard";
 import { SearchAndSort } from "../../SearchAndSort/SearchAndSort";
