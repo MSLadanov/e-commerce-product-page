@@ -4,12 +4,12 @@ import { getUserData } from "../../redux/slices/userSlice";
 
 export const MobileHeader = () => {
   const userData = useSelector(getUserData);
+  const [userImage, setUserImage] = useState("/images/image-user.png");
   useEffect(() => {
     if (userData !== null) {
       setUserImage(`http://localhost:3001/${userData.img}`);
     }
   }, [userData]);
-  const [userImage, setUserImage] = useState("/images/image-user.png");
   return (
     <div className="mobile-navbar-wrapper">
       <div className="logo-mobile">
