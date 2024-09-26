@@ -1,10 +1,8 @@
-import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getToken } from "../../redux/slices/userSlice";
 import { getUserData } from "../../redux/slices/userSlice";
 import { fetchData } from "../../redux/slices/userSlice";
-import { signOut } from "../../redux/slices/userSlice";
 import { SignedDropdown } from "../Dropdown/SignedDropdown";
 import { UnsignedDropdown } from "../Dropdown/UnsignedDropdown";
 import axios from "axios";

@@ -97,7 +97,7 @@ export const Header = ({
             className="mobile-account-button-cart"
             onClick={(e) => {
               // toggleMobileDropdown('cart')
-              toggleModal('cart')
+              toggleModal()
             }}
           >
             <img src="/images/icon-cart.svg" alt="cart" />
@@ -127,7 +127,7 @@ export const Header = ({
             className="account-button-cart"
             onClick={() => {
               // setOpenCartDropdown(true)
-              toggleModal('cart')
+              toggleModal()
             }}
           >
             <img src="/images/icon-cart.svg" alt="cart" />
@@ -136,7 +136,7 @@ export const Header = ({
             <img
               onClick={() => {
                 // setOpenDropdown(true)
-                toggleModal('account')
+                toggleModal()
               }
               }
               src={userImage}
