@@ -1,35 +1,31 @@
-import React from 'react'
-import { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getToken } from '../../redux/slices/userSlice';
-import { getUserData } from '../../redux/slices/userSlice';
-import { fetchData } from '../../redux/slices/userSlice';
-import { signOut } from '../../redux/slices/userSlice';
-import { SignedDropdown } from '../Dropdown/SignedDropdown';
-import { UnsignedDropdown } from '../Dropdown/UnsignedDropdown';
-import axios from 'axios';
-
+import React from "react";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getToken } from "../../redux/slices/userSlice";
+import { getUserData } from "../../redux/slices/userSlice";
+import { fetchData } from "../../redux/slices/userSlice";
+import { signOut } from "../../redux/slices/userSlice";
+import { SignedDropdown } from "../Dropdown/SignedDropdown";
+import { UnsignedDropdown } from "../Dropdown/UnsignedDropdown";
+import axios from "axios";
 
 export const AccountDropdown = () => {
   const token = useSelector(getToken);
   const userData = useSelector(getUserData);
   const dispatch = useDispatch();
   const [userImage, setUserImage] = useState("/images/image-user.png");
-  const getUserInfo = async () => {
-    await axios
-      .get("http://localhost:3001/api/user/info/", {
+  async function getUserInfo() {
+    try {
+      const res = await axios.get("http://localhost:3001/api/user/info/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      })
-      .then((res) => {
-        dispatch(fetchData(res.data));
-      }).catch((err) => {
-        if(err.response.status === 401){
-          dispatch(signOut())
-        }
       });
-  };
+      dispatch(fetchData(res.data));
+    } catch (error) {
+      console.log(error);
+    }
+  }
   useEffect(() => {
     if (token !== null) {
       getUserInfo();
@@ -43,9 +39,7 @@ export const AccountDropdown = () => {
   }, [userData]);
   if (token !== null && userData !== null) {
     return (
-      <div
-        className="dropdown active"
-      >
+      <div className="dropdown active">
         <SignedDropdown userImage={userImage} setUserImage={setUserImage} />
       </div>
     );
@@ -56,4 +50,4 @@ export const AccountDropdown = () => {
       </div>
     );
   }
-}
+};
