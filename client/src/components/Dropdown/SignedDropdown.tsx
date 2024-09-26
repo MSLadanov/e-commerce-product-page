@@ -7,10 +7,9 @@ import './style.scss'
 
 interface SignedDropdownProps{
   userImage: string,
-  setUserImage: (state: string) => void,
 }
 
-export const SignedDropdown = ({ userImage, setUserImage }: SignedDropdownProps) => {
+export const SignedDropdown = ({ userImage }: SignedDropdownProps) => {
   const userData = useSelector(getUserData);
   const dispatch = useDispatch()
   return (
@@ -23,7 +22,6 @@ export const SignedDropdown = ({ userImage, setUserImage }: SignedDropdownProps)
       {userData && <h1>{userData.name + ' ' + userData.surname}</h1>}
       <button onClick={() => {
            dispatch(signOut())
-           setUserImage("/images/image-user.png")
       }}>Sign Out</button>
     </div>
   );

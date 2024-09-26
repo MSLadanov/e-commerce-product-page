@@ -1,7 +1,7 @@
 import { useState, useRef } from "react"
 import { createPortal } from "react-dom"
 import { useClickOutside } from "./useClickOutside"
-import { AccountDropdown } from "../components/MobileDropdown/AccountDropdown"
+import { Dropdown } from "../components/Dropdown/Dropdown"
 import { CartDropdown } from "../components/Dropdown/CartDropdown"
 import { MobileDropdown } from "../components/MobileDropdown/MobileDropdown"
 import { MobileCartDropdown } from "../components/MobileDropdown/MobileCartDropdown"
@@ -21,7 +21,7 @@ function useModal(){
     function ModalContent(){
         switch (modalType) {
             case 'account':
-                return <AccountDropdown />
+                return <Dropdown />
             case 'cart':
                 return <CartDropdown /> 
             default:
@@ -29,7 +29,7 @@ function useModal(){
         }
         return (
         <div ref={modalRef}>
-            <AccountDropdown />
+            <Dropdown />
         </div>
         )
     }

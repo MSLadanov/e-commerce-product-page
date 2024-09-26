@@ -25,7 +25,7 @@ export const AccountDropdown = () => {
   if (userData.token !== null && userData !== null) {
     return (
       <div className="dropdown active">
-        <SignedDropdown userImage={userImage} setUserImage={setUserImage} />
+        <SignedDropdown userImage={userImage} />
       </div>
     );
   } else {
