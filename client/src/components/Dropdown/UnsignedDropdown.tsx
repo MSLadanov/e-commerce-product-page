@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { signIn } from "../../redux/slices/userSlice";
 import useNotify from "../../hooks/useNotify";
 import { userService } from "../../api/api";
+import useApi from "../../hooks/useApi";
 
 const SignInSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -14,6 +15,7 @@ const SignInSchema = Yup.object().shape({
 export const UnsignedDropdown = () => {
   const [toggleNotify] = useNotify()
   const dispatch = useDispatch();
+  const { getUserByToken } = useApi()
   return (
     <div>
       {" "}
@@ -25,13 +27,8 @@ export const UnsignedDropdown = () => {
           password: "",
         }}
         validationSchema={SignInSchema}
-        onSubmit={async (values) => {
-          await userService.signIn(values)
-            .then((res) => {
-              dispatch(signIn(res.token));
-              toggleNotify('Вы успешно вошли!')
-            })
-            .catch((err) => toggleNotify(err.response.data.message)); 
+        onSubmit={(values) => {
+          getUserByToken(values)
         }}
       >
         {({ errors, touched }) => (

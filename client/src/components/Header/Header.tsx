@@ -5,19 +5,21 @@ import { NavLink } from "react-router-dom";
 import "./style.scss";
 import useModal from "../../hooks/useModal";
 import { userService } from "../../api/api";
+import useApi from "../../hooks/useApi";
 
 export const Header = () => {
   const { toggleModal, handleModalType, Modal } = useModal();
+  const { getUserByToken } = useApi()
   const userData = useSelector(getUserData);
   const { token } = useSelector(getUserData)
   const [userImage, setUserImage] = useState("/images/image-user.png");
   const dispatch = useDispatch();
-  useEffect(() => {
-    if (token) {
-      console.log(token, 'token')
-      userService.getUser(token).then((res) => dispatch(signIn(res)));
-    }
-  }, [userData]);
+  // useEffect(() => {
+  //   if (token) {
+  //     console.log(token, 'token')
+  //     userService.getUser(token).then((res) => dispatch(signIn(res)));
+  //   }
+  // }, [userData]);
 
   useEffect(() => {
     if (token) {
@@ -33,7 +35,7 @@ export const Header = () => {
           </div>
           <NavLink to="men/">Men</NavLink>
           <NavLink to="women/">Women</NavLink>
-          {userData !== null && <NavLink to="orders/">My Orders</NavLink>}
+          {userData.token && <NavLink to="orders/">My Orders</NavLink>}
           <NavLink to="about/">About</NavLink>
           <NavLink to="contact/">Contact</NavLink>
         </div>
@@ -41,7 +43,6 @@ export const Header = () => {
           <div
             className="account-button-cart"
             onClick={() => {
-              handleModalType("cart");
               toggleModal();
             }}
           >
@@ -50,7 +51,6 @@ export const Header = () => {
           <div className="account-button-user">
             <img
               onClick={() => {
-                handleModalType("account");
                 toggleModal();
               }}
               src={userImage}
