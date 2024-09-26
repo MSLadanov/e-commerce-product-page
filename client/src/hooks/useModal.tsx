@@ -8,10 +8,14 @@ import { MobileCartDropdown } from "../components/MobileDropdown/MobileCartDropd
 
 function useModal(){
     const modalRef = useRef(null)
-    const [ openModal, setOpenModal ] = useState(true)
+    const [ openModal, setOpenModal ] = useState(false)
     const [ modalType, setModalType ] = useState('')
     function toggleModal(){
         setOpenModal(prev => !prev)
+    }
+    function handleModalType(type : string){
+        console.log(type)
+        setModalType(type)
     }
     useClickOutside(modalRef, toggleModal)
     function ModalContent(){
@@ -32,7 +36,7 @@ function useModal(){
     function Modal(){
         return createPortal(openModal && <ModalContent />, document.getElementById('modal')!)
     }
-    return { toggleModal,  Modal }
+    return { toggleModal, handleModalType,  Modal }
 }
 
 export default useModal

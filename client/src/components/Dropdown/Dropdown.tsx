@@ -25,7 +25,7 @@ interface DropdownProps {
 }
 
 export const Dropdown = ({ token, openDropdown, setOpenDropdown, userData, userImage, setUserImage, dropdownBtnRef , openCartDropdown, setOpenCartDropdown, cartDropdownBtnRef }: DropdownProps) => {
-  const dropdownRef = useRef<HTMLInputElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   if (token !== null && userData !== null) {
     return (
       <div

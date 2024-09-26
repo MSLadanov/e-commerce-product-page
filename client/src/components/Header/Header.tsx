@@ -40,7 +40,7 @@ export const Header = ({
   const dropdownBtnRef = useRef<HTMLInputElement>(null);
   const cartDropdownBtnRef = useRef<HTMLInputElement>(null);
 
-  const { toggleModal, Modal } = useModal()
+  const { toggleModal, handleModalType, Modal } = useModal()
 
   const mobileMenuBtnRef = useRef<HTMLInputElement>(null);
   const mobileMenuRef = useRef<HTMLInputElement>(null);
@@ -127,6 +127,7 @@ export const Header = ({
             className="account-button-cart"
             onClick={() => {
               // setOpenCartDropdown(true)
+              handleModalType('cart')
               toggleModal()
             }}
           >
@@ -136,6 +137,7 @@ export const Header = ({
             <img
               onClick={() => {
                 // setOpenDropdown(true)
+                handleModalType('user')
                 toggleModal()
               }
               }
