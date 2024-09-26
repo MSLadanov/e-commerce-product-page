@@ -13,7 +13,7 @@ export const AccountDropdown = () => {
   const [userImage, setUserImage] = useState("/images/image-user.png");
   useEffect(() => {
     if (token !== null) {
-      userService.getUser(token).then((res) => dispatch(signIn(res.data)))
+      userService.getUser(token)
     }
   }, [userData]);
 

@@ -36,7 +36,8 @@ class SneakerService extends ApiService {
 
 class UserService extends ApiService {
   async getUser(token : string) {
-    return await this.fetchData('user/info/', token);
+    const user = await this.fetchData('user/info/', token);
+    console.log(user)
   }
 
   async signIn(data : {}){

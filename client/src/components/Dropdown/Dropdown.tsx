@@ -18,7 +18,7 @@ export const Dropdown = () => {
   const userData = useSelector(getUserData);
   const { token } = useSelector(getUserData)
   const { img  } = useSelector(getUserData)
-  if (token !== null && img !== null) {
+  if (token && img) {
     return (
       <div
         ref={dropdownRef}
