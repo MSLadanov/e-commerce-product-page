@@ -23,10 +23,7 @@ export const userSlice = createSlice({
   } as UserData,
   reducers: {
     signIn: (state, action) => {
-      state.token = action.payload;
-    },
-    fetchData: (state, action) => {
-      state = { ...action.payload, state };
+      state = { ...action.payload};
     },
     signOut: (state) => {
       const propertiesToClear: (keyof UserData)[] = ['id', 'token', 'name', 'surname', 'img', 'email'];
@@ -37,10 +34,8 @@ export const userSlice = createSlice({
   },
 });
 
-export const getToken = (state: UserData) => state.token;
-
 export const getUserData = (state: UserData) => state;
 
-export const { signIn, fetchData, signOut } = userSlice.actions;
+export const { signIn, signOut } = userSlice.actions;
 
 export default userSlice.reducer;

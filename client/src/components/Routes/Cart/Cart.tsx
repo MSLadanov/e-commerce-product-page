@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { getCartData } from "../../../redux/slices/cartSlice";
 import { removeSneaker } from "../../../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
-import { getToken } from "../../../redux/slices/userSlice";
+import { getUserData } from "../../../redux/slices/userSlice";
 import useNotify from '../../../hooks/useNotify';
 import "./style.scss";
 
@@ -32,7 +32,7 @@ export const Cart = () => {
   const [address, setAddress] = useState('')
   const cartData = useSelector(getCartData);
   const dispatch = useDispatch();
-  const token = useSelector(getToken);
+  const token = useSelector(getUserData).token;
   const makeOrder = () => {
     const orderData: Order[] = []
     cartData.map((item : Order) => {orderData.push({

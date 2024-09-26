@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { getToken } from "../../../redux/slices/userSlice";
+import { getUserData } from "../../../redux/slices/userSlice";
 import axios from "axios";
 import { OrderDetails } from './OrderDetails';
 
@@ -17,7 +17,7 @@ interface Order {
 }
 
 export const Orders = () => {
-    const token = useSelector(getToken);
+    const token = useSelector(getUserData).token;
     const [orders, setOrders] = useState<Order[]>([]);
     const getOrdersInfo = async () => {
       try {

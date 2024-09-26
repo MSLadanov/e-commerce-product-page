@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Formik, Form, Field } from "formik";
 import { useSelector } from "react-redux";
-import { getToken } from "../../../redux/slices/userSlice";
+import { getUserData } from "../../../redux/slices/userSlice";
 import * as Yup from "yup";
 import axios from "axios";
 import useNotify from "../../../hooks/useNotify";
@@ -20,7 +20,7 @@ const SignInSchema = Yup.object().shape({
 
 export const CreateSneaker = () => {
   const [toggleNotify] = useNotify()
-  const token = useSelector(getToken);
+  const token = useSelector(getUserData).token;
   const [accessError, setAccessError] = useState<null | string>(null)
     function getFormData(object:any) {
     const formData = new FormData();

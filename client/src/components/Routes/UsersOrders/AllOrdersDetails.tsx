@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { useSelector } from 'react-redux';
-import { getToken } from "../../../redux/slices/userSlice";
+import { getUserData } from "../../../redux/slices/userSlice";
 import axios from 'axios';
 
 interface Order {
@@ -29,7 +29,7 @@ export const AllOrdersDetails = ({order} : any) => {
     email: "",
     img: "",
   });
-  const token = useSelector(getToken);
+  const token = useSelector(getUserData).token;
   const getFormattedDate = (date: any) => {
     const formattedDate = date.split("T");
     const datePart = formattedDate[0].match(/\d+/g),

@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 import { getCartData } from "../../redux/slices/cartSlice";
 import { removeSneaker } from "../../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
-import { getToken } from "../../redux/slices/userSlice";
 import { NavLink } from "react-router-dom";
 import "./style.scss";
 
@@ -19,7 +18,6 @@ interface CartSneaker {
 export const MobileCartDropdown = () => {
   const cartData = useSelector(getCartData);
   const dispatch = useDispatch();
-  const token = useSelector(getToken);
   if (!cartData.length) {
     return (
       <div
