@@ -13,13 +13,14 @@ export const Header = () => {
   const [userImage, setUserImage] = useState("/images/image-user.png");
   const dispatch = useDispatch();
   useEffect(() => {
-    if (token !== null) {
+    if (token) {
+      console.log(token, 'token')
       userService.getUser(token).then((res) => dispatch(signIn(res)));
     }
   }, [userData]);
 
   useEffect(() => {
-    if (userData !== null) {
+    if (token) {
       setUserImage(`http://localhost:3001/${userData.img}`);
     }
   }, [userData]);
