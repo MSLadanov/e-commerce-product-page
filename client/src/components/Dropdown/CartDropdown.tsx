@@ -17,7 +17,7 @@ interface CartSneaker {
   price: number,
 }
 
-export const CartDropdown = ({ openCartDropdown} : {openCartDropdown: boolean}) => {
+export const CartDropdown = () => {
   const dropdownCartRef = useRef<HTMLInputElement>(null);
   const cartData = useSelector(getCartData);
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ export const CartDropdown = ({ openCartDropdown} : {openCartDropdown: boolean}) 
     return (
       <div
         ref={dropdownCartRef}
-        className={openCartDropdown ? "cart-dropdown active" : "cart-dropdown"}
+        className={"cart-dropdown active"}
       >
         <h1>Cart</h1>
         <hr />
@@ -40,7 +40,7 @@ export const CartDropdown = ({ openCartDropdown} : {openCartDropdown: boolean}) 
   return (
     <div
       ref={dropdownCartRef}
-      className={openCartDropdown ? "cart-dropdown active" : "cart-dropdown"}
+      className={"cart-dropdown active"}
     >
       <h1>Cart</h1>
       <hr />

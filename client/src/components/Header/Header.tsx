@@ -12,64 +12,27 @@ import axios from "axios";
 import { CartDropdown } from "../Dropdown/CartDropdown";
 import useModal from "../../hooks/useModal";
 
-interface HeaderProps {
-  openDropdown: boolean,
-  setOpenDropdown: (state: boolean) => void,
-  openCartDropdown: boolean,
-  setOpenCartDropdown: (state: boolean) => void,
-  setBlur: (state: boolean) => void,
-  setOpenMobileDropdown: (state: null | string) => void,
-  openMobileDropdown: null | string,
-  toggleMobileMenu: (mobileMenuBtnRef : React.RefObject<HTMLInputElement>, mobileMenuRef : React.RefObject<HTMLInputElement>) => void,
-  openSideMenu: boolean,
-  setOpenSideMenu: (state: boolean) => void,
-}
-
-export const Header = ({
-  openDropdown,
-  setOpenDropdown,
-  openCartDropdown,
-  setOpenCartDropdown,
-  setBlur,
-  setOpenMobileDropdown,
-  openMobileDropdown,
-  toggleMobileMenu,
-  openSideMenu,
-  setOpenSideMenu
-}: HeaderProps) => {
+export const Header = () => {
   const dropdownBtnRef = useRef<HTMLInputElement>(null);
   const cartDropdownBtnRef = useRef<HTMLInputElement>(null);
-
   const { toggleModal, handleModalType, Modal } = useModal()
-
   const mobileMenuBtnRef = useRef<HTMLInputElement>(null);
-  const mobileMenuRef = useRef<HTMLInputElement>(null);
-
   const token = useSelector(getToken);
   const userData = useSelector(getUserData);
   const [userImage, setUserImage] = useState("/images/image-user.png");
   const dispatch = useDispatch();
-
-  const toggleMobileDropdown = (dropdownType:string) => {
-    setOpenMobileDropdown(dropdownType)
-    setBlur(true)
-  }
-
-  const getUserInfo = async () => {
-    await axios
-      .get("http://localhost:3001/api/user/info/", {
+  async function getUserInfo() {
+    try {
+      const res = await axios.get("http://localhost:3001/api/user/info/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      })
-      .then((res) => {
-        dispatch(fetchData(res.data));
-      }).catch((err) => {
-        if(err.response.status === 401){
-          dispatch(signOut())
-        }
       });
-  };
+      dispatch(fetchData(res.data));
+    } catch (error) {
+      console.log(error);
+    }
+  }
   useEffect(() => {
     if (token !== null) {
       getUserInfo();
@@ -85,7 +48,6 @@ export const Header = ({
     <>
     <div className="mobile-navbar-wrapper">
       <div className="logo-mobile" ref={mobileMenuBtnRef} onClick={(e) => {
-        toggleMobileMenu(mobileMenuBtnRef, mobileMenuRef)
         }}>
         <div className="burger"></div>
         <div className="burger"></div>
@@ -96,13 +58,12 @@ export const Header = ({
             ref={cartDropdownBtnRef}
             className="mobile-account-button-cart"
             onClick={(e) => {
-              // toggleMobileDropdown('cart')
               toggleModal()
             }}
           >
             <img src="/images/icon-cart.svg" alt="cart" />
           </div>
-          <div ref={dropdownBtnRef} className="mobile-account-button-user"  onClick={() => toggleMobileDropdown('account')}>
+          <div ref={dropdownBtnRef} className="mobile-account-button-user">
             <img
               src={userImage}
               alt="user"
@@ -110,7 +71,7 @@ export const Header = ({
           </div>
         </div>
     </div>
-      <nav ref={mobileMenuRef} className={openSideMenu ? 'showed' : undefined}>
+      <nav>
         <div className="site-navbar">
           <div className="logo">
             <img src="/images/logo.svg" alt="logo" />
@@ -126,7 +87,6 @@ export const Header = ({
             ref={cartDropdownBtnRef}
             className="account-button-cart"
             onClick={() => {
-              // setOpenCartDropdown(true)
               handleModalType('cart')
               toggleModal()
             }}
@@ -136,8 +96,7 @@ export const Header = ({
           <div ref={dropdownBtnRef} className="account-button-user">
             <img
               onClick={() => {
-                // setOpenDropdown(true)
-                handleModalType('user')
+                handleModalType('account')
                 toggleModal()
               }
               }
@@ -146,21 +105,6 @@ export const Header = ({
             />
           </div>
         </div>
-        {/* <CartDropdown
-          openCartDropdown={openCartDropdown}
-        />
-        <Dropdown
-          token={token}
-          openDropdown={openDropdown}
-          setOpenDropdown={setOpenDropdown}
-          userData={userData}
-          userImage={userImage}
-          setUserImage={setUserImage}
-          dropdownBtnRef={dropdownBtnRef}
-          openCartDropdown={openCartDropdown}
-          setOpenCartDropdown={setOpenCartDropdown}
-          cartDropdownBtnRef={cartDropdownBtnRef}
-        /> */}
         <Modal />
       </nav>
     </>

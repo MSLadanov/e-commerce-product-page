@@ -23,7 +23,7 @@ function useModal(){
             case 'account':
                 return <AccountDropdown />
             case 'cart':
-                return <CartDropdown openCartDropdown={true} /> 
+                return <CartDropdown /> 
             default:
                 break;
         }
