@@ -1,41 +1,41 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface IITokenState {
-  token: null | string;
-  data: null | UserData;
-}
-
 interface UserData {
-  id: string,
-  name: string,
-  surname: string,
-  email: string,
-  img: string,
+  token: null | string;
+  id: string | null,
+  name: string | null,
+  surname: string | null,
+  email: string | null,
+  img: string | null, 
 }
 
 export const userSlice = createSlice({
-  name: "data",
+  name: "user",
   initialState: {
     token: null,
-    data: null,
-  } as IITokenState,
+    id: null,
+    name: null,
+    surname: null,
+    email: null,
+    img: null,
+  } as UserData,
   reducers: {
     signIn: (state, action) => {
       state.token = action.payload;
     },
     fetchData: (state, action) => {
-      state.data = action.payload;
+      state = {...action.payload, state };
     },
     signOut: (state) => {
-      state.data = null;
+      state = userSlice.getInitialState();
       state.token = null;
     },
   },
 });
 
-export const getToken = (state: {user: IITokenState}) => state.user.token;
+export const getToken = (state: UserData) => state.token;
 
-export const getUserData = (state: {user: IITokenState}) => state.user.data;
+export const getUserData = (state: UserData) => state;
 
 export const { signIn, fetchData, signOut } = userSlice.actions;
 
