@@ -7,6 +7,7 @@ import { NavLink } from "react-router-dom";
 import "./style.scss";
 import axios from "axios";
 import useModal from "../../hooks/useModal";
+import { userService } from "../../api/api";
 
 export const Header = () => {
   const { toggleModal, handleModalType, Modal } = useModal();
@@ -14,21 +15,9 @@ export const Header = () => {
   const userData = useSelector(getUserData);
   const [userImage, setUserImage] = useState("/images/image-user.png");
   const dispatch = useDispatch();
-  async function getUserInfo() {
-    try {
-      const res = await axios.get("http://localhost:3001/api/user/info/", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      dispatch(fetchData(res.data));
-    } catch (error) {
-      console.log(error);
-    }
-  }
   useEffect(() => {
     if (token !== null) {
-      getUserInfo();
+      userService.getUser(token).then((res) => dispatch(fetchData(res)));
     }
   }, [token]);
 

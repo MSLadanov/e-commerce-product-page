@@ -3,9 +3,12 @@ import axios from 'axios';
 const BASE_URL = 'http://localhost:3001/api';
 
 class ApiService {
-  async fetchData(endpoint : string) {
+  async fetchData(endpoint : string, token? : string) {
     try {
-      const response = await axios.get(`${BASE_URL}/${endpoint}`);
+      const response = await axios.get(`${BASE_URL}/${endpoint}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }});
       return response.data;
     } catch (error) {
       console.error('Fetch error:', error);
@@ -13,7 +16,7 @@ class ApiService {
     }
   }
 
-  async postData(endpoint : string , data : {}) {
+  async postData(endpoint : string , data : {}, token : string) {
     try {
       const response = await axios.post(`${BASE_URL}/${endpoint}`, data);
       return response.data; 
@@ -32,12 +35,12 @@ class SneakerService extends ApiService {
 }
 
 class UserService extends ApiService {
-  async getUser() {
-    return await this.fetchData('users');
+  async getUser(token : string) {
+    return await this.fetchData('user/info/', token);
   }
 
-  async createUser(user : {}) {
-    return await this.postData('users', user);
+  async createUser(user : {}, token : string) {
+    return await this.postData('users', user, token);
   }
 
 }
