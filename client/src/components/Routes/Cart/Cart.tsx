@@ -32,7 +32,7 @@ export const Cart = () => {
   const [address, setAddress] = useState('')
   const cartData = useSelector(getCartData);
   const dispatch = useDispatch();
-  const token = useSelector(getUserData).token;
+  const { token }= useSelector(getUserData);
   const makeOrder = () => {
     const orderData: Order[] = []
     cartData.map((item : Order) => {orderData.push({

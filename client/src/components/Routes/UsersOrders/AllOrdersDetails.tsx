@@ -29,7 +29,7 @@ export const AllOrdersDetails = ({order} : any) => {
     email: "",
     img: "",
   });
-  const token = useSelector(getUserData).token;
+  const { token } = useSelector(getUserData);
   const getFormattedDate = (date: any) => {
     const formattedDate = date.split("T");
     const datePart = formattedDate[0].match(/\d+/g),

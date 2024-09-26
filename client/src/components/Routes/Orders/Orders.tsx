@@ -17,7 +17,7 @@ interface Order {
 }
 
 export const Orders = () => {
-    const token = useSelector(getUserData).token;
+    const { token } = useSelector(getUserData);
     const [orders, setOrders] = useState<Order[]>([]);
     const getOrdersInfo = async () => {
       try {

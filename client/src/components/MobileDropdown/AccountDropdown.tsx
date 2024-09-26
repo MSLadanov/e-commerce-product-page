@@ -8,11 +8,12 @@ import { userService } from "../../api/api";
 
 export const AccountDropdown = () => {
   const userData = useSelector(getUserData);
+  const { token } = useSelector(getUserData)
   const dispatch = useDispatch();
   const [userImage, setUserImage] = useState("/images/image-user.png");
   useEffect(() => {
-    if (userData.token !== null) {
-      userService.getUser(userData.token).then((res) => dispatch(signIn(res.data)))
+    if (token !== null) {
+      userService.getUser(token).then((res) => dispatch(signIn(res.data)))
     }
   }, [userData]);
 
