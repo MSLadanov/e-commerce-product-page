@@ -5,7 +5,6 @@ import { fetchData } from "../../redux/slices/userSlice";
 import { getUserData } from "../../redux/slices/userSlice";
 import { NavLink } from "react-router-dom";
 import "./style.scss";
-import axios from "axios";
 import useModal from "../../hooks/useModal";
 import { userService } from "../../api/api";
 

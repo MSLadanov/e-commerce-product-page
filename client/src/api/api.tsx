@@ -43,8 +43,8 @@ class UserService extends ApiService {
     return await this.postData('user/login/', data)
   }
 
-  async createUser(user : {}, token : string) {
-    return await this.postData('users', user, token);
+  async signUp(user : {} ) {
+    return await this.postData('users', user);
   }
 
 }
