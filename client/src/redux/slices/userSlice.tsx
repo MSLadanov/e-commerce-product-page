@@ -29,13 +29,11 @@ export const userSlice = createSlice({
       state = { ...action.payload, state };
     },
     signOut: (state) => {
-      state.id = null;
-      state.token = null;
-      state.name = null;
-      state.surname = null;
-      state.img = null;
-      state.email = null;
-    },
+      const propertiesToClear: (keyof UserData)[] = ['id', 'token', 'name', 'surname', 'img', 'email'];
+      propertiesToClear.forEach((property) => {
+        state[property] = null;
+      });
+    }
   },
 });
 
