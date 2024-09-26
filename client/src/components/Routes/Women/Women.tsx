@@ -6,6 +6,7 @@ import { SearchAndSort } from "../../SearchAndSort/SearchAndSort";
 import { useDispatch, useSelector } from "react-redux";
 import { getSortData } from "../../../redux/slices/sortSlice";
 import { getSearchData } from "../../../redux/slices/searchSlice";
+import { sneakerService } from "../../../api/api";
 import "../Men/style.scss";
 
 interface Sneaker {
@@ -23,10 +24,9 @@ export default function Women() {
   const search = useSelector(getSearchData);
   const getSneakers = async () => {
     try {
-      const sneakers = (await axios.get("http://localhost:3001/api/sneaker/"))
-      .data;
-    setData(sneakers.filter((item: Sneaker) => item.sex === "Women"));
-    setInitialData(sneakers.filter((item: Sneaker) => item.sex === "Women"))
+      const sneakers = await sneakerService.getSneakers()
+      setData(sneakers.filter((item: Sneaker) => item.sex === "Women"));
+      setInitialData(sneakers.filter((item: Sneaker) => item.sex === "Women"))
     } catch (error) {
       console.log(error)
     }

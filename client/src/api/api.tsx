@@ -26,7 +26,7 @@ class ApiService {
 
 class SneakerService extends ApiService {
   async getSneakers() {
-    return await this.fetchData('tasks');
+    return await this.fetchData('sneaker');
   }
 
 }
@@ -42,5 +42,5 @@ class UserService extends ApiService {
 
 }
 
-export const taskService = new SneakerService();
+export const sneakerService = new SneakerService();
 export const userService = new UserService();
