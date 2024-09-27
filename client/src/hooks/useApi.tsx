@@ -9,30 +9,23 @@ function useApi() {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  async function getUserByToken(data: {}) {
+  async function logIn(data: {}) {
     try {
       const res = await axios.post(`${BASE_URL}/user/login/`, data);
       const token = res.data.token;
-      const user =  await getUserData(token)
-      const userData = {...user, token}
+      const user =  await axios.get(`${BASE_URL}/user/info/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const userData = {...user.data, token}
       dispatch(signIn(userData))
     } catch (error) {
         console.log(error)
     }
   }
-  async function getUserData(token: string) {
-    try {
-      const user = await axios.get(`${BASE_URL}/user/info/`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      return user.data
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  return { getUserByToken, getUserData };
+
+  return { logIn };
 }
 
 export default useApi;
