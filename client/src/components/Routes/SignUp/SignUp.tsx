@@ -24,7 +24,6 @@ export const SignUp = () => {
   const [toggleNotify] = useNotify()
   const { register } = useUserApi()
   function getFormData(object:any) {
-    console.log(object)
     const formData = new FormData();
     Object.keys(object).forEach(key => {
       if (typeof object[key] !== 'object') formData.append(key, object[key])

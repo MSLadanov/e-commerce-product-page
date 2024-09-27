@@ -13,29 +13,35 @@ function useUserApi() {
     try {
       const res = await axios.post(`${BASE_URL}/user/login/`, data);
       const token = res.data.token;
-      const user =  await axios.get(`${BASE_URL}/user/info/`, {
+      const user = await axios.get(`${BASE_URL}/user/info/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      const userData = {...user.data, token}
-      dispatch(signIn(userData))
+      const userData = { ...user.data, token };
+      dispatch(signIn(userData));
     } catch (error) {
-        console.log(error)
+      console.log(error);
     }
   }
 
-  async function register(data:{}) {
+  async function register(data: {}) {
     try {
-        const user = await axios.post(
+      const res = await axios.post(
         "http://localhost:3001/api/user/register/",
         data
-      )
-      console.log(user.data)
+      );
+      const token = res.data.token;
+      const user = await axios.get(`${BASE_URL}/user/info/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const userData = { ...user.data, token };
+      dispatch(signIn(userData));
     } catch (error) {
-        console.log(error)
+      console.log(error);
     }
-    
   }
   return { login, register };
 }
