@@ -9,7 +9,7 @@ function useApi() {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  async function logIn(data: {}) {
+  async function login(data: {}) {
     try {
       const res = await axios.post(`${BASE_URL}/user/login/`, data);
       const token = res.data.token;
@@ -25,7 +25,18 @@ function useApi() {
     }
   }
 
-  return { logIn };
+  async function register(data:{}) {
+    try {
+        const user = await axios.post(
+        "http://localhost:3001/api/user/register/",
+        data
+      )
+    } catch (error) {
+        console.log(error)
+    }
+    
+  }
+  return { login, register };
 }
 
 export default useApi;

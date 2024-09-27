@@ -15,7 +15,7 @@ const SignInSchema = Yup.object().shape({
 export const UnsignedDropdown = () => {
   const [toggleNotify] = useNotify()
   const dispatch = useDispatch();
-  const { logIn } = useApi()
+  const { login } = useApi()
   return (
     <div>
       {" "}
@@ -28,7 +28,7 @@ export const UnsignedDropdown = () => {
         }}
         validationSchema={SignInSchema}
         onSubmit={(values) => {
-          logIn(values)
+          login(values)
         }}
       >
         {({ errors, touched }) => (

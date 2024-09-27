@@ -9,7 +9,7 @@ import useApi from "../../hooks/useApi";
 
 export const Header = () => {
   const { toggleModal, handleModalType, Modal } = useModal();
-  const { logIn } = useApi()
+  const { login } = useApi()
   const userData = useSelector(getUserData);
   const { token } = useSelector(getUserData)
   const [userImage, setUserImage] = useState("/images/image-user.png");
