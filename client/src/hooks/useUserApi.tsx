@@ -5,7 +5,7 @@ import { signIn } from "../redux/slices/userSlice";
 
 const BASE_URL = "http://localhost:3001/api";
 
-function useApi() {
+function useUserApi() {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -39,4 +39,4 @@ function useApi() {
   return { login, register };
 }
 
-export default useApi;
+export default useUserApi;

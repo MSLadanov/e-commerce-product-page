@@ -5,11 +5,11 @@ import { NavLink } from "react-router-dom";
 import "./style.scss";
 import useModal from "../../hooks/useModal";
 import { userService } from "../../api/api";
-import useApi from "../../hooks/useApi";
+import useUserApi from "../../hooks/useUserApi";
 
 export const Header = () => {
   const { toggleModal, handleModalType, Modal } = useModal();
-  const { login } = useApi()
+  const { login } = useUserApi()
   const userData = useSelector(getUserData);
   const { token } = useSelector(getUserData)
   const [userImage, setUserImage] = useState("/images/image-user.png");
