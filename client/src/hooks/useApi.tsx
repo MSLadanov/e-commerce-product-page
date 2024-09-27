@@ -15,9 +15,10 @@ function useApi() {
       const token = res.data.token;
       const user =  await getUserData(token)
       const userData = {...user, token}
-      console.log(userData)
       dispatch(signIn(userData))
-    } catch (error) {}
+    } catch (error) {
+        console.log(error)
+    }
   }
   async function getUserData(token: string) {
     try {
