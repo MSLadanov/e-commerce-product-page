@@ -4,6 +4,7 @@ import { Formik, Form, Field, useField } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import useNotify from "../../../hooks/useNotify";
+import useUserApi from "../../../hooks/useUserApi";
 
 interface SignUpData {
   name: string;
@@ -21,6 +22,7 @@ const SignInSchema = Yup.object().shape({
 
 export const SignUp = () => {
   const [toggleNotify] = useNotify()
+  const { register } = useUserApi()
   function getFormData(object:any) {
     console.log(object)
     const formData = new FormData();
@@ -44,13 +46,10 @@ export const SignUp = () => {
           password: "",
         }}
         validationSchema={SignInSchema}
-        onSubmit={async (values) => {
+        onSubmit={(values) => {
           const formData = getFormData(values);
           formData.append('img', userImage)
-          const user = await axios.post(
-            "http://localhost:3001/api/user/register/",
-            formData
-          ).then((res) => toggleNotify(res.data.message)).catch((err) => {toggleNotify(err.response.data.message)});;
+          register(formData)
         }}
       >
         {({ errors, touched }) => (

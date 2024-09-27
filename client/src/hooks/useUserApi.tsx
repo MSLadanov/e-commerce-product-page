@@ -31,6 +31,7 @@ function useUserApi() {
         "http://localhost:3001/api/user/register/",
         data
       )
+      console.log(user.data)
     } catch (error) {
         console.log(error)
     }
