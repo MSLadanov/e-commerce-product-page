@@ -28,7 +28,7 @@ function useUserApi() {
   async function register(data: {}) {
     try {
       const res = await axios.post(
-        "http://localhost:3001/api/user/register/",
+        `${BASE_URL}/user/info/register/`,
         data
       );
       const token = res.data.token;
