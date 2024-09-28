@@ -10,65 +10,68 @@ import useFetch from "../../../hooks/useFetch";
 import "../Men/style.scss";
 
 interface Sneaker {
-  sex: string
-  name: string,
-  brand: string,
-  price: number,
-  discount: number
+  sex: string;
+  name: string;
+  brand: string;
+  price: number;
+  discount: number;
 }
 
 export default function Women() {
-  const [initialData, setInitialData] = useState([])
   const sort = useSelector(getSortData);
   const search = useSelector(getSearchData);
-  const { data } = useFetch('http://localhost:3001/api/sneaker')
-  console.log(data, 'fetched')
-  const searchFunction = (a : Sneaker,b : Sneaker)  => {
-    if (a.name.toLowerCase().match(search.toLowerCase()) || a.brand.toLowerCase().match(search.toLowerCase())){
-      return -1
+  const { data } = useFetch("http://localhost:3001/api/sneaker");
+  const searchFunction = (a: Sneaker, b: Sneaker) => {
+    if (
+      a.name.toLowerCase().match(search.toLowerCase()) ||
+      a.brand.toLowerCase().match(search.toLowerCase())
+    ) {
+      return -1;
     } else {
-      return 0
+      return 0;
     }
-  }
+  };
   useEffect(() => {
-    if(search.length !== 0){
-      data.sort((a:Sneaker,b:Sneaker) => searchFunction(a,b))
+    if (search.length !== 0) {
+      data.sort((a: Sneaker, b: Sneaker) => searchFunction(a, b));
     }
-    if(sort.length !== 0){
-        gigaSortFunction()
+    if (sort.length !== 0) {
+      gigaSortFunction();
     }
-  }, [search])
+  }, [search]);
   useEffect(() => {
-   gigaSortFunction()
-  }, [sort])
-  
+    gigaSortFunction();
+  }, [sort]);
+
   const gigaSortFunction = () => {
     switch (sort) {
       case "price_up":
-        data.sort((a:Sneaker,b:Sneaker) => b.price - a.price)
+        data.sort((a: Sneaker, b: Sneaker) => b.price - a.price);
         break;
       case "discount_up":
-        data.sort((a:Sneaker,b:Sneaker) => b.discount - a.discount)
+        data.sort((a: Sneaker, b: Sneaker) => b.discount - a.discount);
         break;
       case "discount_down":
-        data.sort((a:Sneaker,b:Sneaker) => a.discount - b.discount)
+        data.sort((a: Sneaker, b: Sneaker) => a.discount - b.discount);
         break;
       case "price_down":
-        data.sort((a:Sneaker,b:Sneaker) => a.price - b.price)
+        data.sort((a: Sneaker, b: Sneaker) => a.price - b.price);
         break;
     }
-  }
+  };
   if (!data.length) {
     return <div>No data!</div>;
   }
   return (
     <>
-    <SearchAndSort />
-    <div className="cards">
-      {data.filter((item : Sneaker) => item.sex === 'Women').map((item, index) => (
-        <SneakerCard sneaker={item} key={index} />
-      ))}
-    </div>
-  </>
+      <SearchAndSort />
+      <div className="cards">
+        {data
+          .filter((item: Sneaker) => item.sex === "Women")
+          .map((item, index) => (
+            <SneakerCard sneaker={item} key={index} />
+          ))}
+      </div>
+    </>
   );
 }
