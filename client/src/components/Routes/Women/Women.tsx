@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { getSortData } from "../../../redux/slices/sortSlice";
 import { getSearchData } from "../../../redux/slices/searchSlice";
 import { sneakerService } from "../../../api/api";
+import useSneakerApi from "../../../hooks/useSneakerApi";
 import "../Men/style.scss";
 
 interface Sneaker {
@@ -20,15 +21,7 @@ export default function Women() {
   const [initialData, setInitialData] = useState([])
   const sort = useSelector(getSortData);
   const search = useSelector(getSearchData);
-  const getSneakers = async () => {
-    try {
-      const sneakers = await sneakerService.getSneakers()
-      setData(sneakers.filter((item: Sneaker) => item.sex === "Women"));
-      setInitialData(sneakers.filter((item: Sneaker) => item.sex === "Women"))
-    } catch (error) {
-      console.log(error)
-    }
-  };
+  const { getSneakers } = useSneakerApi()
   const searchFunction = (a : Sneaker,b : Sneaker)  => {
     if (a.name.toLowerCase().match(search.toLowerCase()) || a.brand.toLowerCase().match(search.toLowerCase())){
       return -1
@@ -37,7 +30,7 @@ export default function Women() {
     }
   }
   useEffect(() => {
-    getSneakers();
+    getSneakers("Women");
   }, []);
   useEffect(() => {
     if(search.length !== 0){
