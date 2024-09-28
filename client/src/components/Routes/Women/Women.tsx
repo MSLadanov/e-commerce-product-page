@@ -32,20 +32,14 @@ export default function Women() {
       return 0
     }
   }
-  // useEffect(() => {
-  //   getSneakers("Women");
-  // }, []);
-  // useEffect(() => {
-  //   if(search.length !== 0){
-  //     data.sort((a:Sneaker,b:Sneaker) => searchFunction(a,b))
-  //   }
-  //   if(search.length === 0){
-  //     setData(initialData)
-  //     if(sort.length !== 0){
-  //       gigaSortFunction()
-  //     }
-  //   }
-  // }, [search])
+  useEffect(() => {
+    if(search.length !== 0){
+      data.sort((a:Sneaker,b:Sneaker) => searchFunction(a,b))
+    }
+    if(sort.length !== 0){
+        gigaSortFunction()
+    }
+  }, [search])
   useEffect(() => {
    gigaSortFunction()
   }, [sort])
