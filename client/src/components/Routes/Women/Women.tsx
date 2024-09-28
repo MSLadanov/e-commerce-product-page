@@ -6,6 +6,7 @@ import { getSortData } from "../../../redux/slices/sortSlice";
 import { getSearchData } from "../../../redux/slices/searchSlice";
 import { sneakerService } from "../../../api/api";
 import useSneakerApi from "../../../hooks/useSneakerApi";
+import useFetch from "../../../hooks/useFetch";
 import "../Men/style.scss";
 
 interface Sneaker {
@@ -17,11 +18,13 @@ interface Sneaker {
 }
 
 export default function Women() {
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
   const [initialData, setInitialData] = useState([])
   const sort = useSelector(getSortData);
   const search = useSelector(getSearchData);
-  const { getSneakers } = useSneakerApi()
+  // const { getSneakers } = useSneakerApi()
+  const { data } = useFetch('http://localhost:3001/api/sneaker')
+  console.log(data, 'fetched')
   const searchFunction = (a : Sneaker,b : Sneaker)  => {
     if (a.name.toLowerCase().match(search.toLowerCase()) || a.brand.toLowerCase().match(search.toLowerCase())){
       return -1
@@ -29,20 +32,20 @@ export default function Women() {
       return 0
     }
   }
-  useEffect(() => {
-    getSneakers("Women");
-  }, []);
-  useEffect(() => {
-    if(search.length !== 0){
-      data.sort((a:Sneaker,b:Sneaker) => searchFunction(a,b))
-    }
-    if(search.length === 0){
-      setData(initialData)
-      if(sort.length !== 0){
-        gigaSortFunction()
-      }
-    }
-  }, [search])
+  // useEffect(() => {
+  //   getSneakers("Women");
+  // }, []);
+  // useEffect(() => {
+  //   if(search.length !== 0){
+  //     data.sort((a:Sneaker,b:Sneaker) => searchFunction(a,b))
+  //   }
+  //   if(search.length === 0){
+  //     setData(initialData)
+  //     if(sort.length !== 0){
+  //       gigaSortFunction()
+  //     }
+  //   }
+  // }, [search])
   useEffect(() => {
    gigaSortFunction()
   }, [sort])
