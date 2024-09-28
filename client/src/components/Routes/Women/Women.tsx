@@ -18,11 +18,9 @@ interface Sneaker {
 }
 
 export default function Women() {
-  // const [data, setData] = useState([]);
   const [initialData, setInitialData] = useState([])
   const sort = useSelector(getSortData);
   const search = useSelector(getSearchData);
-  // const { getSneakers } = useSneakerApi()
   const { data } = useFetch('http://localhost:3001/api/sneaker')
   console.log(data, 'fetched')
   const searchFunction = (a : Sneaker,b : Sneaker)  => {
@@ -67,7 +65,7 @@ export default function Women() {
     <>
     <SearchAndSort />
     <div className="cards">
-      {data.map((item, index) => (
+      {data.filter((item : Sneaker) => item.sex === 'Women').map((item, index) => (
         <SneakerCard sneaker={item} key={index} />
       ))}
     </div>
