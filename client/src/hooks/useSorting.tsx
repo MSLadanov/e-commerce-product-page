@@ -33,7 +33,7 @@ function useSorting(initialData: [], sortingType: string) {
         );
         break;
       default:
-        setSortedData(sortedData);
+        setSortedData(initialData);
     }
   }, [initialData, sortingType]);
   return { sortedData };
