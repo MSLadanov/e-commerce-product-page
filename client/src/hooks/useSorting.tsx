@@ -8,7 +8,7 @@ interface Sneaker {
   discount: number;
 }
 
-function useSorting(initialData: [] | never[], sortingType: string) {
+function useSorting(initialData: Sneaker[] | never[], sortingType: string) {
   const [sortedData, setSortedData] = useState(initialData);
   useEffect(() => {
     switch (sortingType) {
