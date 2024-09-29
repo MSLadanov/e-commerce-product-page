@@ -24,7 +24,7 @@ export default function Women() {
   const { data, isLoading, isError } = useFetch(
     "http://localhost:3001/api/sneaker"
   );
-  const { sortedData } = useSorting(data , sort)
+  const { sortedData } = useSorting(data.filter((item: Sneaker) => item.sex === "Women") , sort)
   const searchFunction = (a: Sneaker, b: Sneaker) => {
     if (
       a.name.toLowerCase().match(search.toLowerCase()) ||
