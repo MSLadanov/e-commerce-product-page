@@ -20,7 +20,9 @@ interface Sneaker {
 export default function Women() {
   const sort = useSelector(getSortData);
   const search = useSelector(getSearchData);
-  const { data, isLoading, isError } = useFetch("http://localhost:3001/api/sneaker");
+  const { data, isLoading, isError } = useFetch(
+    "http://localhost:3001/api/sneaker"
+  );
   const searchFunction = (a: Sneaker, b: Sneaker) => {
     if (
       a.name.toLowerCase().match(search.toLowerCase()) ||
@@ -35,30 +37,8 @@ export default function Women() {
     if (search.length !== 0) {
       data.sort((a: Sneaker, b: Sneaker) => searchFunction(a, b));
     }
-    if (sort.length !== 0) {
-      gigaSortFunction();
-    }
   }, [search]);
-  useEffect(() => {
-    gigaSortFunction();
-  }, [sort]);
 
-  const gigaSortFunction = () => {
-    switch (sort) {
-      case "price_up":
-        data.sort((a: Sneaker, b: Sneaker) => b.price - a.price);
-        break;
-      case "discount_up":
-        data.sort((a: Sneaker, b: Sneaker) => b.discount - a.discount);
-        break;
-      case "discount_down":
-        data.sort((a: Sneaker, b: Sneaker) => a.discount - b.discount);
-        break;
-      case "price_down":
-        data.sort((a: Sneaker, b: Sneaker) => a.price - b.price);
-        break;
-    }
-  };
   if (!data.length) {
     return <div>No data!</div>;
   }
