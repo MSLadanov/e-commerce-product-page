@@ -1,14 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-interface Sneaker {
-    sex: string;
-    name: string;
-    brand: string;
-    price: number;
-    discount: number;
-  }
-
 function useFetch(url: string) {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
