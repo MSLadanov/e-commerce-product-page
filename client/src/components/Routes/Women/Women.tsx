@@ -20,7 +20,7 @@ interface Sneaker {
 export default function Women() {
   const sort = useSelector(getSortData);
   const search = useSelector(getSearchData);
-  const { data } = useFetch("http://localhost:3001/api/sneaker");
+  const { data, isLoading, isError } = useFetch("http://localhost:3001/api/sneaker");
   const searchFunction = (a: Sneaker, b: Sneaker) => {
     if (
       a.name.toLowerCase().match(search.toLowerCase()) ||
