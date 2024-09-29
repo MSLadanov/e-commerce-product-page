@@ -35,7 +35,7 @@ function useSorting(initialData: [], sortingType: string) {
       default:
         setSortedData(sortedData);
     }
-  }, [sortingType]);
+  }, [initialData, sortingType]);
   return { sortedData };
 }
 
