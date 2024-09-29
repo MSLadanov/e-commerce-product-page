@@ -11,6 +11,8 @@ interface Sneaker {
 function useSorting(initialData: Sneaker[] | never[], sortingType: string) {
   const [sortedData, setSortedData] = useState(initialData);
   useEffect(() => {
+    console.log(initialData)
+    console.log(sortingType)
     switch (sortingType) {
       case "price_up":
         setSortedData(
@@ -35,6 +37,7 @@ function useSorting(initialData: Sneaker[] | never[], sortingType: string) {
       default:
         setSortedData(initialData);
     }
+    console.log(sortedData)
   }, [initialData, sortingType]);
   return { sortedData };
 }
