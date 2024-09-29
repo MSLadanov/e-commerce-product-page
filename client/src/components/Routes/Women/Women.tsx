@@ -7,6 +7,7 @@ import { getSearchData } from "../../../redux/slices/searchSlice";
 import { sneakerService } from "../../../api/api";
 import useSneakerApi from "../../../hooks/useSneakerApi";
 import useFetch from "../../../hooks/useFetch";
+import useSorting from "../../../hooks/useSorting";
 import "../Men/style.scss";
 
 interface Sneaker {
@@ -23,6 +24,7 @@ export default function Women() {
   const { data, isLoading, isError } = useFetch(
     "http://localhost:3001/api/sneaker"
   );
+  const { sortedData } = useSorting(data , sort)
   const searchFunction = (a: Sneaker, b: Sneaker) => {
     if (
       a.name.toLowerCase().match(search.toLowerCase()) ||
