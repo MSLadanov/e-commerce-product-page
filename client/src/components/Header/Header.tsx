@@ -53,7 +53,7 @@ export const Header = () => {
             <img
               onClick={() => {
                 toggleModal();
-                handleModalType('user')
+                handleModalType('account')
               }}
               src={userImage}
               alt="user"
