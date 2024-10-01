@@ -11,7 +11,7 @@ function useModal(){
     const [ openModal, setOpenModal ] = useState(false)
     const [ modalType, setModalType ] = useState('')
     function toggleModal(){
-        setOpenModal(prev => !prev)
+        openModal ? setOpenModal(false) : setOpenModal(true)
     }
     function handleModalType(type : string){
         console.log(type)
