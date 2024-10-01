@@ -45,15 +45,17 @@ export const Header = () => {
             onClick={(e) => {
               toggleModal();
               handleModalType('cart')
+              handleOutSideClick(e)
             }}
           >
             <img src="/images/icon-cart.svg" alt="cart" />
           </div>
           <div className="account-button-user">
             <img
-              onClick={() => {
+              onClick={(e) => {
                 toggleModal();
                 handleModalType('account')
+                handleOutSideClick(e)
               }}
               src={userImage}
               alt="user"
