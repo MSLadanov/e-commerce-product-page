@@ -8,7 +8,7 @@ import { userService } from "../../api/api";
 import useUserApi from "../../hooks/useUserApi";
 
 export const Header = () => {
-  const { toggleModal, handleModalType, Modal } = useModal();
+  const { toggleModal, handleModalType, handleOutSideClick, Modal } = useModal();
   const { login } = useUserApi()
   const userData = useSelector(getUserData);
   const { token } = useSelector(getUserData)
@@ -42,7 +42,7 @@ export const Header = () => {
         <div className="account-navbar">
           <div
             className="account-button-cart"
-            onClick={() => {
+            onClick={(e) => {
               toggleModal();
               handleModalType('cart')
             }}

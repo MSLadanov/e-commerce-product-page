@@ -14,11 +14,15 @@ function useModal(){
         !openModal && setOpenModal(true) 
         console.log(modalType)
     }
+    function handleOutSideClick(){
+        console.log('outside')
+        openModal && setOpenModal(false)
+    }
     function handleModalType(type : string){
         console.log(type)
         setModalType(type)
     }
-    useClickOutside(modalRef, toggleModal)
+    useClickOutside(modalRef, handleOutSideClick)
     function ModalContent(){
         switch (modalType) {
             case 'account':
@@ -40,7 +44,7 @@ function useModal(){
     function Modal(){
         return createPortal(openModal && <ModalContent />, document.getElementById('modal')!)
     }
-    return { toggleModal, handleModalType,  Modal }
+    return { toggleModal, handleModalType, handleOutSideClick,  Modal }
 }
 
 export default useModal
