@@ -1,4 +1,4 @@
-import { useState, useRef } from "react"
+import { useState, useEffect, useRef } from "react"
 import { createPortal } from "react-dom"
 import { useClickOutside } from "./useClickOutside"
 import { Dropdown } from "../components/Dropdown/Dropdown"
@@ -12,6 +12,7 @@ function useModal(){
     const [ modalType, setModalType ] = useState('')
     function toggleModal(){
         openModal ? setOpenModal(false) : setOpenModal(true)
+        console.log(modalType)
     }
     function handleModalType(type : string){
         console.log(type)
@@ -33,6 +34,9 @@ function useModal(){
         </div>
         )
     }
+    useEffect(() => {
+        console.log(modalRef)
+    }, [modalType])
     function Modal(){
         return createPortal(openModal && <ModalContent />, document.getElementById('modal')!)
     }
