@@ -15,8 +15,9 @@ function useModal(){
         console.log(modalType)
     }
     function handleOutSideClick(e: any){
+        console.log(e)
         console.log('outside')
-        setOpenModal(false)
+        // setOpenModal(false)
     }
     function handleModalType(type : string){
         console.log(type)
