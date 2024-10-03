@@ -12,22 +12,23 @@ function useModal(){
     const [ modalType, setModalType ] = useState('')
     function toggleModal(){
         !openModal && setOpenModal(true) 
-        console.log(modalType)
+        // console.log(modalType)
+        console.log(modalRef, 'ref')
     }
     function handleOutSideClick(e: any){
-        console.log(e)
-        console.log('outside')
+        // console.log(e)
+        // console.log('outside')
         // setOpenModal(false)
     }
     function handleModalType(type : string){
-        console.log(type)
+        // console.log(type)
         setModalType(type)
     }
     useClickOutside(modalRef, handleOutSideClick)
     function ModalContent(){
         switch (modalType) {
             case 'account':
-                return <Dropdown />
+                return <div ref={modalRef}><Dropdown /></div>
             case 'cart':
                 return <CartDropdown /> 
             default:
