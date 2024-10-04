@@ -1,5 +1,11 @@
-function Burger(){
-
+function Burger() {
+  return (
+    <div className="logo-mobile">
+      <div className="burger"></div>
+      <div className="burger"></div>
+      <div className="burger"></div>
+    </div>
+  );
 }
 
-export default Burger
+export default Burger;

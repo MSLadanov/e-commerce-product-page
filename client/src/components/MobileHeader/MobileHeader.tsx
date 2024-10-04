@@ -16,11 +16,7 @@ export const MobileHeader = () => {
   return (
     <>
       <div className="mobile-navbar-wrapper">
-        <div className="logo-mobile">
-          <div className="burger"></div>
-          <div className="burger"></div>
-          <div className="burger"></div>
-        </div>
+        
         <div className="mobile-account-navbar">
           <div
             className="mobile-account-button-cart"
