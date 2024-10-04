@@ -4,7 +4,8 @@ import { getUserData } from "../../redux/slices/userSlice";
 import useModal from "../../hooks/useModal";
 
 export const MobileHeader = () => {
-  const { toggleModal, handleModalType, handleOutSideClick, Modal } = useModal();
+  const { toggleModal, handleModalType, handleOutSideClick, Modal } =
+    useModal();
   const userData = useSelector(getUserData);
   const [userImage, setUserImage] = useState("/images/image-user.png");
   useEffect(() => {
@@ -21,14 +22,24 @@ export const MobileHeader = () => {
           <div className="burger"></div>
         </div>
         <div className="mobile-account-navbar">
-          <div className="mobile-account-button-cart" onClick={(e) => {
+          <div
+            className="mobile-account-button-cart"
+            onClick={(e) => {
               toggleModal();
-              handleModalType('cart')
-              handleOutSideClick(e)
-            }}>
+              handleModalType("cart");
+              handleOutSideClick(e);
+            }}
+          >
             <img src="/images/icon-cart.svg" alt="cart" />
           </div>
-          <div className="mobile-account-button-user" onClick={() => toggleModal()}>
+          <div
+            className="mobile-account-button-user"
+            onClick={(e) => {
+              toggleModal();
+              handleModalType("account");
+              handleOutSideClick(e);
+            }}
+          >
             <img src={userImage} alt="user" />
           </div>
         </div>
