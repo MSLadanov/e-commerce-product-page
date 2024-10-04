@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { getUserData } from "../../redux/slices/userSlice";
 import useModal from "../../hooks/useModal";
+import Burger from "../Burger/Burger";
 
 export const MobileHeader = () => {
   const { toggleModal, handleModalType, handleOutSideClick, Modal } =
@@ -16,7 +17,7 @@ export const MobileHeader = () => {
   return (
     <>
       <div className="mobile-navbar-wrapper">
-        
+        <Burger />
         <div className="mobile-account-navbar">
           <div
             className="mobile-account-button-cart"
