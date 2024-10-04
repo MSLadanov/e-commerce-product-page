@@ -6,6 +6,7 @@ import "./style.scss";
 import useModal from "../../hooks/useModal";
 import { userService } from "../../api/api";
 import useUserApi from "../../hooks/useUserApi";
+import Navbar from "../Navbar/Navbar";
 
 export const Header = () => {
   const { toggleModal, handleModalType, handleOutSideClick, Modal } = useModal();
@@ -29,16 +30,7 @@ export const Header = () => {
   return (
     <>
       <nav>
-        <div className="site-navbar">
-          <div className="logo">
-            <img src="/images/logo.svg" alt="logo" />
-          </div>
-          <NavLink to="men/">Men</NavLink>
-          <NavLink to="women/">Women</NavLink>
-          {userData.token && <NavLink to="orders/">My Orders</NavLink>}
-          <NavLink to="about/">About</NavLink>
-          <NavLink to="contact/">Contact</NavLink>
-        </div>
+        <Navbar />
         <div className="account-navbar">
           <div
             className="account-button-cart"
