@@ -6,7 +6,11 @@ function Burger() {
   const burgerClasses = ['rotate-up', 'hiding', 'rotate-down']
   function toggleBurger(e : React.MouseEvent | React.TouchEvent) {
     if(e.target === burgerRef.current || burgerRef.current.contains(e.currentTarget)){
-        burgerRef.current.children[0]
+        let counter = 0
+        for (const child of burgerRef.current.children) {
+            child.classList.toggle(burgerClasses[counter])
+            counter++
+          }
     }
   }
   return (
