@@ -26,3 +26,14 @@
     transform: translateY(-17px) rotate(-45deg);
     transition: 0.5s;
   }
+
+  @media (max-width:961px)  { 
+    .logo-mobile{
+      display: flex;
+      flex-direction: column;
+      padding: 15px;
+      width: 50px;
+      justify-content: center;
+      align-items: center;
+    }
+}
