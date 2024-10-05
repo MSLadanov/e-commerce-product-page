@@ -12,7 +12,6 @@ function useModal(){
     const [ modalType, setModalType ] = useState('')
     function toggleModal(){
         !openModal && setOpenModal(true) 
-        console.log(modalRef, 'ref')
     }
     function handleOutSideClick(e: any){
         openModal && setOpenModal(false)
