@@ -36,9 +36,6 @@ function useModal(){
         </div>
         )
     }
-    useEffect(() => {
-        console.log(modalRef)
-    }, [modalType])
     function Modal(){
         return createPortal(openModal && <ModalContent />, document.getElementById('modal')!)
     }

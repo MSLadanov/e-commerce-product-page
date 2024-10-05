@@ -1,39 +1,39 @@
-.logo-mobile{
-    display: none;
-  }
+.logo-mobile {
+  display: none;
+}
 
-  .burger{
-    height: 5px;
-    background-color: gray;
+.burger {
+  height: 5px;
+  background-color: gray;
+  width: 50px;
+  margin: 6px 0px;
+}
+
+.burger {
+  transform: translateY(0px) rotate(0deg);
+  opacity: 1;
+  transition: 0.5s;
+}
+.hiding {
+  opacity: 0;
+  transition: 0.5s;
+}
+.rotate-up {
+  transform: translateY(17px) rotate(45deg);
+  transition: 0.5s;
+}
+.rotate-down {
+  transform: translateY(-17px) rotate(-45deg);
+  transition: 0.5s;
+}
+
+@media (max-width: 961px) {
+  .logo-mobile {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
     width: 50px;
-    margin: 6px 0px;
+    justify-content: center;
+    align-items: center;
   }
-
-  .burger{
-    transform: translateY(0px) rotate(0deg);
-    opacity: 1;
-    transition: 0.5s;
-  }
-  .hiding{
-    opacity: 0;
-    transition: 0.5s;
-  }
-  .rotate-up{
-    transform: translateY(17px) rotate(45deg);
-    transition: 0.5s;
-  }
-  .rotate-down{
-    transform: translateY(-17px) rotate(-45deg);
-    transition: 0.5s;
-  }
-
-  @media (max-width:961px)  { 
-    .logo-mobile{
-      display: flex;
-      flex-direction: column;
-      padding: 15px;
-      width: 50px;
-      justify-content: center;
-      align-items: center;
-    }
 }
