@@ -3,9 +3,10 @@ import "./style.scss";
 
 function Burger() {
   const burgerRef = useRef(document.createElement('div'))
+  const burgerClasses = ['rotate-up', 'hiding', 'rotate-down']
   function toggleBurger(e : React.MouseEvent | React.TouchEvent) {
     if(e.target === burgerRef.current || burgerRef.current.contains(e.currentTarget)){
-        console.log('Burger')
+        burgerRef.current.children[0]
     }
   }
   return (
