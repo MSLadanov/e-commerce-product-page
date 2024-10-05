@@ -1,3 +1,5 @@
+import './style.scss'
+
 function Burger() {
   return (
     <div className="logo-mobile">
