@@ -11,7 +11,7 @@ interface MobileNavbarProps {
 function MobileNavbar({openMenu, setOpenMenu} : MobileNavbarProps){
     const userData = useSelector(getUserData);
     return (
-        <div className="mobile-site-navbar">
+        <div className={openMenu ? "mobile-site-navbar open" : "mobile-site-navbar"}>
           <div className="logo">
             <img src="/images/logo.svg" alt="logo" />
           </div>

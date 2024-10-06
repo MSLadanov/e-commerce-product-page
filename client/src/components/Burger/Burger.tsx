@@ -19,6 +19,7 @@ function Burger({openMenu, setOpenMenu} : BurgerProps) {
         child.classList.toggle(burgerClasses[counter]);
         counter++;
       }
+      setOpenMenu(!openMenu)
     }
   }
   return (
