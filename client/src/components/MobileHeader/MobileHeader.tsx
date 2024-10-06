@@ -43,7 +43,7 @@ export const MobileHeader = () => {
           </div>
         </div>
       </div>
-      <MobileNavbar />
+      <MobileNavbar openMenu={openMenu} setOpenMenu={setOpenMenu}/>
       <Modal />
     </>
   );

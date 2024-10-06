@@ -3,7 +3,12 @@ import { useSelector } from "react-redux";
 import { getUserData } from "../../redux/slices/userSlice";
 import './style.scss'
 
-function MobileNavbar(){
+interface MobileNavbarProps {
+    openMenu: boolean,
+    setOpenMenu: (state: boolean) => void
+}
+
+function MobileNavbar({openMenu, setOpenMenu} : MobileNavbarProps){
     const userData = useSelector(getUserData);
     return (
         <div className="mobile-site-navbar">
