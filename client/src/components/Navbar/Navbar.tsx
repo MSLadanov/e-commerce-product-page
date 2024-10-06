@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom"
 import { useSelector } from "react-redux";
 import { getUserData } from "../../redux/slices/userSlice";
+import './style.scss'
 
 function Navbar(){
     const userData = useSelector(getUserData);

@@ -6,24 +6,6 @@ nav {
   border-bottom: 1px solid hsl(220, 14%, 75%);
   padding: 20px 100px;
 }
-.site-navbar {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  & a {
-    height: 100px;
-    display: flex;
-    align-items: center;
-    margin: 0px 20px 0px 20px;
-    color: black;
-    text-decoration: none;
-    transition: 0.1s ease-in;
-    &:hover{
-      border-bottom: 4px solid hsl(26, 100%, 55%);
-      margin: -4px 16px -4px 16px;
-    }
-  }
-}
 
 .logo {
   margin-right: 60px;
@@ -101,15 +83,6 @@ nav {
     transition: 0.5s;
     height: 100%;
     padding: 0px 0px;
-  }
-  .site-navbar{
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-    & a{
-      overflow: scroll;
-      width: 100%;
-    }
   }
   .account-navbar{
     display: none;

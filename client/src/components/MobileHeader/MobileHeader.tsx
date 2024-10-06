@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { getUserData } from "../../redux/slices/userSlice";
 import useModal from "../../hooks/useModal";
 import Burger from "../Burger/Burger";
+import Navbar from "../Navbar/Navbar";
 
 export const MobileHeader = () => {
   const { toggleModal, handleModalType, handleOutSideClick, Modal } =
@@ -41,6 +42,7 @@ export const MobileHeader = () => {
           </div>
         </div>
       </div>
+      <Navbar />
       <Modal />
     </>
   );
