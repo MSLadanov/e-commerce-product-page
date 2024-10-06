@@ -23,6 +23,7 @@
     z-index: 1;
     background-color: white;
     width: 0%;
+    transition: width 0.2s ease-in-out;
     flex-direction: column;
     align-items: flex-start;
     & a {
@@ -30,20 +31,7 @@
       width: 100%;
     }
   }
-  .open-navbar {
-    animation-name: mobile-navbar;
-    animation-duration: 1s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-timing-function: ease-in;
-  }
-}
-
-@keyframes mobile-navbar {
-  from {
-    width: 0%;
-  }
-  to {
+  .open{
     width: 100%;
   }
 }
