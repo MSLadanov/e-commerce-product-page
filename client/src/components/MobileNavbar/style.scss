@@ -1,5 +1,5 @@
-.site-navbar {
-  display: flex;
+.mobile-site-navbar {
+  display: none;
   align-items: center;
   & a {
     height: 100px;
@@ -17,7 +17,8 @@
 }
 
 @media (max-width: 961px) {
-  .site-navbar {
+  .mobile-site-navbar {
+    display: flex;
     position: absolute;
     z-index: 1;
     background-color: white;
@@ -28,5 +29,21 @@
       overflow: scroll;
       width: 100%;
     }
+  }
+  .open-navbar {
+    animation-name: mobile-navbar;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in;
+  }
+}
+
+@keyframes mobile-navbar {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
   }
 }
