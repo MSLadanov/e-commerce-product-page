@@ -23,6 +23,7 @@ textarea:focus, input:focus{
 
 .select-dropdown {
     position: relative;
+    z-index: 0;
     background-color: #ffffff;
     width: auto;
     float: left;
