@@ -1,7 +1,12 @@
 import { useRef } from "react";
 import "./style.scss";
 
-function Burger() {
+interface BurgerProps {
+    openMenu: boolean,
+    setOpenMenu: (state: boolean) => void
+}
+
+function Burger({openMenu, setOpenMenu} : BurgerProps) {
   const burgerRef = useRef(document.createElement("div"));
   const burgerClasses = ["rotate-up", "hiding", "rotate-down"];
   function toggleBurger(e: React.MouseEvent | React.TouchEvent) {

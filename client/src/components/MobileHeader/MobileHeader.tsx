@@ -8,6 +8,7 @@ import MobileNavbar from "../MobileNavbar/MobileNavbar";
 export const MobileHeader = () => {
   const { toggleModal, handleModalType, handleOutSideClick, Modal } =
     useModal();
+  const [openMenu, setOpenMenu] = useState(false);
   const userData = useSelector(getUserData);
   const [userImage, setUserImage] = useState("/images/image-user.png");
   useEffect(() => {
@@ -18,7 +19,7 @@ export const MobileHeader = () => {
   return (
     <>
       <div className="mobile-navbar-wrapper">
-        <Burger />
+        <Burger openMenu={openMenu} setOpenMenu={setOpenMenu}/>
         <div className="mobile-account-navbar">
           <div
             className="mobile-account-button-cart"
