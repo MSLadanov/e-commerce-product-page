@@ -14,6 +14,7 @@ function MobileNavbar({ openMenu, setOpenMenu }: MobileNavbarProps) {
     <div className={openMenu ? "mobile-navbar-background shaded" : "mobile-navbar-background"}>
       <div
         className={openMenu ? "mobile-site-navbar open" : "mobile-site-navbar"}
+        onClick={() => setOpenMenu(false)}
       >
         <div className="logo">
           <img src="/images/logo.svg" alt="logo" />
