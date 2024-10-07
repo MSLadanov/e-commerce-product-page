@@ -7,4 +7,19 @@
     display: flex;
     justify-content: space-between;
   }
+  .mobile-account-navbar{
+    display: flex;
+    & div{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      height: 80px;
+      width: 80px;
+    }
+    & img{
+      height: 50px;
+      width: 50px;
+    }
+  }
 }
