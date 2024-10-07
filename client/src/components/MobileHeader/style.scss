@@ -1,0 +1,10 @@
+.mobile-navbar-wrapper {
+  display: none;
+}
+
+@media (max-width: 961px) {
+  .mobile-navbar-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+}

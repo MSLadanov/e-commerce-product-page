@@ -4,6 +4,7 @@ import { getUserData } from "../../redux/slices/userSlice";
 import useModal from "../../hooks/useModal";
 import Burger from "../Burger/Burger";
 import MobileNavbar from "../MobileNavbar/MobileNavbar";
+import './style.scss'
 
 export const MobileHeader = () => {
   const { toggleModal, handleModalType, handleOutSideClick, Modal } =
