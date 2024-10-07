@@ -18,7 +18,7 @@ export const MobileHeader = () => {
     }
   }, [userData]);
   return (
-    <>
+    <div className="mobile-navbar">
       <div className="mobile-navbar-wrapper">
         <Burger openMenu={openMenu} setOpenMenu={setOpenMenu}/>
         <div className="mobile-account-navbar">
@@ -46,6 +46,6 @@ export const MobileHeader = () => {
       </div>
       <MobileNavbar openMenu={openMenu} setOpenMenu={setOpenMenu}/>
       <Modal />
-    </>
+    </div>
   );
 };
