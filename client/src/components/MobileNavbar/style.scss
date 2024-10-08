@@ -8,12 +8,13 @@
 .mobile-navbar-background{
   position: fixed;
   height: 100vh;
-  width: 100%;
+  width: 0%;
   z-index: 1;
   transition: 0.5s ease-in-out;
 }
 
 .shaded{
+  width: 100%;
   background: rgba(0, 0, 0, 0.6);
 }
 
