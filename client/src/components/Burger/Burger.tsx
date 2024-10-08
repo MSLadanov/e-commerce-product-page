@@ -28,9 +28,9 @@ function Burger({openMenu, setOpenMenu} : BurgerProps) {
       ref={burgerRef}
       onClick={(e) => toggleBurger(e)}
     >
-      <div className="burger"></div>
-      <div className="burger"></div>
-      <div className="burger"></div>
+      <div className={openMenu ? 'burger rotate-up' : 'burger'}></div>
+      <div className={openMenu ? 'burger hiding' : 'burger'} ></div>
+      <div className={openMenu ? 'burger rotate-down' : 'burger'}></div>
     </div>
   );
 }
